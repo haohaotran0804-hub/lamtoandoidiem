@@ -1,791 +1,1913 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luyện Tập Toán - Cộng Trừ Phạm Vi 100</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Nunito', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        body {
-            background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
-            color: #1e293b;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-            position: relative;
-            overflow-x: hidden;
-        }
+<title>Luyện Tập Toán - Cộng Trừ Phạm Vi 100</title>
 
-        .container {
-            background: #ffffff;
-            border-radius: 24px;
-            box-shadow: 0 20px 40px rgba(14, 165, 233, 0.12);
-            width: 100%;
-            max-width: 580px;
-            padding: 30px;
-            text-align: center;
-            position: relative;
-            border: 4px solid #ffffff;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
 
-        .header-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            gap: 10px;
-        }
+<style>
 
-        h1 {
-            color: #0284c7;
-            font-size: 22px;
-            font-weight: 800;
-            text-align: left;
-        }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+}
 
-        .shop-btn-trigger {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-            color: white;
-            padding: 10px 18px;
-            border-radius: 50px;
-            font-size: 15px;
-            font-weight: 800;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 6px 16px rgba(245, 158, 11, 0.35);
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            white-space: nowrap;
-        }
+body {
+    background: linear-gradient(135deg, #e0f2fe, #f0f9ff);
+    color: #1e293b;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
 
-        .shop-btn-trigger:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.45);
-        }
+.container {
+    background: white;
+    width: 100%;
+    max-width: 580px;
+    padding: 30px;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(14,165,233,.12);
+    text-align: center;
+}
 
-        .shop-btn-trigger:active {
-            transform: translateY(0);
-        }
+.header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 10px;
+}
 
-        .point-badge {
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            color: #b45309;
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: 800;
-            font-size: 16px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 20px;
-            border: 2px solid #fcd34d;
-            box-shadow: 0 4px 12px rgba(217, 119, 6, 0.1);
-        }
+h1 {
+    color: #0284c7;
+    font-size: 22px;
+    font-weight: 900;
+}
 
-        .stats-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #f0f9ff;
-            padding: 12px 20px;
-            border-radius: 16px;
-            margin-bottom: 20px;
-            font-weight: 700;
-            color: #0369a1;
-            border: 1px solid #bae6fd;
-        }
+.shop-btn-trigger {
+    background: linear-gradient(135deg,#f59e0b,#d97706);
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(245,158,11,.3);
+}
 
-        .progress-bar-container {
-            width: 100%;
-            height: 12px;
-            background-color: #e0f2fe;
-            border-radius: 10px;
-            margin-bottom: 25px;
-            overflow: hidden;
-            padding: 2px;
-        }
+.point-badge {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    background: linear-gradient(135deg,#fef3c7,#fde68a);
+    color: #b45309;
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 2px solid #fcd34d;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
 
-        .progress-bar {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, #38bdf8 0%, #0284c7 100%);
-            border-radius: 8px;
-            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+.stats-bar {
+    display: flex;
+    justify-content: space-between;
+    background: #f0f9ff;
+    color: #0369a1;
+    padding: 12px 20px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    font-weight: 800;
+}
 
-        .math-card {
-            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-            border: 3px solid #e2e8f0;
-            border-radius: 20px;
-            padding: 35px 20px;
-            margin-bottom: 25px;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
-        }
+.progress-bar-container {
+    height: 12px;
+    background: #e0f2fe;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
 
-        .expression {
-            font-size: 40px;
-            font-weight: 900;
-            color: #0f172a;
-            margin-bottom: 25px;
-            letter-spacing: 2px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg,#38bdf8,#0284c7);
+    transition: width .4s;
+}
 
-        .input-group {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 12px;
-        }
+.math-card {
+    background: linear-gradient(180deg,#fff,#f8fafc);
+    border: 3px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 35px 20px;
+}
 
-        input[type="number"] {
-            width: 140px;
-            height: 58px;
-            font-size: 28px;
-            font-weight: 800;
-            text-align: center;
-            border: 3px solid #cbd5e1;
-            border-radius: 14px;
-            outline: none;
-            transition: all 0.2s ease;
-            color: #0f172a;
-            background-color: #ffffff;
-        }
+.expression {
+    font-size: 40px;
+    font-weight: 900;
+    margin-bottom: 25px;
+}
 
-        input[type="number"]:focus {
-            border-color: #0284c7;
-            box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.15);
-        }
+.input-group {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
 
-        input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
+input[type="number"] {
+    width: 140px;
+    height: 58px;
+    font-size: 28px;
+    font-weight: 900;
+    text-align: center;
+    border: 3px solid #cbd5e1;
+    border-radius: 14px;
+    outline: none;
+}
 
-        .submit-btn {
-            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-            color: white;
-            border: none;
-            padding: 0 28px;
-            height: 58px;
-            font-size: 18px;
-            font-weight: 800;
-            border-radius: 14px;
-            cursor: pointer;
-            box-shadow: 0 6px 16px rgba(2, 132, 199, 0.3);
-            transition: all 0.2s ease;
-        }
+input[type="number"]:focus {
+    border-color: #0284c7;
+    box-shadow: 0 0 0 4px rgba(2,132,199,.15);
+}
 
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(2, 132, 199, 0.4);
-        }
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
 
-        .submit-btn:active {
-            transform: translateY(0);
-        }
+.submit-btn {
+    height: 58px;
+    padding: 0 28px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(135deg,#0284c7,#0369a1);
+    color: white;
+    font-size: 18px;
+    font-weight: 900;
+    cursor: pointer;
+}
 
-        .result-screen {
-            display: none;
-        }
+.result-screen {
+    display: none;
+}
 
-        .score-circle {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
-            border: 6px solid #38bdf8;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin: 20px auto;
-            box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2);
-        }
+.score-circle {
+    width: 150px;
+    height: 150px;
+    margin: 20px auto;
+    border-radius: 50%;
+    border: 6px solid #38bdf8;
+    background: linear-gradient(135deg,#e0f2fe,#bae6fd);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
-        .score-num {
-            font-size: 42px;
-            font-weight: 900;
-            color: #0369a1;
-        }
+.score-num {
+    font-size: 42px;
+    font-weight: 900;
+    color: #0369a1;
+}
 
-        .score-label {
-            font-size: 13px;
-            font-weight: 700;
-            color: #0284c7;
-            text-transform: uppercase;
-        }
+.score-label {
+    color: #0284c7;
+    font-weight: 800;
+}
 
-        .points-earned-box {
-            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
-            border: 2px solid #86efac;
-            color: #15803d;
-            padding: 14px;
-            border-radius: 14px;
-            font-weight: 800;
-            font-size: 18px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.15);
-        }
+.points-earned-box {
+    background: linear-gradient(135deg,#dcfce7,#bbf7d0);
+    border: 2px solid #86efac;
+    color: #15803d;
+    padding: 14px;
+    border-radius: 14px;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
 
-        .summary-details {
-            margin: 20px 0;
-            font-size: 16px;
-            line-height: 1.8;
-            color: #334155;
-            font-weight: 700;
-        }
+.summary-details {
+    line-height: 1.8;
+    margin: 20px 0;
+    font-weight: 800;
+}
 
-        .restart-btn {
-            background: linear-gradient(135deg, #10b981 0%, #047857 100%);
-            color: white;
-            border: none;
-            padding: 16px 32px;
-            font-size: 18px;
-            font-weight: 800;
-            border-radius: 14px;
-            cursor: pointer;
-            box-shadow: 0 6px 16px rgba(16, 185, 129, 0.3);
-            transition: all 0.2s ease;
-        }
+.restart-btn {
+    background: linear-gradient(135deg,#10b981,#047857);
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 14px;
+    font-size: 18px;
+    font-weight: 900;
+    cursor: pointer;
+}
 
-        .restart-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
-        }
 
-        /* --- CỬA HÀNG (SHOP MODAL) BẮT MẮT --- */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(4px);
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-        }
+/* =========================
+   SHOP
+========================= */
 
-        .shop-modal {
-            background: #ffffff;
-            padding: 28px;
-            border-radius: 24px;
-            width: 92%;
-            max-width: 480px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            text-align: left;
-            animation: modalPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15,23,42,.6);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
 
-        @keyframes modalPop {
-            0% { transform: scale(0.8); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
+.shop-modal {
+    width: 92%;
+    max-width: 500px;
+    background: white;
+    padding: 28px;
+    border-radius: 24px;
+    box-shadow: 0 25px 60px rgba(0,0,0,.25);
+    animation: popup .3s;
+}
 
-        .shop-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #f1f5f9;
-            padding-bottom: 12px;
-        }
+.shop-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
 
-        .shop-header h2 {
-            color: #0f172a;
-            font-size: 22px;
-            font-weight: 900;
-        }
+.close-shop-btn {
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    background: #f1f5f9;
+    cursor: pointer;
+    font-weight: 900;
+}
 
-        .close-shop-btn {
-            background: #f1f5f9;
-            border: none;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            font-size: 18px;
-            font-weight: 800;
-            color: #64748b;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s ease;
-        }
+.shop-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
 
-        .close-shop-btn:hover {
-            background: #e2e8f0;
-            color: #0f172a;
-        }
+.tab-btn {
+    flex: 1;
+    padding: 9px;
+    border: none;
+    border-radius: 10px;
+    background: #f1f5f9;
+    color: #64748b;
+    font-weight: 900;
+    cursor: pointer;
+}
 
-        .shop-balance {
-            background: #fef3c7;
-            color: #b45309;
-            padding: 10px 16px;
-            border-radius: 12px;
-            font-weight: 800;
-            font-size: 15px;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.tab-btn.active {
+    background: #0284c7;
+    color: white;
+}
 
-        .shop-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 14px;
-            max-height: 360px;
-            overflow-y: auto;
-            padding: 4px;
-        }
+.shop-balance {
+    display: flex;
+    justify-content: space-between;
+    background: #fef3c7;
+    color: #b45309;
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 18px;
+    font-weight: 900;
+}
 
-        .shop-card {
-            background: #ffffff;
-            border: 2px solid #f1f5f9;
-            border-radius: 18px;
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-        }
+.shop-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 14px;
+    max-height: 320px;
+    overflow-y: auto;
+}
 
-        .shop-card:hover {
-            transform: translateY(-3px);
-            border-color: #cbd5e1;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.06);
-        }
+.shop-card {
+    border: 2px solid #f1f5f9;
+    border-radius: 18px;
+    padding: 16px;
+    text-align: center;
+}
 
-        .item-icon {
-            font-size: 44px;
-            margin-bottom: 8px;
-        }
+.item-icon {
+    font-size: 44px;
+}
 
-        .item-name {
-            font-weight: 800;
-            color: #1e293b;
-            font-size: 15px;
-            margin-bottom: 4px;
-        }
+.item-name {
+    font-weight: 900;
+    margin: 5px 0;
+}
 
-        .item-price {
-            color: #d97706;
-            font-weight: 800;
-            font-size: 14px;
-            margin-bottom: 12px;
-            background: #fffbe2;
-            padding: 2px 8px;
-            border-radius: 6px;
-        }
+.item-price {
+    color: #d97706;
+    font-weight: 900;
+    margin-bottom: 10px;
+}
 
-        .buy-btn {
-            width: 100%;
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
-            border: none;
-            padding: 8px 0;
-            font-size: 14px;
-            font-weight: 800;
-            border-radius: 10px;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.25);
-            transition: all 0.2s ease;
-        }
+.buy-btn {
+    width: 100%;
+    padding: 9px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg,#10b981,#059669);
+    color: white;
+    font-weight: 900;
+    cursor: pointer;
+}
 
-        .buy-btn:hover:not(:disabled) {
-            transform: scale(1.02);
-            box-shadow: 0 6px 14px rgba(16, 185, 129, 0.35);
-        }
+.buy-btn:disabled {
+    background: #e2e8f0;
+    color: #94a3b8;
+}
 
-        .buy-btn:disabled {
-            background: #e2e8f0;
-            color: #94a3b8;
-            box-shadow: none;
-            cursor: not-allowed;
-        }
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 320px;
+    overflow-y: auto;
+}
 
-        /* --- POPUP TOAST --- */
-        .toast-notification {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #ffffff;
-            color: #1e293b;
-            padding: 18px 26px;
-            border-radius: 18px;
-            box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.2);
-            font-size: 17px;
-            font-weight: 800;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            border-left: 8px solid #cbd5e1;
-            transform: translateX(180%);
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            z-index: 3000;
-        }
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border-radius: 12px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+}
 
-        .toast-icon {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            color: white;
-            flex-shrink: 0;
-        }
+.history-price {
+    color: #ef4444;
+    font-weight: 900;
+}
 
-        .toast-notification.show {
-            transform: translateX(0);
-        }
 
-        .toast-notification.correct {
-            border-left-color: #10b981;
-            color: #065f46;
-            background: linear-gradient(to right, #ffffff, #f0fdf4);
-        }
-        .toast-notification.correct .toast-icon {
-            background-color: #10b981;
-        }
+/* =========================
+   TOAST
+========================= */
 
-        .toast-notification.wrong {
-            border-left-color: #ef4444;
-            color: #991b1b;
-            background: linear-gradient(to right, #ffffff, #fef2f2);
-        }
-        .toast-notification.wrong .toast-icon {
-            background-color: #ef4444;
-        }
-    </style>
+.toast-notification {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    background: white;
+    padding: 18px 25px;
+    border-radius: 18px;
+    box-shadow: 0 20px 35px rgba(0,0,0,.2);
+    font-weight: 900;
+    transform: translateX(180%);
+    transition: .4s;
+    z-index: 4000;
+}
+
+.toast-notification.show {
+    transform: translateX(0);
+}
+
+.toast-notification.correct {
+    border-left: 8px solid #10b981;
+    color: #065f46;
+}
+
+.toast-notification.wrong {
+    border-left: 8px solid #ef4444;
+    color: #991b1b;
+}
+
+
+/* =========================
+   POPUP ĐỔI QUÀ
+========================= */
+
+.success-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15,23,42,.55);
+    backdrop-filter: blur(7px);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 5000;
+}
+
+.success-modal {
+    width: 100%;
+    max-width: 430px;
+    background: white;
+    padding: 32px 28px;
+    border-radius: 28px;
+    text-align: center;
+    box-shadow: 0 30px 80px rgba(0,0,0,.3);
+    animation: successPop .35s cubic-bezier(.34,1.56,.64,1);
+}
+
+.success-icon {
+    width: 85px;
+    height: 85px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,#fef3c7,#fde68a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 44px;
+}
+
+.success-modal h2 {
+    color: #0284c7;
+    font-size: 26px;
+    font-weight: 900;
+    margin-bottom: 12px;
+}
+
+.success-modal p {
+    color: #475569;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.success-modal button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(135deg,#0284c7,#0369a1);
+    color: white;
+    font-size: 17px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+@keyframes popup {
+
+    from {
+        opacity: 0;
+        transform: scale(.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+@keyframes successPop {
+
+    from {
+        opacity: 0;
+        transform: scale(.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:500px) {
+
+    .container {
+        padding: 20px;
+    }
+
+    .header-bar {
+        align-items: flex-start;
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+
+    .shop-btn-trigger {
+        padding: 9px 12px;
+    }
+
+    .expression {
+        font-size: 32px;
+    }
+
+    .input-group {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    input[type="number"],
+    .submit-btn {
+        width: 100%;
+    }
+
+    .shop-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+</style>
 </head>
+
+
 <body>
 
+
 <div class="container">
+
     <div class="header-bar">
-        <h1>Phép tính phạm vi 100</h1>
-        <button class="shop-btn-trigger" onclick="openShop()">
-            <span>Cửa Hàng</span> 🛒
+
+        <h1>
+            Phép tính phạm vi 100
+        </h1>
+
+        <button
+            class="shop-btn-trigger"
+            onclick="openShop()"
+        >
+            🛒 Cửa Hàng
         </button>
+
     </div>
+
 
     <div class="point-badge">
-        💎 Điểm Point: <span id="total-points">0</span> Point
+
+        💎 Điểm Point:
+        <span id="total-points">0</span>
+        Point
+
     </div>
+
+
+    <!-- QUIZ -->
 
     <div id="quiz-screen">
+
         <div class="stats-bar">
-            <span>Câu hỏi: <span id="current-question">1</span>/50</span>
-            <span>Đúng: <span id="correct-count">0</span> ⭐</span>
+
+            <span>
+                Câu hỏi:
+                <span id="current-question">1</span>/50
+            </span>
+
+            <span>
+                Đúng:
+                <span id="correct-count">0</span> ⭐
+            </span>
+
         </div>
+
 
         <div class="progress-bar-container">
-            <div class="progress-bar" id="progress-bar"></div>
+
+            <div
+                class="progress-bar"
+                id="progress-bar"
+            ></div>
+
         </div>
+
 
         <div class="math-card">
-            <div class="expression" id="expression">--</div>
-            <div class="input-group">
-                <input type="number" id="answer-input" placeholder="?" autofocus autocomplete="off">
-                <button class="submit-btn" onclick="submitAnswer()">Trả lời</button>
+
+            <div
+                class="expression"
+                id="expression"
+            >
+                --
             </div>
+
+
+            <div class="input-group">
+
+                <input
+                    type="number"
+                    id="answer-input"
+                    placeholder="?"
+                    autocomplete="off"
+                >
+
+                <button
+                    class="submit-btn"
+                    onclick="submitAnswer()"
+                >
+                    Trả lời
+                </button>
+
+            </div>
+
         </div>
+
     </div>
 
-    <div id="result-screen" class="result-screen">
-        <h2>Kết Quả Bài Làm</h2>
+
+    <!-- RESULT -->
+
+    <div
+        id="result-screen"
+        class="result-screen"
+    >
+
+        <h2>
+            Kết Quả Bài Làm
+        </h2>
+
+
         <div class="score-circle">
-            <span class="score-num" id="final-score">0</span>
-            <span class="score-label">Điểm số</span>
+
+            <span
+                class="score-num"
+                id="final-score"
+            >
+                0
+            </span>
+
+            <span class="score-label">
+                Điểm số
+            </span>
+
         </div>
-        
-        <div class="points-earned-box" id="points-earned-box">
+
+
+        <div
+            class="points-earned-box"
+            id="points-earned-box"
+        >
             +0 Point đã được cộng vào tài khoản!
         </div>
 
+
         <div class="summary-details">
-            <p>Số câu đúng: <strong id="correct-total" style="color: #10b981;">0</strong> / 50</p>
-            <p>Số câu sai: <strong id="wrong-total" style="color: #ef4444;">0</strong> / 50</p>
-            <p>Tỷ lệ chính xác: <strong id="accuracy">0%</strong></p>
+
+            <p>
+                Số câu đúng:
+                <strong
+                    id="correct-total"
+                    style="color:#10b981"
+                >
+                    0
+                </strong>
+                /50
+            </p>
+
+            <p>
+                Số câu sai:
+                <strong
+                    id="wrong-total"
+                    style="color:#ef4444"
+                >
+                    0
+                </strong>
+                /50
+            </p>
+
+            <p>
+                Tỷ lệ chính xác:
+                <strong id="accuracy">
+                    0%
+                </strong>
+            </p>
+
         </div>
-        <button class="restart-btn" onclick="startNewQuiz()">Làm Lại Đợt Mới (50 Câu)</button>
+
+
+        <button
+            class="restart-btn"
+            onclick="startNewQuiz()"
+        >
+            Làm Lại Đợt Mới (50 Câu)
+        </button>
+
     </div>
+
 </div>
 
-<!-- Modal Cửa Hàng -->
-<div id="shop-modal" class="modal-overlay">
+
+<!-- SHOP -->
+
+<div
+    id="shop-modal"
+    class="modal-overlay"
+>
+
     <div class="shop-modal">
+
         <div class="shop-header">
-            <h2>Cửa Hàng Quà Tặng 🎁</h2>
-            <button class="close-shop-btn" onclick="closeShop()">✕</button>
+
+            <h2>
+                Cửa Hàng Quà Tặng 🎁
+            </h2>
+
+            <button
+                class="close-shop-btn"
+                onclick="closeShop()"
+            >
+                ✕
+            </button>
+
         </div>
-        
+
+
+        <div class="shop-tabs">
+
+            <button
+                class="tab-btn active"
+                id="tab-buy"
+                onclick="switchTab('buy')"
+            >
+                Đổi Quà
+            </button>
+
+            <button
+                class="tab-btn"
+                id="tab-history"
+                onclick="switchTab('history')"
+            >
+                Lịch Sử Đổi Quà
+            </button>
+
+        </div>
+
+
         <div class="shop-balance">
-            <span>Số dư của bạn:</span>
-            <span>💎 <span id="shop-current-points">0</span> Point</span>
+
+            <span>
+                Số dư của bạn:
+            </span>
+
+            <span>
+                💎
+                <span id="shop-current-points">
+                    0
+                </span>
+                Point
+            </span>
+
         </div>
 
-        <div class="shop-grid" id="shop-items-container">
-            <!-- Vật phẩm sinh ra từ JavaScript -->
+
+        <div id="view-buy">
+
+            <div
+                class="shop-grid"
+                id="shop-items-container"
+            ></div>
+
         </div>
+
+
+        <div
+            id="view-history"
+            style="display:none"
+        >
+
+            <div
+                class="history-list"
+                id="history-container"
+            ></div>
+
+        </div>
+
     </div>
+
 </div>
 
-<!-- Popup Thông Báo Toast -->
-<div id="toast" class="toast-notification">
-    <div id="toast-icon" class="toast-icon">✓</div>
-    <span id="toast-message">Thông báo</span>
+
+<!-- TOAST -->
+
+<div
+    id="toast"
+    class="toast-notification"
+>
+
+    <span id="toast-message">
+        Thông báo
+    </span>
+
 </div>
+
+
+<!-- POPUP ĐỔI QUÀ -->
+
+<div
+    id="success-modal"
+    class="success-overlay"
+>
+
+    <div class="success-modal">
+
+        <div class="success-icon">
+            🎉
+        </div>
+
+
+        <h2>
+            Đổi quà thành công!
+        </h2>
+
+
+        <p id="success-message">
+            🎉 Chúc mừng! Bạn đã đổi thành công món quà.
+            Hãy chụp màn hình gửi Bon để nhận quà nhé!
+        </p>
+
+
+        <button
+            onclick="closeSuccessModal()"
+        >
+            Đã hiểu
+        </button>
+
+    </div>
+
+</div>
+
 
 <script>
-    const TOTAL_QUESTIONS = 50;
-    let currentQuestionNum = 0;
-    let correctAnswers = 0;
-    let currentAnswer = 0;
-    let toastTimeout = null;
 
-    // Quản lý Point lưu vào máy
-    let userPoints = parseInt(localStorage.getItem('user_points')) || 0;
 
-    // Danh sách phần thưởng cửa hàng
-    const shopItems = [
-        { id: 1, name: "Bim bim", icon: "🍿", price: 300 },
-        { id: 2, name: "Kem Mixue", icon: "🍦", price: 450 },
-        { id: 3, name: "Nước ngọt", icon: "🥤", price: 450 },
-        { id: 4, name: "TANA food", icon: "🍗", price: 800 }
-    ];
+/* =========================
+   CẤU HÌNH
+========================= */
 
-    function updatePointDisplay() {
-        document.getElementById('total-points').innerText = userPoints;
-        document.getElementById('shop-current-points').innerText = userPoints;
-        localStorage.setItem('user_points', userPoints);
+const TOTAL_QUESTIONS = 50;
+
+let currentQuestionNum = 0;
+let correctAnswers = 0;
+let currentAnswer = 0;
+let toastTimeout = null;
+
+
+/* POINT */
+
+let userPoints =
+    parseInt(localStorage.getItem("user_points")) || 0;
+
+let originalPoints =
+    userPoints;
+
+
+/* LỊCH SỬ */
+
+let redeemHistory =
+    JSON.parse(
+        localStorage.getItem("redeem_history")
+    ) || [];
+
+
+/* QUÀ */
+
+const shopItems = [
+
+    {
+        id: 1,
+        name: "Bim bim",
+        icon: "🍿",
+        price: 300
+    },
+
+    {
+        id: 2,
+        name: "Kem Mixue",
+        icon: "🍦",
+        price: 450
+    },
+
+    {
+        id: 3,
+        name: "Nước ngọt",
+        icon: "🥤",
+        price: 450
+    },
+
+    {
+        id: 4,
+        name: "TANA food",
+        icon: "🍗",
+        price: 800
     }
 
-    // Web Audio API
-    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+];
 
-    function playSound(isCorrect) {
-        if (audioCtx.state === 'suspended') {
-            audioCtx.resume();
-        }
 
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
+/* =========================
+   POINT DISPLAY
+========================= */
 
-        const now = audioCtx.currentTime;
+function updatePointDisplay() {
 
-        if (isCorrect) {
-            osc.type = 'sine';
-            osc.frequency.setValueAtTime(523.25, now);
-            osc.frequency.exponentialRampToValueAtTime(659.25, now + 0.1);
-            gain.gain.setValueAtTime(0.3, now);
-            gain.gain.exponentialRampToValueAtTime(0.01, now + 0.35);
+    document.getElementById(
+        "total-points"
+    ).innerText =
+        userPoints;
 
-            osc.start(now);
-            osc.stop(now + 0.35);
-        } else {
-            osc.type = 'sawtooth';
-            osc.frequency.setValueAtTime(150, now);
-            osc.frequency.linearRampToValueAtTime(100, now + 0.25);
-            gain.gain.setValueAtTime(0.3, now);
-            gain.gain.exponentialRampToValueAtTime(0.01, now + 0.35);
 
-            osc.start(now);
-            osc.stop(now + 0.3);
-        }
+    document.getElementById(
+        "shop-current-points"
+    ).innerText =
+        userPoints;
+
+
+    localStorage.setItem(
+        "user_points",
+        userPoints
+    );
+
+}
+
+
+/* =========================
+   SOUND
+========================= */
+
+const audioCtx =
+    new (
+        window.AudioContext ||
+        window.webkitAudioContext
+    )();
+
+
+function playSound(isCorrect) {
+
+    if (
+        audioCtx.state === "suspended"
+    ) {
+        audioCtx.resume();
     }
 
-    function generateExpression() {
-        while (true) {
-            const numTerms = Math.floor(Math.random() * 2) + 3;
-            const terms = [Math.floor(Math.random() * 46) + 5];
-            const ops = [];
-            let valid = true;
-            let currentVal = terms[0];
 
-            for (let i = 0; i < numTerms - 1; i++) {
-                const op = Math.random() < 0.5 ? '+' : '-';
-                let nextTerm;
+    const osc =
+        audioCtx.createOscillator();
 
-                if (op === '+') {
-                    const maxAdd = 100 - currentVal;
-                    if (maxAdd < 2) { valid = false; break; }
-                    nextTerm = Math.floor(Math.random() * Math.min(40, maxAdd)) + 2;
-                    currentVal += nextTerm;
-                } else {
-                    const maxSub = currentVal;
-                    if (maxSub < 2) { valid = false; break; }
-                    nextTerm = Math.floor(Math.random() * Math.min(40, maxSub)) + 2;
-                    currentVal -= nextTerm;
+    const gain =
+        audioCtx.createGain();
+
+
+    osc.connect(gain);
+    gain.connect(
+        audioCtx.destination
+    );
+
+
+    const now =
+        audioCtx.currentTime;
+
+
+    if (isCorrect) {
+
+        osc.type = "sine";
+
+        osc.frequency.setValueAtTime(
+            523.25,
+            now
+        );
+
+        osc.frequency.exponentialRampToValueAtTime(
+            659.25,
+            now + .1
+        );
+
+    } else {
+
+        osc.type = "sawtooth";
+
+        osc.frequency.setValueAtTime(
+            150,
+            now
+        );
+
+        osc.frequency.linearRampToValueAtTime(
+            100,
+            now + .25
+        );
+
+    }
+
+
+    gain.gain.setValueAtTime(
+        .3,
+        now
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        .01,
+        now + .35
+    );
+
+
+    osc.start(now);
+
+    osc.stop(now + .35);
+
+}
+
+
+/* =========================
+   TẠO PHÉP TÍNH
+========================= */
+
+function generateExpression() {
+
+    while (true) {
+
+        const numTerms =
+            Math.floor(
+                Math.random() * 2
+            ) + 3;
+
+
+        const terms = [
+
+            Math.floor(
+                Math.random() * 46
+            ) + 5
+
+        ];
+
+
+        const ops = [];
+
+        let currentVal =
+            terms[0];
+
+        let valid = true;
+
+
+        for (
+            let i = 0;
+            i < numTerms - 1;
+            i++
+        ) {
+
+            const op =
+                Math.random() < .5
+                    ? "+"
+                    : "-";
+
+
+            let nextTerm;
+
+
+            if (op === "+") {
+
+                const maxAdd =
+                    100 - currentVal;
+
+
+                if (maxAdd < 2) {
+
+                    valid = false;
+                    break;
+
                 }
 
-                terms.push(nextTerm);
-                ops.push(op);
-            }
 
-            if (valid && currentVal >= 0 && currentVal <= 100) {
-                let exprStr = terms[0].toString();
-                for (let i = 0; i < ops.length; i++) {
-                    exprStr += ` ${ops[i]} ${terms[i+1]}`;
+                nextTerm =
+                    Math.floor(
+                        Math.random() *
+                        Math.min(
+                            40,
+                            maxAdd
+                        )
+                    ) + 2;
+
+
+                currentVal +=
+                    nextTerm;
+
+            } else {
+
+                const maxSub =
+                    currentVal;
+
+
+                if (maxSub < 2) {
+
+                    valid = false;
+                    break;
+
                 }
-                return { expression: exprStr, answer: currentVal };
+
+
+                nextTerm =
+                    Math.floor(
+                        Math.random() *
+                        Math.min(
+                            40,
+                            maxSub
+                        )
+                    ) + 2;
+
+
+                currentVal -=
+                    nextTerm;
+
             }
-        }
-    }
 
-    function showToast(message, isCorrect) {
-        const toast = document.getElementById('toast');
-        const toastMessage = document.getElementById('toast-message');
-        const toastIcon = document.getElementById('toast-icon');
 
-        toastMessage.innerText = message;
-        toastIcon.innerText = isCorrect ? '✓' : '✕';
-        toast.className = 'toast-notification show ' + (isCorrect ? 'correct' : 'wrong');
+            terms.push(
+                nextTerm
+            );
 
-        if (toastTimeout) clearTimeout(toastTimeout);
+            ops.push(op);
 
-        toastTimeout = setTimeout(() => {
-            toast.classList.remove('show');
-        }, 1800);
-    }
-
-    function loadNextQuestion() {
-        if (currentQuestionNum >= TOTAL_QUESTIONS) {
-            showResults();
-            return;
         }
 
-        currentQuestionNum++;
-        
-        document.getElementById('current-question').innerText = currentQuestionNum;
-        document.getElementById('correct-count').innerText = correctAnswers;
-        document.getElementById('progress-bar').style.width = `${((currentQuestionNum - 1) / TOTAL_QUESTIONS) * 100}%`;
 
-        const q = generateExpression();
-        currentAnswer = q.answer;
-        document.getElementById('expression').innerText = q.expression + ' = ?';
-        
-        const inputEl = document.getElementById('answer-input');
-        inputEl.value = '';
-        inputEl.focus();
-    }
+        if (
+            valid &&
+            currentVal >= 0 &&
+            currentVal <= 100
+        ) {
 
-    function submitAnswer() {
-        const inputEl = document.getElementById('answer-input');
-        const userAns = parseInt(inputEl.value, 10);
+            let expr =
+                terms[0].toString();
 
-        if (isNaN(userAns)) return;
 
-        if (userAns === currentAnswer) {
-            correctAnswers++;
-            playSound(true);
-            showToast("Tốt lắm ✅ ", true);
-        } else {
-            playSound(false);
-            showToast("Ôi bạn Tí đần 💩", false);
+            for (
+                let i = 0;
+                i < ops.length;
+                i++
+            ) {
+
+                expr +=
+                    ` ${ops[i]} ${terms[i + 1]}`;
+
+            }
+
+
+            return {
+
+                expression: expr,
+
+                answer: currentVal
+
+            };
+
         }
 
-        loadNextQuestion();
     }
 
-    function showResults() {
-        document.getElementById('quiz-screen').style.display = 'none';
-        document.getElementById('result-screen').style.display = 'block';
+}
 
-        const wrongAnswers = TOTAL_QUESTIONS - correctAnswers;
-        const rawScore = (correctAnswers / TOTAL_QUESTIONS) * 10;
-        const score = Math.round(rawScore * 10) / 10;
-        const accuracy = Math.round((correctAnswers / TOTAL_QUESTIONS) * 100);
 
-        // Quy đổi point: 10 điểm = 100 point, 9.5 điểm = 95 point (Nhân 10)
-        const earnedPoints = Math.round(score * 10);
-        userPoints += earnedPoints;
+/* =========================
+   TOAST
+========================= */
+
+function showToast(
+    message,
+    isCorrect
+) {
+
+    const toast =
+        document.getElementById(
+            "toast"
+        );
+
+
+    toast.innerText =
+        message;
+
+
+    toast.className =
+        "toast-notification show " +
+        (
+            isCorrect
+                ? "correct"
+                : "wrong"
+        );
+
+
+    if (toastTimeout) {
+
+        clearTimeout(
+            toastTimeout
+        );
+
+    }
+
+
+    toastTimeout =
+        setTimeout(
+            () => {
+
+                toast.classList.remove(
+                    "show"
+                );
+
+            },
+            1800
+        );
+
+}
+
+
+/* =========================
+   CÂU HỎI
+========================= */
+
+function loadNextQuestion() {
+
+    if (
+        currentQuestionNum >=
+        TOTAL_QUESTIONS
+    ) {
+
+        showResults();
+
+        return;
+
+    }
+
+
+    currentQuestionNum++;
+
+
+    document.getElementById(
+        "current-question"
+    ).innerText =
+        currentQuestionNum;
+
+
+    document.getElementById(
+        "correct-count"
+    ).innerText =
+        correctAnswers;
+
+
+    document.getElementById(
+        "progress-bar"
+    ).style.width =
+        (
+            (
+                currentQuestionNum - 1
+            ) /
+            TOTAL_QUESTIONS *
+            100
+        ) + "%";
+
+
+    const q =
+        generateExpression();
+
+
+    currentAnswer =
+        q.answer;
+
+
+    document.getElementById(
+        "expression"
+    ).innerText =
+        q.expression + " = ?";
+
+
+    const input =
+        document.getElementById(
+            "answer-input"
+        );
+
+
+    input.value = "";
+
+    input.focus();
+
+}
+
+
+/* =========================
+   TRẢ LỜI + CHEAT
+========================= */
+
+function submitAnswer() {
+
+    const input =
+        document.getElementById(
+            "answer-input"
+        );
+
+
+    const rawVal =
+        input.value.trim();
+
+
+    /* =====================
+       CHEAT 99999 POINT
+    ===================== */
+
+    if (
+        rawVal === "19022012"
+    ) {
+
+        originalPoints =
+            userPoints;
+
+
+        userPoints =
+            99999;
+
+
         updatePointDisplay();
 
-        document.getElementById('final-score').innerText = `${score}/10`;
-        document.getElementById('points-earned-box').innerText = `🎉 Bạn được thưởng +${earnedPoints} Point!`;
-        document.getElementById('correct-total').innerText = correctAnswers;
-        document.getElementById('wrong-total').innerText = wrongAnswers;
-        document.getElementById('accuracy').innerText = `${accuracy}%`;
+
+        showToast(
+            "🎉 Cheat code: +99.999 Point!",
+            true
+        );
+
+
+        playSound(true);
+
+
+        input.value = "";
+
+
+        return;
+
     }
 
-    function startNewQuiz() {
-        currentQuestionNum = 0;
-        correctAnswers = 0;
-        document.getElementById('quiz-screen').style.display = 'block';
-        document.getElementById('result-screen').style.display = 'none';
-        loadNextQuestion();
+
+    /* KHÔI PHỤC POINT */
+
+    if (
+        rawVal === "120589"
+    ) {
+
+        userPoints =
+            originalPoints;
+
+
+        updatePointDisplay();
+
+
+        showToast(
+            "🔄 Đã khôi phục Point!",
+            true
+        );
+
+
+        playSound(true);
+
+
+        input.value = "";
+
+
+        return;
+
     }
 
-    /* --- HIỂN THỊ CỬA HÀNG --- */
-    function openShop() {
-        renderShopItems();
-        document.getElementById('shop-modal').style.display = 'flex';
+
+    const userAns =
+        parseInt(
+            rawVal,
+            10
+        );
+
+
+    if (
+        isNaN(userAns)
+    ) {
+
+        return;
+
     }
 
-    function closeShop() {
-        document.getElementById('shop-modal').style.display = 'none';
+
+    if (
+        userAns ===
+        currentAnswer
+    ) {
+
+        correctAnswers++;
+
+
+        playSound(true);
+
+
+        showToast(
+            "Tốt lắm ✅",
+            true
+        );
+
+    } else {
+
+        playSound(false);
+
+
+        showToast(
+            "Ôi bạn Tí đần 💩",
+            false
+        );
+
     }
 
-    function renderShopItems() {
-        const container = document.getElementById('shop-items-container');
-        container.innerHTML = '';
 
-        shopItems.forEach(item => {
-            const canAfford = userPoints >= item.price;
-            const itemEl = document.createElement('div');
-            itemEl.className = 'shop-card';
-            itemEl.innerHTML = `
-                <div class="item-icon">${item.icon}</div>
-                <div class="item-name">${item.name}</div>
-                <div class="item-price">${item.price} Point</div>
-                <button class="buy-btn" ${canAfford ? '' : 'disabled'} onclick="buyItem('${item.name}', ${item.price})">
-                    ${canAfford ? 'Đổi phần thưởng' : 'Thiếu Point'}
-                </button>
-            `;
-            container.appendChild(itemEl);
-        });
-    }
+    loadNextQuestion();
 
-    function buyItem(itemName, price) {
-        if (userPoints >= price) {
-            userPoints -= price;
-            updatePointDisplay();
-            renderShopItems();
-            alert(`🎉 Chúc mừng! Bạn đã đổi thành công "${itemName}". Mới bạn chụp màn hình gửi bố/mẹ nhận quà nhé!`);
-        }
-    }
+}
 
-    document.getElementById('answer-input').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            submitAnswer();
-        }
-    });
 
-    // Khởi chạy
+/* =========================
+   KẾT QUẢ
+========================= */
+
+function showResults() {
+
+    document.getElementById(
+        "quiz-screen"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "result-screen"
+    ).style.display =
+        "block";
+
+
+    const wrong =
+        TOTAL_QUESTIONS -
+        correctAnswers;
+
+
+    const score =
+        Math.round(
+            (
+                correctAnswers /
+                TOTAL_QUESTIONS *
+                10
+            ) * 10
+        ) / 10;
+
+
+    const accuracy =
+        Math.round(
+            correctAnswers /
+            TOTAL_QUESTIONS *
+            100
+        );
+
+
+    const earned =
+        Math.round(
+            score * 10
+        );
+
+
+    userPoints +=
+        earned;
+
+
     updatePointDisplay();
-    startNewQuiz();
+
+
+    document.getElementById(
+        "final-score"
+    ).innerText =
+        `${score}/10`;
+
+
+    document.getElementById(
+        "points-earned-box"
+    ).innerText =
+        `🎉 Bạn được thưởng +${earned} Point!`;
+
+
+    document.getElementById(
+        "correct-total"
+    ).innerText =
+        correctAnswers;
+
+
+    document.getElementById(
+        "wrong-total"
+    ).innerText =
+        wrong;
+
+
+    document.getElementById(
+        "accuracy"
+    ).innerText =
+        accuracy + "%";
+
+}
+
+
+/* =========================
+   LÀM LẠI
+========================= */
+
+function startNewQuiz() {
+
+    currentQuestionNum = 0;
+
+    correctAnswers = 0;
+
+
+    document.getElementById(
+        "quiz-screen"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "result-screen"
+    ).style.display =
+        "none";
+
+
+    loadNextQuestion();
+
+}
+
+
+/* =========================
+   SHOP
+========================= */
+
+function openShop() {
+
+    switchTab("buy");
+
+    renderShopItems();
+
+
+    document.getElementById(
+        "shop-modal"
+    ).style.display =
+        "flex";
+
+}
+
+
+function closeShop() {
+
+    document.getElementById(
+        "shop-modal"
+    ).style.display =
+        "none";
+
+}
+
+
+function switchTab(tab) {
+
+    if (tab === "buy") {
+
+        document.getElementById(
+            "tab-buy"
+        ).classList.add("active");
+
+
+        document.getElementById(
+            "tab-history"
+        ).classList.remove("active");
+
+
+        document.getElementById(
+            "view-buy"
+        ).style.display =
+            "block";
+
+
+        document.getElementById(
+            "view-history"
+        ).style.display =
+            "none";
+
+    } else {
+
+        document.getElementById(
+            "tab-history"
+        ).classList.add("active");
+
+
+        document.getElementById(
+            "tab-buy"
+        ).classList.remove("active");
+
+
+        document.getElementById(
+            "view-buy"
+        ).style.display =
+            "none";
+
+
+        document.getElementById(
+            "view-history"
+        ).style.display =
+            "block";
+
+
+        renderHistory();
+
+    }
+
+}
+
+
+/* =========================
+   HIỂN THỊ SHOP
+========================= */
+
+function renderShopItems() {
+
+    const container =
+        document.getElementById(
+            "shop-items-container"
+        );
+
+
+    container.innerHTML = "";
+
+
+    shopItems.forEach(
+        item => {
+
+            const canAfford =
+                userPoints >=
+                item.price;
+
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "shop-card";
+
+
+            card.innerHTML = `
+
+                <div class="item-icon">
+                    ${item.icon}
+                </div>
+
+                <div class="item-name">
+                    ${item.name}
+                </div>
+
+                <div class="item-price">
+                    ${item.price} Point
+                </div>
+
+                <button
+                    class="buy-btn"
+                    ${
+                        canAfford
+                            ? ""
+                            : "disabled"
+                    }
+                    onclick="buyItem(
+                        '${item.name}',
+                        ${item.price},
+                        '${item.icon}'
+                    )"
+                >
+                    ${
+                        canAfford
+                            ? "Đổi phần thưởng"
+                            : "Thiếu Point"
+                    }
+                </button>
+
+            `;
+
+
+            container.appendChild(
+                card
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================
+   ĐỔI QUÀ
+========================= */
+
+function buyItem(
+    itemName,
+    price,
+    icon
+) {
+
+    if (
+        userPoints <
+        price
+    ) {
+
+        return;
+
+    }
+
+
+    userPoints -=
+        price;
+
+
+    updatePointDisplay();
+
+
+    const record = {
+
+        name: itemName,
+
+        icon: icon,
+
+        price: price,
+
+        date:
+            new Date()
+                .toLocaleString(
+                    "vi-VN"
+                )
+
+    };
+
+
+    redeemHistory.unshift(
+        record
+    );
+
+
+    localStorage.setItem(
+        "redeem_history",
+        JSON.stringify(
+            redeemHistory
+        )
+    );
+
+
+    renderShopItems();
+
+
+    /* POPUP */
+
+    document.getElementById(
+        "success-message"
+    ).innerText =
+
+        `🎉 Chúc mừng! Bạn đã đổi thành công ${itemName}. Hãy chụp màn hình gửi Bon để nhận quà nhé!`;
+
+
+    document.getElementById(
+        "success-modal"
+    ).style.display =
+        "flex";
+
+}
+
+
+/* =========================
+   ĐÓNG POPUP
+========================= */
+
+function closeSuccessModal() {
+
+    document.getElementById(
+        "success-modal"
+    ).style.display =
+        "none";
+
+}
+
+
+/* =========================
+   LỊCH SỬ
+========================= */
+
+function renderHistory() {
+
+    const container =
+        document.getElementById(
+            "history-container"
+        );
+
+
+    container.innerHTML = "";
+
+
+    if (
+        redeemHistory.length === 0
+    ) {
+
+        container.innerHTML = `
+
+            <p style="
+                text-align:center;
+                color:#64748b;
+                padding:20px;
+            ">
+                Chưa có lịch sử đổi quà!
+            </p>
+
+        `;
+
+        return;
+
+    }
+
+
+    redeemHistory.forEach(
+        item => {
+
+            const el =
+                document.createElement(
+                    "div"
+                );
+
+
+            el.className =
+                "history-item";
+
+
+            el.innerHTML = `
+
+                <div>
+
+                    <strong>
+                        ${item.icon}
+                        ${item.name}
+                    </strong>
+
+                    <small>
+                        ${item.date}
+                    </small>
+
+                </div>
+
+                <div class="history-price">
+                    -${item.price} Point
+                </div>
+
+            `;
+
+
+            container.appendChild(
+                el
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================
+   ENTER
+========================= */
+
+document
+    .getElementById(
+        "answer-input"
+    )
+    .addEventListener(
+        "keypress",
+        function(e) {
+
+            if (
+                e.key === "Enter"
+            ) {
+
+                submitAnswer();
+
+            }
+
+        }
+    );
+
+
+/* =========================
+   KHỞI ĐỘNG
+========================= */
+
+updatePointDisplay();
+
+startNewQuiz();
+
 </script>
 
 </body>
