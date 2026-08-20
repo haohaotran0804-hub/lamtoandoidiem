@@ -9,7 +9,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -209,10 +208,7 @@ input::-webkit-outer-spin-button {
     cursor: pointer;
 }
 
-
-/* =========================
-   SHOP
-========================= */
+/* SHOP */
 
 .modal-overlay {
     display: none;
@@ -329,6 +325,7 @@ input::-webkit-outer-spin-button {
 .buy-btn:disabled {
     background: #e2e8f0;
     color: #94a3b8;
+    cursor: not-allowed;
 }
 
 .history-list {
@@ -349,15 +346,18 @@ input::-webkit-outer-spin-button {
     border: 1px solid #e2e8f0;
 }
 
+.history-item small {
+    display: block;
+    color: #64748b;
+    margin-top: 3px;
+}
+
 .history-price {
     color: #ef4444;
     font-weight: 900;
 }
 
-
-/* =========================
-   TOAST
-========================= */
+/* TOAST */
 
 .toast-notification {
     position: fixed;
@@ -387,10 +387,7 @@ input::-webkit-outer-spin-button {
     color: #991b1b;
 }
 
-
-/* =========================
-   POPUP ĐỔI QUÀ
-========================= */
+/* POPUP ĐỔI QUÀ */
 
 .success-overlay {
     display: none;
@@ -455,7 +452,6 @@ input::-webkit-outer-spin-button {
 }
 
 @keyframes popup {
-
     from {
         opacity: 0;
         transform: scale(.8);
@@ -465,11 +461,9 @@ input::-webkit-outer-spin-button {
         opacity: 1;
         transform: scale(1);
     }
-
 }
 
 @keyframes successPop {
-
     from {
         opacity: 0;
         transform: scale(.7);
@@ -479,9 +473,7 @@ input::-webkit-outer-spin-button {
         opacity: 1;
         transform: scale(1);
     }
-
 }
-
 
 /* MOBILE */
 
@@ -521,14 +513,17 @@ input::-webkit-outer-spin-button {
         grid-template-columns: 1fr 1fr;
     }
 
+    .toast-notification {
+        right: 15px;
+        left: 15px;
+        bottom: 15px;
+        text-align: center;
+    }
 }
-
 </style>
 </head>
 
-
 <body>
-
 
 <div class="container">
 
@@ -547,15 +542,11 @@ input::-webkit-outer-spin-button {
 
     </div>
 
-
     <div class="point-badge">
-
         💎 Điểm Point:
         <span id="total-points">0</span>
         Point
-
     </div>
-
 
     <!-- QUIZ -->
 
@@ -575,7 +566,6 @@ input::-webkit-outer-spin-button {
 
         </div>
 
-
         <div class="progress-bar-container">
 
             <div
@@ -585,7 +575,6 @@ input::-webkit-outer-spin-button {
 
         </div>
 
-
         <div class="math-card">
 
             <div
@@ -594,7 +583,6 @@ input::-webkit-outer-spin-button {
             >
                 --
             </div>
-
 
             <div class="input-group">
 
@@ -618,7 +606,6 @@ input::-webkit-outer-spin-button {
 
     </div>
 
-
     <!-- RESULT -->
 
     <div
@@ -629,7 +616,6 @@ input::-webkit-outer-spin-button {
         <h2>
             Kết Quả Bài Làm
         </h2>
-
 
         <div class="score-circle">
 
@@ -646,14 +632,12 @@ input::-webkit-outer-spin-button {
 
         </div>
 
-
         <div
             class="points-earned-box"
             id="points-earned-box"
         >
             +0 Point đã được cộng vào tài khoản!
         </div>
-
 
         <div class="summary-details">
 
@@ -688,7 +672,6 @@ input::-webkit-outer-spin-button {
 
         </div>
 
-
         <button
             class="restart-btn"
             onclick="startNewQuiz()"
@@ -699,7 +682,6 @@ input::-webkit-outer-spin-button {
     </div>
 
 </div>
-
 
 <!-- SHOP -->
 
@@ -725,7 +707,6 @@ input::-webkit-outer-spin-button {
 
         </div>
 
-
         <div class="shop-tabs">
 
             <button
@@ -746,7 +727,6 @@ input::-webkit-outer-spin-button {
 
         </div>
 
-
         <div class="shop-balance">
 
             <span>
@@ -763,7 +743,6 @@ input::-webkit-outer-spin-button {
 
         </div>
 
-
         <div id="view-buy">
 
             <div
@@ -772,7 +751,6 @@ input::-webkit-outer-spin-button {
             ></div>
 
         </div>
-
 
         <div
             id="view-history"
@@ -790,7 +768,6 @@ input::-webkit-outer-spin-button {
 
 </div>
 
-
 <!-- TOAST -->
 
 <div
@@ -803,7 +780,6 @@ input::-webkit-outer-spin-button {
     </span>
 
 </div>
-
 
 <!-- POPUP ĐỔI QUÀ -->
 
@@ -818,17 +794,14 @@ input::-webkit-outer-spin-button {
             🎉
         </div>
 
-
         <h2>
             Đổi quà thành công!
         </h2>
-
 
         <p id="success-message">
             🎉 Chúc mừng! Bạn đã đổi thành công món quà.
             Hãy chụp màn hình gửi Bon để nhận quà nhé!
         </p>
-
 
         <button
             onclick="closeSuccessModal()"
@@ -840,9 +813,7 @@ input::-webkit-outer-spin-button {
 
 </div>
 
-
 <script>
-
 
 /* =========================
    CẤU HÌNH
@@ -855,25 +826,33 @@ let correctAnswers = 0;
 let currentAnswer = 0;
 let toastTimeout = null;
 
-
-/* POINT */
+/* =========================
+   POINT
+========================= */
 
 let userPoints =
-    parseInt(localStorage.getItem("user_points")) || 0;
+    parseInt(localStorage.getItem("user_points"), 10) || 0;
 
-let originalPoints =
-    userPoints;
+let originalPoints = userPoints;
 
+/* =========================
+   LỊCH SỬ
+========================= */
 
-/* LỊCH SỬ */
+let redeemHistory = [];
 
-let redeemHistory =
-    JSON.parse(
-        localStorage.getItem("redeem_history")
-    ) || [];
+try {
+    redeemHistory =
+        JSON.parse(
+            localStorage.getItem("redeem_history")
+        ) || [];
+} catch (error) {
+    redeemHistory = [];
+}
 
-
-/* QUÀ */
+/* =========================
+   QUÀ
+========================= */
 
 const shopItems = [
 
@@ -896,6 +875,7 @@ const shopItems = [
         name: "Nước ngọt",
         icon: "🥤",
         price: 300
+    },
 
     {
         id: 4,
@@ -906,7 +886,6 @@ const shopItems = [
 
 ];
 
-
 /* =========================
    POINT DISPLAY
 ========================= */
@@ -915,109 +894,105 @@ function updatePointDisplay() {
 
     document.getElementById(
         "total-points"
-    ).innerText =
-        userPoints;
-
+    ).innerText = userPoints;
 
     document.getElementById(
         "shop-current-points"
-    ).innerText =
-        userPoints;
-
+    ).innerText = userPoints;
 
     localStorage.setItem(
         "user_points",
         userPoints
     );
-
 }
-
 
 /* =========================
    SOUND
 ========================= */
 
-const audioCtx =
-    new (
-        window.AudioContext ||
-        window.webkitAudioContext
-    )();
+const AudioContextClass =
+    window.AudioContext ||
+    window.webkitAudioContext;
 
+let audioCtx = null;
 
 function playSound(isCorrect) {
 
-    if (
-        audioCtx.state === "suspended"
-    ) {
-        audioCtx.resume();
-    }
+    try {
 
+        if (!AudioContextClass) {
+            return;
+        }
 
-    const osc =
-        audioCtx.createOscillator();
+        if (!audioCtx) {
+            audioCtx = new AudioContextClass();
+        }
 
-    const gain =
-        audioCtx.createGain();
+        if (audioCtx.state === "suspended") {
+            audioCtx.resume();
+        }
 
+        const osc =
+            audioCtx.createOscillator();
 
-    osc.connect(gain);
-    gain.connect(
-        audioCtx.destination
-    );
+        const gain =
+            audioCtx.createGain();
 
+        osc.connect(gain);
+        gain.connect(
+            audioCtx.destination
+        );
 
-    const now =
-        audioCtx.currentTime;
+        const now =
+            audioCtx.currentTime;
 
+        if (isCorrect) {
 
-    if (isCorrect) {
+            osc.type = "sine";
 
-        osc.type = "sine";
+            osc.frequency.setValueAtTime(
+                523.25,
+                now
+            );
 
-        osc.frequency.setValueAtTime(
-            523.25,
+            osc.frequency.exponentialRampToValueAtTime(
+                659.25,
+                now + 0.1
+            );
+
+        } else {
+
+            osc.type = "sawtooth";
+
+            osc.frequency.setValueAtTime(
+                150,
+                now
+            );
+
+            osc.frequency.linearRampToValueAtTime(
+                100,
+                now + 0.25
+            );
+
+        }
+
+        gain.gain.setValueAtTime(
+            0.3,
             now
         );
 
-        osc.frequency.exponentialRampToValueAtTime(
-            659.25,
-            now + .1
+        gain.gain.exponentialRampToValueAtTime(
+            0.01,
+            now + 0.35
         );
 
-    } else {
+        osc.start(now);
+        osc.stop(now + 0.35);
 
-        osc.type = "sawtooth";
-
-        osc.frequency.setValueAtTime(
-            150,
-            now
-        );
-
-        osc.frequency.linearRampToValueAtTime(
-            100,
-            now + .25
-        );
-
+    } catch (error) {
+        console.log("Không thể phát âm thanh:", error);
     }
-
-
-    gain.gain.setValueAtTime(
-        .3,
-        now
-    );
-
-    gain.gain.exponentialRampToValueAtTime(
-        .01,
-        now + .35
-    );
-
-
-    osc.start(now);
-
-    osc.stop(now + .35);
-
 }
-
 
 /* =========================
    TẠO PHÉP TÍNH
@@ -1032,7 +1007,6 @@ function generateExpression() {
                 Math.random() * 2
             ) + 3;
 
-
         const terms = [
 
             Math.floor(
@@ -1041,14 +1015,12 @@ function generateExpression() {
 
         ];
 
-
         const ops = [];
 
         let currentVal =
             terms[0];
 
         let valid = true;
-
 
         for (
             let i = 0;
@@ -1057,19 +1029,16 @@ function generateExpression() {
         ) {
 
             const op =
-                Math.random() < .5
+                Math.random() < 0.5
                     ? "+"
                     : "-";
 
-
             let nextTerm;
-
 
             if (op === "+") {
 
                 const maxAdd =
                     100 - currentVal;
-
 
                 if (maxAdd < 2) {
 
@@ -1077,7 +1046,6 @@ function generateExpression() {
                     break;
 
                 }
-
 
                 nextTerm =
                     Math.floor(
@@ -1088,7 +1056,6 @@ function generateExpression() {
                         )
                     ) + 2;
 
-
                 currentVal +=
                     nextTerm;
 
@@ -1097,14 +1064,12 @@ function generateExpression() {
                 const maxSub =
                     currentVal;
 
-
                 if (maxSub < 2) {
 
                     valid = false;
                     break;
 
                 }
-
 
                 nextTerm =
                     Math.floor(
@@ -1115,21 +1080,17 @@ function generateExpression() {
                         )
                     ) + 2;
 
-
                 currentVal -=
                     nextTerm;
 
             }
-
 
             terms.push(
                 nextTerm
             );
 
             ops.push(op);
-
         }
-
 
         if (
             valid &&
@@ -1139,7 +1100,6 @@ function generateExpression() {
 
             let expr =
                 terms[0].toString();
-
 
             for (
                 let i = 0;
@@ -1151,7 +1111,6 @@ function generateExpression() {
                     ` ${ops[i]} ${terms[i + 1]}`;
 
             }
-
 
             return {
 
@@ -1167,7 +1126,6 @@ function generateExpression() {
 
 }
 
-
 /* =========================
    TOAST
 ========================= */
@@ -1182,10 +1140,9 @@ function showToast(
             "toast"
         );
 
-
-    toast.innerText =
-        message;
-
+    document.getElementById(
+        "toast-message"
+    ).innerText = message;
 
     toast.className =
         "toast-notification show " +
@@ -1195,7 +1152,6 @@ function showToast(
                 : "wrong"
         );
 
-
     if (toastTimeout) {
 
         clearTimeout(
@@ -1203,7 +1159,6 @@ function showToast(
         );
 
     }
-
 
     toastTimeout =
         setTimeout(
@@ -1216,9 +1171,7 @@ function showToast(
             },
             1800
         );
-
 }
-
 
 /* =========================
    CÂU HỎI
@@ -1237,21 +1190,17 @@ function loadNextQuestion() {
 
     }
 
-
     currentQuestionNum++;
-
 
     document.getElementById(
         "current-question"
     ).innerText =
         currentQuestionNum;
 
-
     document.getElementById(
         "correct-count"
     ).innerText =
         correctAnswers;
-
 
     document.getElementById(
         "progress-bar"
@@ -1264,33 +1213,25 @@ function loadNextQuestion() {
             100
         ) + "%";
 
-
     const q =
         generateExpression();
 
-
     currentAnswer =
         q.answer;
-
 
     document.getElementById(
         "expression"
     ).innerText =
         q.expression + " = ?";
 
-
     const input =
         document.getElementById(
             "answer-input"
         );
 
-
     input.value = "";
-
     input.focus();
-
 }
-
 
 /* =========================
    TRẢ LỜI + CHEAT
@@ -1303,14 +1244,10 @@ function submitAnswer() {
             "answer-input"
         );
 
-
     const rawVal =
         input.value.trim();
 
-
-    /* =====================
-       CHEAT 99999 POINT
-    ===================== */
+    /* CHEAT 99999 POINT */
 
     if (
         rawVal === "19022012"
@@ -1319,30 +1256,22 @@ function submitAnswer() {
         originalPoints =
             userPoints;
 
-
         userPoints =
             99999;
 
-
         updatePointDisplay();
 
-
         showToast(
-            "🎉 Cheat code: +99.999 Point!",
+            "🎉 Cheat code: 99.999 Point!",
             true
         );
 
-
         playSound(true);
-
 
         input.value = "";
 
-
         return;
-
     }
-
 
     /* KHÔI PHỤC POINT */
 
@@ -1353,26 +1282,19 @@ function submitAnswer() {
         userPoints =
             originalPoints;
 
-
         updatePointDisplay();
-
 
         showToast(
             "🔄 Đã khôi phục Point!",
             true
         );
 
-
         playSound(true);
-
 
         input.value = "";
 
-
         return;
-
     }
-
 
     const userAns =
         parseInt(
@@ -1380,15 +1302,17 @@ function submitAnswer() {
             10
         );
 
-
     if (
         isNaN(userAns)
     ) {
 
+        showToast(
+            "⚠️ Hãy nhập đáp án!",
+            false
+        );
+
         return;
-
     }
-
 
     if (
         userAns ===
@@ -1397,9 +1321,7 @@ function submitAnswer() {
 
         correctAnswers++;
 
-
         playSound(true);
-
 
         showToast(
             "Tốt lắm ✅",
@@ -1410,7 +1332,6 @@ function submitAnswer() {
 
         playSound(false);
 
-
         showToast(
             "Ôi bạn Tí đần 💩",
             false
@@ -1418,11 +1339,8 @@ function submitAnswer() {
 
     }
 
-
     loadNextQuestion();
-
 }
-
 
 /* =========================
    KẾT QUẢ
@@ -1435,17 +1353,19 @@ function showResults() {
     ).style.display =
         "none";
 
-
     document.getElementById(
         "result-screen"
     ).style.display =
         "block";
 
+    document.getElementById(
+        "progress-bar"
+    ).style.width =
+        "100%";
 
     const wrong =
         TOTAL_QUESTIONS -
         correctAnswers;
-
 
     const score =
         Math.round(
@@ -1456,7 +1376,6 @@ function showResults() {
             ) * 10
         ) / 10;
 
-
     const accuracy =
         Math.round(
             correctAnswers /
@@ -1464,51 +1383,41 @@ function showResults() {
             100
         );
 
-
     const earned =
         Math.round(
             score * 10
         );
 
-
     userPoints +=
         earned;
 
-
     updatePointDisplay();
-
 
     document.getElementById(
         "final-score"
     ).innerText =
         `${score}/10`;
 
-
     document.getElementById(
         "points-earned-box"
     ).innerText =
         `🎉 Bạn được thưởng +${earned} Point!`;
-
 
     document.getElementById(
         "correct-total"
     ).innerText =
         correctAnswers;
 
-
     document.getElementById(
         "wrong-total"
     ).innerText =
         wrong;
 
-
     document.getElementById(
         "accuracy"
     ).innerText =
         accuracy + "%";
-
 }
-
 
 /* =========================
    LÀM LẠI
@@ -1520,23 +1429,23 @@ function startNewQuiz() {
 
     correctAnswers = 0;
 
-
     document.getElementById(
         "quiz-screen"
     ).style.display =
         "block";
-
 
     document.getElementById(
         "result-screen"
     ).style.display =
         "none";
 
+    document.getElementById(
+        "correct-count"
+    ).innerText =
+        "0";
 
     loadNextQuestion();
-
 }
-
 
 /* =========================
    SHOP
@@ -1548,14 +1457,11 @@ function openShop() {
 
     renderShopItems();
 
-
     document.getElementById(
         "shop-modal"
     ).style.display =
         "flex";
-
 }
-
 
 function closeShop() {
 
@@ -1563,9 +1469,7 @@ function closeShop() {
         "shop-modal"
     ).style.display =
         "none";
-
 }
-
 
 function switchTab(tab) {
 
@@ -1575,17 +1479,14 @@ function switchTab(tab) {
             "tab-buy"
         ).classList.add("active");
 
-
         document.getElementById(
             "tab-history"
         ).classList.remove("active");
-
 
         document.getElementById(
             "view-buy"
         ).style.display =
             "block";
-
 
         document.getElementById(
             "view-history"
@@ -1598,30 +1499,23 @@ function switchTab(tab) {
             "tab-history"
         ).classList.add("active");
 
-
         document.getElementById(
             "tab-buy"
         ).classList.remove("active");
-
 
         document.getElementById(
             "view-buy"
         ).style.display =
             "none";
 
-
         document.getElementById(
             "view-history"
         ).style.display =
             "block";
 
-
         renderHistory();
-
     }
-
 }
-
 
 /* =========================
    HIỂN THỊ SHOP
@@ -1634,9 +1528,7 @@ function renderShopItems() {
             "shop-items-container"
         );
 
-
     container.innerHTML = "";
-
 
     shopItems.forEach(
         item => {
@@ -1645,16 +1537,13 @@ function renderShopItems() {
                 userPoints >=
                 item.price;
 
-
             const card =
                 document.createElement(
                     "div"
                 );
 
-
             card.className =
                 "shop-card";
-
 
             card.innerHTML = `
 
@@ -1672,16 +1561,7 @@ function renderShopItems() {
 
                 <button
                     class="buy-btn"
-                    ${
-                        canAfford
-                            ? ""
-                            : "disabled"
-                    }
-                    onclick="buyItem(
-                        '${item.name}',
-                        ${item.price},
-                        '${item.icon}'
-                    )"
+                    ${canAfford ? "" : "disabled"}
                 >
                     ${
                         canAfford
@@ -1692,6 +1572,25 @@ function renderShopItems() {
 
             `;
 
+            const button =
+                card.querySelector(
+                    ".buy-btn"
+                );
+
+            if (canAfford) {
+
+                button.addEventListener(
+                    "click",
+                    () => {
+                        buyItem(
+                            item.name,
+                            item.price,
+                            item.icon
+                        );
+                    }
+                );
+
+            }
 
             container.appendChild(
                 card
@@ -1699,9 +1598,7 @@ function renderShopItems() {
 
         }
     );
-
 }
-
 
 /* =========================
    ĐỔI QUÀ
@@ -1718,17 +1615,18 @@ function buyItem(
         price
     ) {
 
+        showToast(
+            "❌ Không đủ Point!",
+            false
+        );
+
         return;
-
     }
-
 
     userPoints -=
         price;
 
-
     updatePointDisplay();
-
 
     const record = {
 
@@ -1746,11 +1644,9 @@ function buyItem(
 
     };
 
-
     redeemHistory.unshift(
         record
     );
-
 
     localStorage.setItem(
         "redeem_history",
@@ -1759,26 +1655,18 @@ function buyItem(
         )
     );
 
-
     renderShopItems();
-
-
-    /* POPUP */
 
     document.getElementById(
         "success-message"
     ).innerText =
-
         `🎉 Chúc mừng! Bạn đã đổi thành công ${itemName}. Hãy chụp màn hình gửi Bon để nhận quà nhé!`;
-
 
     document.getElementById(
         "success-modal"
     ).style.display =
         "flex";
-
 }
-
 
 /* =========================
    ĐÓNG POPUP
@@ -1790,9 +1678,7 @@ function closeSuccessModal() {
         "success-modal"
     ).style.display =
         "none";
-
 }
-
 
 /* =========================
    LỊCH SỬ
@@ -1805,9 +1691,7 @@ function renderHistory() {
             "history-container"
         );
 
-
     container.innerHTML = "";
-
 
     if (
         redeemHistory.length === 0
@@ -1826,9 +1710,7 @@ function renderHistory() {
         `;
 
         return;
-
     }
-
 
     redeemHistory.forEach(
         item => {
@@ -1838,10 +1720,8 @@ function renderHistory() {
                     "div"
                 );
 
-
             el.className =
                 "history-item";
-
 
             el.innerHTML = `
 
@@ -1864,16 +1744,13 @@ function renderHistory() {
 
             `;
 
-
             container.appendChild(
                 el
             );
 
         }
     );
-
 }
-
 
 /* =========================
    ENTER
@@ -1884,7 +1761,7 @@ document
         "answer-input"
     )
     .addEventListener(
-        "keypress",
+        "keydown",
         function(e) {
 
             if (
@@ -1898,6 +1775,43 @@ document
         }
     );
 
+/* =========================
+   ĐÓNG MODAL KHI BẤM RA NGOÀI
+========================= */
+
+document
+    .getElementById("shop-modal")
+    .addEventListener(
+        "click",
+        function(e) {
+
+            if (
+                e.target === this
+            ) {
+
+                closeShop();
+
+            }
+
+        }
+    );
+
+document
+    .getElementById("success-modal")
+    .addEventListener(
+        "click",
+        function(e) {
+
+            if (
+                e.target === this
+            ) {
+
+                closeSuccessModal();
+
+            }
+
+        }
+    );
 
 /* =========================
    KHỞI ĐỘNG
