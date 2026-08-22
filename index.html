@@ -6,6 +6,9 @@
 
 <title>KietStudy - Nền tảng luyện tập</title>
 
+<!-- Canvas-Confetti Library cho hiệu ứng đổi quà -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
 <style>
 :root{
     --bg-body:#f8fafc;
@@ -49,6 +52,20 @@ body{
 
 #mouseGlow{
     display:none!important;
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes bounceHover {
+    0% { transform: translateY(0) scale(1); }
+    40% { transform: translateY(-6px) scale(1.02); }
+    70% { transform: translateY(2px) scale(0.99); }
+    100% { transform: translateY(-3px) scale(1.01); }
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    70% { transform: scale(1.08); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
 }
 
 /* ================= SIDEBAR ================= */
@@ -126,12 +143,14 @@ body{
     gap:12px;
     cursor:pointer;
     text-align:left;
-    transition:background-color .15s,color .15s;
+    transition:background-color .15s, color .15s, transform .2s ease;
 }
 
+/* HIỆU ỨNG BOUNCE MỤC NAV */
 .nav-btn:hover{
     background:var(--bg-surface-hover);
     color:var(--text-main);
+    animation: bounceHover 0.4s ease forwards;
 }
 
 .nav-btn.active{
@@ -269,6 +288,10 @@ body{
     transition:all .15s;
 }
 
+.btn:hover:not(:disabled) {
+    animation: bounceHover 0.4s ease forwards;
+}
+
 .btn:disabled{
     opacity:.5;
     cursor:not-allowed;
@@ -342,6 +365,11 @@ body{
     align-items:center;
     gap:16px;
     min-height:100px;
+    transition: transform .2s ease;
+}
+
+.stat-card:hover {
+    animation: bounceHover 0.4s ease forwards;
 }
 
 .stat-icon{
@@ -441,6 +469,11 @@ body{
     border-radius:var(--radius-md);
     padding:16px;
     text-align:center;
+    transition: transform .2s ease;
+}
+
+.achievement:hover {
+    animation: bounceHover 0.4s ease forwards;
 }
 
 .achievement-icon{
@@ -719,6 +752,11 @@ body{
     text-align:center;
     display:flex;
     flex-direction:column;
+    transition: transform .2s ease;
+}
+
+.shop-item:hover {
+    animation: bounceHover 0.4s ease forwards;
 }
 
 .item-icon{
@@ -954,6 +992,11 @@ body{
     padding:32px;
     text-align:center;
     box-shadow:var(--shadow-lg);
+}
+
+/* HIỆU ỨNG POP-IN KHI HIỂN THỊ THÀNH CÔNG */
+#successOverlay.show .modal {
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 .modal-icon{
@@ -1641,7 +1684,7 @@ body{
         </div>
 
         <h2>
-            Đổi quà thành công!
+            🎉 Đổi quà thành công! 🎉
         </h2>
 
         <p id="successMessage">
@@ -1692,11 +1735,6 @@ const levels = [
     {level:9,title:"Tiên Đế",desc:"Chỉ còn một bước tới cảnh giới tối cao."},
     {level:10,title:"Nguyên Thủy Tiên Tôn",desc:"⚡ CẢNH GIỚI TỐI CAO ⚡"}
 ];
-
-/*
-    ICON ĐỒ ĂN
-    Không dùng shop.png cho đồ ăn nữa.
-*/
 
 const shopItems = [
     {id:1,name:"Bim bim",icon:"🍿",price:250},
@@ -2368,12 +2406,6 @@ function renderShop(){
 
         const canBuy=points>=item.price;
 
-        /*
-            ĐÃ SỬA:
-            Không còn dùng shop.png cho đồ ăn.
-            Dùng trực tiếp emoji trong item.icon.
-        */
-
         card.innerHTML=`
 
             <div class="item-icon">
@@ -2421,6 +2453,32 @@ function renderShop(){
    BUY
 ========================================================= */
 
+function triggerConfetti(){
+    if(typeof confetti === "function"){
+        // Bắn pháo hoa 2 bên màn hình
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 }
+        });
+        
+        setTimeout(() => {
+            confetti({
+                particleCount: 50,
+                angle: 60,
+                spread: 55,
+                origin: { x: 0 }
+            });
+            confetti({
+                particleCount: 50,
+                angle: 120,
+                spread: 55,
+                origin: { x: 1 }
+            });
+        }, 200);
+    }
+}
+
 function buyItem(item){
 
     if(points<item.price){
@@ -2444,10 +2502,15 @@ function buyItem(item){
     updateAllUI();
     renderShop();
 
+    playSound("levelup");
+    triggerConfetti();
+
     document.getElementById("successMessage").innerText =
         `Bạn đã đổi thành công ${item.name}! Chụp màn hình gửi để nhận quà nhé.`;
 
-    document.getElementById("successOverlay").style.display="flex";
+    const overlay = document.getElementById("successOverlay");
+    overlay.style.display="flex";
+    overlay.classList.add("show");
 }
 
 function renderHistory(){
@@ -2510,8 +2573,9 @@ function renderHistory(){
 }
 
 function closeSuccess(){
-
-    document.getElementById("successOverlay").style.display="none";
+    const overlay = document.getElementById("successOverlay");
+    overlay.classList.remove("show");
+    overlay.style.display="none";
 }
 
 /* =========================================================
