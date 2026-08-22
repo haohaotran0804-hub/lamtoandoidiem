@@ -84,6 +84,52 @@ body {
 }
 
 /* =========================================================
+   IMAGE ICON SYSTEM
+========================================================= */
+
+.image-icon {
+    width: 30px;
+    height: 30px;
+
+    object-fit: contain;
+
+    display: block;
+
+    flex-shrink: 0;
+}
+
+.nav-icon {
+    width: 26px;
+    height: 26px;
+
+    object-fit: contain;
+
+    display: block;
+
+    flex-shrink: 0;
+}
+
+.stat-icon img {
+    width: 34px;
+    height: 34px;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+.point-icon {
+    width: 22px;
+    height: 22px;
+
+    object-fit: contain;
+
+    display: block;
+
+    flex-shrink: 0;
+}
+
+/* =========================================================
    SIDEBAR
 ========================================================= */
 
@@ -131,6 +177,15 @@ body {
 
     font-size: 15px;
     font-weight: 800;
+
+    overflow: hidden;
+}
+
+.logo-icon img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
 }
 
 .nav-title {
@@ -458,6 +513,8 @@ body {
     font-size: 24px;
 
     line-height: 1;
+
+    overflow: hidden;
 }
 
 .stat-info {
@@ -492,6 +549,8 @@ body {
 
     display: flex;
     align-items: center;
+
+    gap: 5px;
 }
 
 /* =========================================================
@@ -692,12 +751,6 @@ body {
 
     margin-bottom: 24px;
 }
-
-/*
-   Quan trọng:
-   Biểu thức được căn giữa thật sự,
-   line-height cố định để số không bị lệch trên/dưới.
-*/
 
 .expression {
     width: 100%;
@@ -1445,7 +1498,10 @@ body {
     <div class="logo">
 
         <div class="logo-icon">
-            K
+            <img
+                src="dashboard.png"
+                alt="KietStudy"
+            >
         </div>
 
         <div class="logo-text">
@@ -1464,7 +1520,12 @@ body {
             class="nav-btn active"
             onclick="showPage('dashboard', this)"
         >
-            <span class="nav-icon">🏠</span>
+            <img
+                class="nav-icon"
+                src="dashboard.png"
+                alt="Dashboard"
+            >
+
             <span>Dashboard</span>
         </button>
 
@@ -1472,7 +1533,12 @@ body {
             class="nav-btn"
             onclick="showPage('practice', this)"
         >
-            <span class="nav-icon">📝</span>
+            <img
+                class="nav-icon"
+                src="luyentap.png"
+                alt="Luyện tập"
+            >
+
             <span>Luyện tập</span>
         </button>
 
@@ -1480,7 +1546,12 @@ body {
             class="nav-btn"
             onclick="showPage('level', this)"
         >
-            <span class="nav-icon">⭐</span>
+            <img
+                class="nav-icon"
+                src="thanhtich.png"
+                alt="Thành tích"
+            >
+
             <span>Thành tích</span>
         </button>
 
@@ -1488,7 +1559,12 @@ body {
             class="nav-btn"
             onclick="showPage('shop', this)"
         >
-            <span class="nav-icon">🛒</span>
+            <img
+                class="nav-icon"
+                src="shop.png"
+                alt="Cửa hàng"
+            >
+
             <span>Cửa hàng</span>
         </button>
 
@@ -1539,9 +1615,16 @@ body {
     <div class="top-actions">
 
         <div class="point-pill">
-            ⭐
+
+            <img
+                class="point-icon"
+                src="point.png"
+                alt="Point"
+            >
+
             <span id="topPoints">0</span>
             Points
+
         </div>
 
         <button
@@ -1569,7 +1652,12 @@ body {
         <div class="card stat-card">
 
             <div class="stat-icon">
-                ⭐
+
+                <img
+                    src="point.png"
+                    alt="Point"
+                >
+
             </div>
 
             <div class="stat-info">
@@ -1592,7 +1680,12 @@ body {
         <div class="card stat-card">
 
             <div class="stat-icon">
-                🏆
+
+                <img
+                    src="thanhtich.png"
+                    alt="Thành tích"
+                >
+
             </div>
 
             <div class="stat-info">
@@ -1612,7 +1705,12 @@ body {
         <div class="card stat-card">
 
             <div class="stat-icon">
-                📝
+
+                <img
+                    src="luyentap.png"
+                    alt="Luyện tập"
+                >
+
             </div>
 
             <div class="stat-info">
@@ -1738,10 +1836,12 @@ body {
                 class="timer"
                 id="timerBox"
             >
+
                 ⏱
                 <span id="timer">
                     20:00
                 </span>
+
             </div>
 
         </div>
@@ -1990,11 +2090,18 @@ body {
                 Số dư Point khả dụng:
             </span>
 
-            <span>
-                ⭐
+            <span style="display:flex;align-items:center;gap:6px;">
+
+                <img
+                    class="point-icon"
+                    src="point.png"
+                    alt="Point"
+                >
+
                 <span id="shopPoints">
                     0
                 </span>
+
             </span>
 
         </div>
@@ -2056,8 +2163,10 @@ body {
         class="camera-status"
         id="cameraStatus"
     >
+
         <span class="camera-dot"></span>
         Đang chờ...
+
     </div>
 
 </div>
