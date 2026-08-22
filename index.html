@@ -7,48 +7,36 @@
 <title>KietStudy - Nền tảng luyện tập</title>
 
 <style>
-/* =========================================================
-   KIETSTUDY — NO-SLOP DESIGN SYSTEM
-========================================================= */
-
 :root {
-    --bg-body: #f8fafc;
-    --bg-surface: #ffffff;
-    --bg-surface-hover: #f1f5f9;
-
-    --text-main: #0f172a;
-    --text-muted: #64748b;
-
-    --border: #e2e8f0;
-
-    --primary: #2563eb;
-    --primary-hover: #1d4ed8;
-
-    --success: #16a34a;
-    --success-bg: #dcfce7;
-
-    --danger: #dc2626;
-    --danger-bg: #fee2e2;
-
-    --warning: #d97706;
-    --warning-bg: #fef3c7;
-
-    --accent: #8b5cf6;
-
-    --radius-sm: 6px;
-    --radius-md: 8px;
-    --radius-lg: 12px;
+    --bg-body:#f8fafc;
+    --bg-surface:#ffffff;
+    --bg-surface-hover:#f1f5f9;
+    --text-main:#0f172a;
+    --text-muted:#64748b;
+    --border:#e2e8f0;
+    --primary:#2563eb;
+    --primary-hover:#1d4ed8;
+    --success:#16a34a;
+    --success-bg:#dcfce7;
+    --danger:#dc2626;
+    --danger-bg:#fee2e2;
+    --warning:#d97706;
+    --warning-bg:#fef3c7;
+    --accent:#8b5cf6;
+    --radius-sm:6px;
+    --radius-md:8px;
+    --radius-lg:12px;
 
     --shadow-sm:
-        0 1px 2px 0 rgb(0 0 0 / 0.05);
+        0 1px 2px 0 rgb(0 0 0 / .05);
 
     --shadow-md:
-        0 4px 6px -1px rgb(0 0 0 / 0.1),
-        0 2px 4px -2px rgb(0 0 0 / 0.1);
+        0 4px 6px -1px rgb(0 0 0 / .1),
+        0 2px 4px -2px rgb(0 0 0 / .1);
 
     --shadow-lg:
-        0 10px 15px -3px rgb(0 0 0 / 0.1),
-        0 4px 6px -4px rgb(0 0 0 / 0.1);
+        0 10px 15px -3px rgb(0 0 0 / .1),
+        0 4px 6px -4px rgb(0 0 0 / .1);
 
     --font-sans:
         system-ui,
@@ -60,73 +48,98 @@
 }
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 body {
-    font-family: var(--font-sans);
-    background: var(--bg-body);
-    color: var(--text-main);
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-    min-height: 100vh;
-    display: flex;
+    font-family:var(--font-sans);
+    background:var(--bg-body);
+    color:var(--text-main);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+    display:flex;
 }
-
-/* =========================================================
-   HIDDEN MOUSE GLOW
-========================================================= */
 
 #mouseGlow {
-    display: none !important;
+    display:none!important;
 }
 
 /* =========================================================
-   IMAGE ICON SYSTEM
+   IMAGE SYSTEM
 ========================================================= */
 
-.image-icon {
-    width: 30px;
-    height: 30px;
+.icon-img {
+    width:28px;
+    height:28px;
+    object-fit:contain;
+    display:block;
+    flex-shrink:0;
+}
 
-    object-fit: contain;
-
-    display: block;
-
-    flex-shrink: 0;
+.logo-icon-img {
+    width:32px;
+    height:32px;
+    object-fit:contain;
+    display:block;
 }
 
 .nav-icon {
-    width: 26px;
-    height: 26px;
+    width:28px;
+    height:28px;
 
-    object-fit: contain;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    display: block;
+    flex:0 0 28px;
+}
 
-    flex-shrink: 0;
+.nav-icon img {
+    width:26px;
+    height:26px;
+    object-fit:contain;
+    display:block;
 }
 
 .stat-icon img {
-    width: 34px;
-    height: 34px;
-
-    object-fit: contain;
-
-    display: block;
+    width:32px;
+    height:32px;
+    object-fit:contain;
+    display:block;
 }
 
 .point-icon {
-    width: 22px;
-    height: 22px;
+    width:22px;
+    height:22px;
+    object-fit:contain;
+    display:inline-block;
+    vertical-align:middle;
+}
 
-    object-fit: contain;
+.achievement-icon img {
+    width:42px;
+    height:42px;
+    object-fit:contain;
+    display:block;
+    margin:0 auto;
+}
 
-    display: block;
+.item-icon img {
+    width:64px;
+    height:64px;
+    object-fit:contain;
+    display:block;
+    margin:0 auto;
+}
 
-    flex-shrink: 0;
+.history-icon img {
+    width:30px;
+    height:30px;
+    object-fit:contain;
+    display:block;
 }
 
 /* =========================================================
@@ -134,102 +147,90 @@ body {
 ========================================================= */
 
 .sidebar {
-    width: 260px;
-    background: var(--bg-surface);
-    border-right: 1px solid var(--border);
+    width:260px;
+    background:var(--bg-surface);
+    border-right:1px solid var(--border);
 
-    display: flex;
-    flex-direction: column;
+    display:flex;
+    flex-direction:column;
 
-    position: fixed;
-    left: 0;
-    top: 0;
+    position:fixed;
+    left:0;
+    top:0;
 
-    height: 100vh;
-    z-index: 40;
+    height:100vh;
+    z-index:40;
 }
 
 .logo {
-    padding: 24px;
+    padding:24px;
 
-    font-size: 20px;
-    font-weight: 700;
+    font-size:20px;
+    font-weight:700;
 
-    display: flex;
-    align-items: center;
-    gap: 12px;
+    display:flex;
+    align-items:center;
+    gap:12px;
 
-    border-bottom: 1px solid var(--border);
+    border-bottom:1px solid var(--border);
 }
 
 .logo-icon {
-    width: 32px;
-    height: 32px;
+    width:32px;
+    height:32px;
 
-    border-radius: var(--radius-sm);
+    border-radius:var(--radius-sm);
 
-    background: var(--primary);
-    color: white;
+    background:#eff6ff;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    font-size: 15px;
-    font-weight: 800;
-
-    overflow: hidden;
-}
-
-.logo-icon img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: contain;
+    overflow:hidden;
 }
 
 .nav-title {
-    font-size: 12px;
-    font-weight: 600;
+    font-size:12px;
+    font-weight:600;
 
-    color: var(--text-muted);
+    color:var(--text-muted);
 
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    text-transform:uppercase;
+    letter-spacing:.05em;
 
-    padding: 24px 24px 8px;
+    padding:24px 24px 8px;
 }
 
 .nav-menu {
-    padding: 0 16px;
+    padding:0 16px;
 
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+    display:flex;
+    flex-direction:column;
+    gap:4px;
 }
 
 .nav-btn {
-    width: 100%;
+    width:100%;
 
-    background: transparent;
-    border: none;
+    background:transparent;
+    border:none;
 
-    padding: 10px 12px;
+    padding:10px 12px;
 
-    border-radius: var(--radius-sm);
+    border-radius:var(--radius-sm);
 
-    color: var(--text-muted);
+    color:var(--text-muted);
 
-    font-size: 14px;
-    font-weight: 500;
+    font-size:14px;
+    font-weight:500;
 
-    display: flex;
-    align-items: center;
-    gap: 12px;
+    display:flex;
+    align-items:center;
+    gap:12px;
 
-    cursor: pointer;
-
-    text-align: left;
+    cursor:pointer;
+    text-align:left;
 
     transition:
         background-color .15s,
@@ -237,41 +238,39 @@ body {
 }
 
 .nav-btn:hover {
-    background: var(--bg-surface-hover);
-    color: var(--text-main);
+    background:var(--bg-surface-hover);
+    color:var(--text-main);
 }
 
 .nav-btn.active {
-    background: #eff6ff;
-    color: var(--primary);
-    font-weight: 600;
+    background:#eff6ff;
+    color:var(--primary);
+    font-weight:600;
 }
 
 .sidebar-bottom {
-    margin-top: auto;
-
-    padding: 24px 16px;
-
-    border-top: 1px solid var(--border);
+    margin-top:auto;
+    padding:24px 16px;
+    border-top:1px solid var(--border);
 }
 
 .mini-level {
-    background: var(--bg-surface-hover);
+    background:var(--bg-surface-hover);
 
-    padding: 16px;
+    padding:16px;
 
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border);
+    border-radius:var(--radius-md);
+    border:1px solid var(--border);
 }
 
 .mini-level-top {
-    display: flex;
-    justify-content: space-between;
+    display:flex;
+    justify-content:space-between;
 
-    font-size: 13px;
-    font-weight: 600;
+    font-size:13px;
+    font-weight:600;
 
-    margin-bottom: 8px;
+    margin-bottom:8px;
 }
 
 /* =========================================================
@@ -279,25 +278,24 @@ body {
 ========================================================= */
 
 .progress-bar-bg {
-    width: 100%;
-    height: 6px;
+    width:100%;
+    height:6px;
 
-    background: var(--border);
+    background:var(--border);
 
-    border-radius: 999px;
-
-    overflow: hidden;
+    border-radius:999px;
+    overflow:hidden;
 }
 
 .progress-bar-fill {
-    width: 0;
-    height: 100%;
+    width:0;
+    height:100%;
 
-    background: var(--primary);
+    background:var(--primary);
 
-    border-radius: 999px;
+    border-radius:999px;
 
-    transition: width .3s ease;
+    transition:width .3s ease;
 }
 
 /* =========================================================
@@ -305,15 +303,15 @@ body {
 ========================================================= */
 
 .main {
-    flex: 1;
+    flex:1;
 
-    margin-left: 260px;
+    margin-left:260px;
 
-    padding: 32px 48px;
+    padding:32px 48px;
 
-    width: calc(100% - 260px);
+    width:calc(100% - 260px);
 
-    max-width: 1400px;
+    max-width:1400px;
 }
 
 /* =========================================================
@@ -321,51 +319,51 @@ body {
 ========================================================= */
 
 .topbar {
-    display: flex;
+    display:flex;
 
-    justify-content: space-between;
-    align-items: center;
+    justify-content:space-between;
+    align-items:center;
 
-    margin-bottom: 40px;
+    margin-bottom:40px;
 }
 
 .welcome h1 {
-    font-size: 24px;
-    font-weight: 600;
+    font-size:24px;
+    font-weight:600;
 }
 
 .welcome p {
-    color: var(--text-muted);
+    color:var(--text-muted);
 
-    font-size: 14px;
+    font-size:14px;
 
-    margin-top: 4px;
+    margin-top:4px;
 }
 
 .top-actions {
-    display: flex;
-    align-items: center;
-    gap: 16px;
+    display:flex;
+    align-items:center;
+    gap:16px;
 }
 
 .point-pill {
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    display:flex;
+    align-items:center;
+    gap:6px;
 
-    padding: 6px 12px;
+    padding:6px 12px;
 
-    border-radius: var(--radius-md);
+    border-radius:var(--radius-md);
 
-    background: var(--warning-bg);
-    border: 1px solid #fcd34d;
+    background:var(--warning-bg);
+    border:1px solid #fcd34d;
 
-    color: var(--warning);
+    color:var(--warning);
 
-    font-size: 14px;
-    font-weight: 600;
+    font-size:14px;
+    font-weight:600;
 
-    font-variant-numeric: tabular-nums;
+    font-variant-numeric:tabular-nums;
 }
 
 /* =========================================================
@@ -373,52 +371,52 @@ body {
 ========================================================= */
 
 .btn {
-    border: 1px solid transparent;
+    border:1px solid transparent;
 
-    border-radius: var(--radius-sm);
+    border-radius:var(--radius-sm);
 
-    padding: 8px 16px;
+    padding:8px 16px;
 
-    min-height: 36px;
+    min-height:36px;
 
-    font-size: 14px;
-    font-weight: 500;
+    font-size:14px;
+    font-weight:500;
 
-    cursor: pointer;
+    cursor:pointer;
 
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
 
-    gap: 8px;
+    gap:8px;
 
-    transition: all .15s;
+    transition:all .15s;
 }
 
 .btn:disabled {
-    opacity: .5;
-    cursor: not-allowed;
+    opacity:.5;
+    cursor:not-allowed;
 }
 
 .btn-primary {
-    background: var(--primary);
-    color: white;
+    background:var(--primary);
+    color:white;
 }
 
 .btn-primary:hover:not(:disabled) {
-    background: var(--primary-hover);
+    background:var(--primary-hover);
 }
 
 .btn-secondary {
-    background: var(--bg-surface);
+    background:var(--bg-surface);
 
-    border-color: var(--border);
+    border-color:var(--border);
 
-    color: var(--text-main);
+    color:var(--text-main);
 }
 
 .btn-secondary:hover:not(:disabled) {
-    background: var(--bg-surface-hover);
+    background:var(--bg-surface-hover);
 }
 
 /* =========================================================
@@ -426,28 +424,26 @@ body {
 ========================================================= */
 
 .page {
-    display: none;
+    display:none;
 }
 
 .page.active {
-    display: block;
+    display:block;
 }
 
 .section-header {
-    margin-bottom: 24px;
+    margin-bottom:24px;
 }
 
 .section-title {
-    font-size: 20px;
-    font-weight: 600;
-
-    margin-bottom: 4px;
+    font-size:20px;
+    font-weight:600;
+    margin-bottom:4px;
 }
 
 .section-desc {
-    color: var(--text-muted);
-
-    font-size: 14px;
+    color:var(--text-muted);
+    font-size:14px;
 }
 
 /* =========================================================
@@ -455,15 +451,15 @@ body {
 ========================================================= */
 
 .card {
-    background: var(--bg-surface);
+    background:var(--bg-surface);
 
-    border: 1px solid var(--border);
+    border:1px solid var(--border);
 
-    border-radius: var(--radius-lg);
+    border-radius:var(--radius-lg);
 
-    padding: 24px;
+    padding:24px;
 
-    box-shadow: var(--shadow-sm);
+    box-shadow:var(--shadow-sm);
 }
 
 /* =========================================================
@@ -471,14 +467,14 @@ body {
 ========================================================= */
 
 .grid-3 {
-    display: grid;
+    display:grid;
 
     grid-template-columns:
-        repeat(3, minmax(0, 1fr));
+        repeat(3,minmax(0,1fr));
 
-    gap: 20px;
+    gap:20px;
 
-    margin-bottom: 24px;
+    margin-bottom:24px;
 }
 
 /* =========================================================
@@ -486,71 +482,64 @@ body {
 ========================================================= */
 
 .stat-card {
-    display: flex;
-    align-items: center;
+    display:flex;
+    align-items:center;
 
-    gap: 16px;
+    gap:16px;
 
-    min-height: 100px;
+    min-height:100px;
 }
 
 .stat-icon {
-    flex: 0 0 48px;
+    flex:0 0 48px;
 
-    width: 48px;
-    height: 48px;
+    width:48px;
+    height:48px;
 
-    background: var(--bg-surface-hover);
+    background:var(--bg-surface-hover);
 
-    border: 1px solid var(--border);
+    border:1px solid var(--border);
 
-    border-radius: var(--radius-md);
+    border-radius:var(--radius-md);
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    font-size: 24px;
-
-    line-height: 1;
-
-    overflow: hidden;
+    overflow:hidden;
 }
 
 .stat-info {
-    display: flex;
-    flex-direction: column;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
 
-    justify-content: center;
-
-    min-width: 0;
+    min-width:0;
 }
 
 .stat-title {
-    font-size: 13px;
+    font-size:13px;
 
-    color: var(--text-muted);
+    color:var(--text-muted);
 
-    font-weight: 500;
+    font-weight:500;
 
-    line-height: 1.35;
+    line-height:1.35;
 }
 
 .stat-value {
-    font-size: 24px;
+    font-size:24px;
 
-    font-weight: 600;
+    font-weight:600;
 
-    line-height: 1.15;
+    line-height:1.15;
 
-    margin-top: 5px;
+    margin-top:5px;
 
-    font-variant-numeric: tabular-nums;
+    font-variant-numeric:tabular-nums;
 
-    display: flex;
-    align-items: center;
-
-    gap: 5px;
+    display:flex;
+    align-items:center;
 }
 
 /* =========================================================
@@ -558,50 +547,47 @@ body {
 ========================================================= */
 
 .level-card {
-    margin-bottom: 32px;
+    margin-bottom:32px;
 }
 
 .level-header {
-    display: flex;
+    display:flex;
 
-    justify-content: space-between;
-    align-items: center;
+    justify-content:space-between;
+    align-items:center;
 
-    gap: 20px;
+    gap:20px;
 
-    margin-bottom: 16px;
+    margin-bottom:16px;
 }
 
 .level-name {
-    font-size: 18px;
-    font-weight: 600;
-
-    line-height: 1.35;
+    font-size:18px;
+    font-weight:600;
+    line-height:1.35;
 }
 
 .level-name span {
-    color: var(--primary);
+    color:var(--primary);
 }
 
 .level-desc {
-    color: var(--text-muted);
-
-    font-size: 14px;
-
-    margin-top: 4px;
+    color:var(--text-muted);
+    font-size:14px;
+    margin-top:4px;
 }
 
 .level-xp {
-    flex-shrink: 0;
+    flex-shrink:0;
 
-    font-size: 14px;
-    font-weight: 600;
+    font-size:14px;
+    font-weight:600;
 
-    color: var(--text-main);
+    color:var(--text-main);
 
-    font-variant-numeric: tabular-nums;
+    font-variant-numeric:tabular-nums;
 
-    white-space: nowrap;
+    white-space:nowrap;
 }
 
 /* =========================================================
@@ -609,51 +595,54 @@ body {
 ========================================================= */
 
 .achievement-grid {
-    display: grid;
+    display:grid;
 
     grid-template-columns:
-        repeat(auto-fill, minmax(140px, 1fr));
+        repeat(auto-fill,minmax(140px,1fr));
 
-    gap: 16px;
+    gap:16px;
 }
 
 .achievement {
-    background: var(--bg-surface);
+    background:var(--bg-surface);
 
-    border: 1px solid var(--border);
+    border:1px solid var(--border);
 
-    border-radius: var(--radius-md);
+    border-radius:var(--radius-md);
 
-    padding: 16px;
+    padding:16px;
 
-    text-align: center;
+    text-align:center;
 }
 
 .achievement-icon {
-    font-size: 24px;
+    line-height:1;
+    margin-bottom:10px;
 
-    line-height: 1;
+    min-height:42px;
 
-    margin-bottom: 10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
 .achievement strong {
-    display: block;
+    display:block;
 
-    font-size: 14px;
-    font-weight: 600;
+    font-size:14px;
+    font-weight:600;
 
-    line-height: 1.3;
+    line-height:1.3;
 
-    margin-bottom: 3px;
+    margin-bottom:3px;
 }
 
 .achievement small {
-    font-size: 12px;
+    font-size:12px;
 
-    color: var(--text-muted);
+    color:var(--text-muted);
 
-    line-height: 1.35;
+    line-height:1.35;
 }
 
 /* =========================================================
@@ -661,67 +650,67 @@ body {
 ========================================================= */
 
 .quiz-container {
-    width: 100%;
-    max-width: 680px;
+    width:100%;
+    max-width:680px;
 
-    margin: 0 auto;
+    margin:0 auto;
 }
 
 .quiz-top {
-    display: flex;
+    display:flex;
 
-    justify-content: space-between;
-    align-items: center;
+    justify-content:space-between;
+    align-items:center;
 
-    margin-bottom: 20px;
+    margin-bottom:20px;
 }
 
 .badge {
-    background: var(--bg-surface-hover);
+    background:var(--bg-surface-hover);
 
-    color: var(--text-main);
+    color:var(--text-main);
 
-    border: 1px solid var(--border);
+    border:1px solid var(--border);
 
-    padding: 5px 10px;
+    padding:5px 10px;
 
-    border-radius: var(--radius-sm);
+    border-radius:var(--radius-sm);
 
-    font-size: 13px;
-    font-weight: 500;
+    font-size:13px;
+    font-weight:500;
 
-    line-height: 1.2;
+    line-height:1.2;
 
-    font-variant-numeric: tabular-nums;
+    font-variant-numeric:tabular-nums;
 }
 
 .timer {
-    background: var(--bg-surface-hover);
+    background:var(--bg-surface-hover);
 
-    border: 1px solid var(--border);
+    border:1px solid var(--border);
 
-    padding: 5px 10px;
+    padding:5px 10px;
 
-    border-radius: var(--radius-sm);
+    border-radius:var(--radius-sm);
 
-    font-size: 14px;
-    font-weight: 600;
+    font-size:14px;
+    font-weight:600;
 
-    line-height: 1.2;
+    line-height:1.2;
 
-    font-variant-numeric: tabular-nums;
+    font-variant-numeric:tabular-nums;
 }
 
 .timer.warning {
-    background: var(--warning-bg);
-    color: var(--warning);
-    border-color: #fcd34d;
+    background:var(--warning-bg);
+    color:var(--warning);
+    border-color:#fcd34d;
 }
 
 .timer.danger {
-    background: var(--danger-bg);
-    color: var(--danger);
-    border-color: #fca5a5;
+    background:var(--danger-bg);
+    color:var(--danger);
+    border-color:#fca5a5;
 }
 
 /* =========================================================
@@ -729,41 +718,41 @@ body {
 ========================================================= */
 
 .math-box {
-    min-height: 360px;
+    min-height:360px;
 
-    padding: 48px 40px;
+    padding:48px 40px;
 
-    display: flex;
-    flex-direction: column;
+    display:flex;
+    flex-direction:column;
 
-    justify-content: center;
-    align-items: center;
+    justify-content:center;
+    align-items:center;
 
-    text-align: center;
+    text-align:center;
 
-    background: var(--bg-surface);
+    background:var(--bg-surface);
 
-    border: 1px solid var(--border);
+    border:1px solid var(--border);
 
-    border-radius: var(--radius-lg);
+    border-radius:var(--radius-lg);
 
-    box-shadow: var(--shadow-sm);
+    box-shadow:var(--shadow-sm);
 
-    margin-bottom: 24px;
+    margin-bottom:24px;
 }
 
 .expression {
-    width: 100%;
+    width:100%;
 
-    min-height: 72px;
+    min-height:72px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    font-size: 48px;
+    font-size:48px;
 
-    font-weight: 500;
+    font-weight:500;
 
     font-family:
         "Cambria Math",
@@ -771,97 +760,96 @@ body {
         Georgia,
         serif;
 
-    line-height: 1;
+    line-height:1;
 
-    letter-spacing: 1px;
+    letter-spacing:1px;
 
-    color: var(--text-main);
+    color:var(--text-main);
 
-    font-variant-numeric: tabular-nums;
+    font-variant-numeric:tabular-nums;
 
-    margin-bottom: 40px;
+    margin-bottom:40px;
 }
 
 .answer-row {
-    width: 100%;
+    width:100%;
 
-    display: flex;
+    display:flex;
 
-    justify-content: center;
-    align-items: center;
+    justify-content:center;
+    align-items:center;
 
-    gap: 12px;
+    gap:12px;
 }
 
 .answer-input {
-    width: 140px;
-    height: 48px;
+    width:140px;
+    height:48px;
 
-    border: 1px solid var(--border);
+    border:1px solid var(--border);
 
-    border-radius: var(--radius-md);
+    border-radius:var(--radius-md);
 
-    font-size: 24px;
+    font-size:24px;
 
-    font-weight: 500;
+    font-weight:500;
 
-    line-height: 48px;
+    line-height:48px;
 
-    padding: 0 12px;
+    padding:0 12px;
 
-    text-align: center;
+    text-align:center;
 
-    font-variant-numeric: tabular-nums;
+    font-variant-numeric:tabular-nums;
 
-    color: var(--text-main);
+    color:var(--text-main);
 
-    background: var(--bg-body);
+    background:var(--bg-body);
 
-    outline: none;
+    outline:none;
 
-    transition: all .2s;
+    transition:all .2s;
 
-    appearance: textfield;
+    appearance:textfield;
 }
 
 .answer-input::-webkit-outer-spin-button,
 .answer-input::-webkit-inner-spin-button {
-    appearance: none;
-    margin: 0;
+    appearance:none;
+    margin:0;
 }
 
 .answer-input:focus {
-    border-color: var(--primary);
+    border-color:var(--primary);
 
-    background: white;
+    background:white;
 
     box-shadow:
         0 0 0 3px
-        rgba(37, 99, 235, .15);
+        rgba(37,99,235,.15);
 }
 
 .answer-btn {
-    height: 48px;
-
-    padding: 0 24px;
+    height:48px;
+    padding:0 24px;
 }
 
 .quiz-info {
-    display: flex;
+    display:flex;
 
-    justify-content: space-between;
+    justify-content:space-between;
 
-    font-size: 14px;
+    font-size:14px;
 
-    color: var(--text-muted);
+    color:var(--text-muted);
 }
 
 .quiz-info strong {
-    color: var(--success);
+    color:var(--success);
 
-    font-weight: 600;
+    font-weight:600;
 
-    font-variant-numeric: tabular-nums;
+    font-variant-numeric:tabular-nums;
 }
 
 /* =========================================================
@@ -869,113 +857,113 @@ body {
 ========================================================= */
 
 .result-container {
-    width: 100%;
-    max-width: 500px;
+    width:100%;
+    max-width:500px;
 
-    margin: 0 auto;
+    margin:0 auto;
 
-    text-align: center;
+    text-align:center;
 }
 
 .score-circle {
-    width: 120px;
-    height: 120px;
+    width:120px;
+    height:120px;
 
-    margin: 32px auto;
+    margin:32px auto;
 
-    border-radius: 50%;
+    border-radius:50%;
 
-    border: 4px solid var(--primary);
+    border:4px solid var(--primary);
 
-    display: flex;
-    flex-direction: column;
+    display:flex;
+    flex-direction:column;
 
-    align-items: center;
-    justify-content: center;
+    align-items:center;
+    justify-content:center;
 }
 
 .score-circle strong {
-    font-size: 32px;
+    font-size:32px;
 
-    color: var(--primary);
+    color:var(--primary);
 
-    line-height: 1;
+    line-height:1;
 
-    font-variant-numeric: tabular-nums;
+    font-variant-numeric:tabular-nums;
 }
 
 .score-circle span {
-    font-size: 12px;
+    font-size:12px;
 
-    color: var(--text-muted);
+    color:var(--text-muted);
 
-    margin-top: 5px;
+    margin-top:5px;
 
-    line-height: 1;
+    line-height:1;
 }
 
 .earned-badge {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
 
-    background: var(--success-bg);
+    background:var(--success-bg);
 
-    color: var(--success);
+    color:var(--success);
 
-    padding: 8px 16px;
+    padding:8px 16px;
 
-    border-radius: var(--radius-sm);
+    border-radius:var(--radius-sm);
 
-    font-weight: 600;
-    font-size: 14px;
+    font-weight:600;
+    font-size:14px;
 
-    line-height: 1.2;
+    line-height:1.2;
 
-    margin-bottom: 24px;
+    margin-bottom:24px;
 }
 
 .result-details {
-    display: grid;
+    display:grid;
 
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns:1fr 1fr;
 
-    gap: 16px;
+    gap:16px;
 
-    text-align: left;
+    text-align:left;
 
-    margin-bottom: 32px;
+    margin-bottom:32px;
 
-    background: var(--bg-surface-hover);
+    background:var(--bg-surface-hover);
 
-    padding: 24px;
+    padding:24px;
 
-    border-radius: var(--radius-md);
+    border-radius:var(--radius-md);
 }
 
 .result-details p {
-    font-size: 14px;
+    font-size:14px;
 
-    color: var(--text-muted);
+    color:var(--text-muted);
 
-    display: flex;
-    justify-content: space-between;
+    display:flex;
+    justify-content:space-between;
 
-    gap: 12px;
+    gap:12px;
 
-    border-bottom: 1px solid var(--border);
+    border-bottom:1px solid var(--border);
 
-    padding-bottom: 8px;
+    padding-bottom:8px;
 
-    line-height: 1.35;
+    line-height:1.35;
 }
 
 .result-details strong {
-    color: var(--text-main);
+    color:var(--text-main);
 
-    font-variant-numeric: tabular-nums;
+    font-variant-numeric:tabular-nums;
 
-    white-space: nowrap;
+    white-space:nowrap;
 }
 
 /* =========================================================
@@ -983,76 +971,79 @@ body {
 ========================================================= */
 
 .shop-balance {
-    display: flex;
+    display:flex;
 
-    justify-content: space-between;
-    align-items: center;
+    justify-content:space-between;
+    align-items:center;
 
-    background: var(--warning-bg);
+    background:var(--warning-bg);
 
-    border: 1px solid #fcd34d;
+    border:1px solid #fcd34d;
 
-    padding: 16px 20px;
+    padding:16px 20px;
 
-    border-radius: var(--radius-md);
+    border-radius:var(--radius-md);
 
-    font-weight: 600;
+    font-weight:600;
 
-    color: var(--warning);
+    color:var(--warning);
 
-    margin-bottom: 24px;
+    margin-bottom:24px;
 
-    font-variant-numeric: tabular-nums;
+    font-variant-numeric:tabular-nums;
 }
 
 .shop-grid {
-    display: grid;
+    display:grid;
 
     grid-template-columns:
-        repeat(auto-fill, minmax(200px, 1fr));
+        repeat(auto-fill,minmax(200px,1fr));
 
-    gap: 20px;
+    gap:20px;
 }
 
 .shop-item {
-    text-align: center;
+    text-align:center;
 
-    display: flex;
-    flex-direction: column;
+    display:flex;
+    flex-direction:column;
 }
 
 .item-icon {
-    font-size: 32px;
+    line-height:1;
 
-    line-height: 1;
+    margin-bottom:12px;
 
-    margin-bottom: 12px;
+    min-height:64px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
 .item-name {
-    font-weight: 600;
+    font-weight:600;
 
-    font-size: 16px;
+    font-size:16px;
 
-    line-height: 1.3;
+    line-height:1.3;
 }
 
 .item-price {
-    color: var(--warning);
+    color:var(--warning);
 
-    font-weight: 600;
+    font-weight:600;
 
-    font-size: 14px;
+    font-size:14px;
 
-    margin: 8px 0 16px;
+    margin:8px 0 16px;
 
-    font-variant-numeric: tabular-nums;
+    font-variant-numeric:tabular-nums;
 }
 
 .shop-item .btn {
-    width: 100%;
-
-    margin-top: auto;
+    width:100%;
+    margin-top:auto;
 }
 
 /* =========================================================
@@ -1060,65 +1051,64 @@ body {
 ========================================================= */
 
 .history-list {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 8px;
-
-    margin-top: 16px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    margin-top:16px;
 }
 
 .history-item {
-    display: flex;
+    display:flex;
 
-    align-items: center;
+    align-items:center;
 
-    justify-content: space-between;
+    justify-content:space-between;
 
-    padding: 12px 16px;
+    padding:12px 16px;
 
-    background: var(--bg-surface);
+    background:var(--bg-surface);
 
-    border: 1px solid var(--border);
+    border:1px solid var(--border);
 
-    border-radius: var(--radius-md);
+    border-radius:var(--radius-md);
 }
 
 .history-left {
-    display: flex;
+    display:flex;
 
-    align-items: center;
+    align-items:center;
 
-    gap: 12px;
+    gap:12px;
 }
 
 .history-icon {
-    font-size: 20px;
+    width:36px;
+    height:36px;
 
-    line-height: 1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
 .history-name {
-    font-weight: 500;
-
-    font-size: 14px;
+    font-weight:500;
+    font-size:14px;
 }
 
 .history-date {
-    font-size: 12px;
+    font-size:12px;
 
-    color: var(--text-muted);
+    color:var(--text-muted);
 
-    margin-top: 2px;
+    margin-top:2px;
 }
 
 .history-price {
-    font-weight: 600;
+    font-weight:600;
 
-    color: var(--danger);
+    color:var(--danger);
 
-    font-variant-numeric: tabular-nums;
+    font-variant-numeric:tabular-nums;
 }
 
 /* =========================================================
@@ -1126,127 +1116,127 @@ body {
 ========================================================= */
 
 #cameraBox {
-    position: fixed;
+    position:fixed;
 
-    top: 24px;
-    right: 24px;
+    top:24px;
+    right:24px;
 
-    width: 240px;
+    width:240px;
 
-    background: #0f172a;
+    background:#0f172a;
 
-    border-radius: var(--radius-md);
+    border-radius:var(--radius-md);
 
-    box-shadow: var(--shadow-lg);
+    box-shadow:var(--shadow-lg);
 
-    z-index: 50;
+    z-index:50;
 
-    overflow: hidden;
+    overflow:hidden;
 
-    cursor: grab;
+    cursor:grab;
 
-    border: 1px solid #334155;
+    border:1px solid #334155;
 }
 
 #cameraBox.dragging {
-    cursor: grabbing;
+    cursor:grabbing;
 }
 
 .camera-head {
-    display: flex;
+    display:flex;
 
-    justify-content: space-between;
-    align-items: center;
+    justify-content:space-between;
+    align-items:center;
 
-    padding: 8px 12px;
+    padding:8px 12px;
 
-    background: #1e293b;
+    background:#1e293b;
 
-    border-bottom: 1px solid #334155;
+    border-bottom:1px solid #334155;
 
-    color: #e2e8f0;
+    color:#e2e8f0;
 }
 
 .camera-title {
-    font-size: 11px;
+    font-size:11px;
 
-    font-weight: 600;
+    font-weight:600;
 
-    letter-spacing: .05em;
+    letter-spacing:.05em;
 
-    text-transform: uppercase;
+    text-transform:uppercase;
 }
 
 .camera-control {
-    background: transparent;
+    background:transparent;
 
-    border: none;
+    border:none;
 
-    color: #94a3b8;
+    color:#94a3b8;
 
-    cursor: pointer;
+    cursor:pointer;
 
-    font-size: 16px;
+    font-size:16px;
 
-    line-height: 1;
+    line-height:1;
 }
 
 .camera-control:hover {
-    color: white;
+    color:white;
 }
 
 #cameraPreview {
-    width: 100%;
-    height: 135px;
+    width:100%;
+    height:135px;
 
-    background: #000;
+    background:#000;
 
-    object-fit: cover;
+    object-fit:cover;
 
-    transform: scaleX(-1);
+    transform:scaleX(-1);
 
-    display: block;
+    display:block;
 }
 
 .camera-status {
-    padding: 8px 12px;
+    padding:8px 12px;
 
-    font-size: 11px;
+    font-size:11px;
 
-    color: #94a3b8;
+    color:#94a3b8;
 
-    display: flex;
-    align-items: center;
+    display:flex;
+    align-items:center;
 
-    gap: 6px;
+    gap:6px;
 
-    line-height: 1.2;
+    line-height:1.2;
 }
 
 .camera-dot {
-    width: 8px;
-    height: 8px;
+    width:8px;
+    height:8px;
 
-    flex: 0 0 8px;
+    flex:0 0 8px;
 
-    border-radius: 50%;
+    border-radius:50%;
 
-    background: var(--text-muted);
+    background:var(--text-muted);
 }
 
 .recording .camera-dot {
-    background: var(--danger);
+    background:var(--danger);
 }
 
 #showCamera {
-    display: none;
+    display:none;
 
-    position: fixed;
+    position:fixed;
 
-    bottom: 24px;
-    right: 24px;
+    bottom:24px;
+    right:24px;
 
-    z-index: 40;
+    z-index:40;
 }
 
 /* =========================================================
@@ -1254,50 +1244,49 @@ body {
 ========================================================= */
 
 #toast {
-    position: fixed;
+    position:fixed;
 
-    bottom: 32px;
-    right: 32px;
+    bottom:32px;
+    right:32px;
 
-    background: var(--bg-surface);
+    background:var(--bg-surface);
 
-    border: 1px solid var(--border);
+    border:1px solid var(--border);
 
-    border-left: 4px solid var(--primary);
+    border-left:4px solid var(--primary);
 
-    padding: 16px 24px;
+    padding:16px 24px;
 
-    border-radius: var(--radius-md);
+    border-radius:var(--radius-md);
 
-    box-shadow: var(--shadow-lg);
+    box-shadow:var(--shadow-lg);
 
-    font-weight: 500;
+    font-weight:500;
 
-    font-size: 14px;
+    font-size:14px;
 
-    transform: translateY(150%);
+    transform:translateY(150%);
 
-    opacity: 0;
+    opacity:0;
 
     transition:
         transform .3s cubic-bezier(.16,1,.3,1),
         opacity .3s;
 
-    z-index: 100;
+    z-index:100;
 }
 
 #toast.show {
-    transform: translateY(0);
-
-    opacity: 1;
+    transform:translateY(0);
+    opacity:1;
 }
 
 #toast.correct {
-    border-left-color: var(--success);
+    border-left-color:var(--success);
 }
 
 #toast.wrong {
-    border-left-color: var(--danger);
+    border-left-color:var(--danger);
 }
 
 /* =========================================================
@@ -1305,66 +1294,65 @@ body {
 ========================================================= */
 
 .overlay {
-    display: none;
+    display:none;
 
-    position: fixed;
+    position:fixed;
 
-    inset: 0;
+    inset:0;
 
-    background:
-        rgba(15,23,42,.6);
+    background:rgba(15,23,42,.6);
 
-    z-index: 999;
+    z-index:999;
 
-    align-items: center;
-    justify-content: center;
+    align-items:center;
+    justify-content:center;
 
-    padding: 24px;
+    padding:24px;
 }
 
 .modal {
-    background: var(--bg-surface);
+    background:var(--bg-surface);
 
-    width: 100%;
-    max-width: 400px;
+    width:100%;
+    max-width:400px;
 
-    border-radius: var(--radius-lg);
+    border-radius:var(--radius-lg);
 
-    padding: 32px;
+    padding:32px;
 
-    text-align: center;
+    text-align:center;
 
-    box-shadow: var(--shadow-lg);
+    box-shadow:var(--shadow-lg);
 }
 
 .modal-icon {
-    font-size: 48px;
+    margin-bottom:16px;
+}
 
-    line-height: 1;
-
-    margin-bottom: 16px;
+.modal-icon img {
+    width:72px;
+    height:72px;
+    object-fit:contain;
 }
 
 .modal h2 {
-    font-size: 20px;
-
-    font-weight: 600;
-
-    margin-bottom: 8px;
+    font-size:20px;
+    font-weight:600;
+    margin-bottom:8px;
 }
 
 .modal p {
-    color: var(--text-muted);
+    color:var(--text-muted);
 
-    font-size: 14px;
+    font-size:14px;
 
-    margin-bottom: 24px;
+    margin-bottom:24px;
 
-    line-height: 1.5;
+    line-height:1.5;
 }
 
 .modal .btn {
-    width: 100%;
+    width:100%;
 }
 
 /* =========================================================
@@ -1374,112 +1362,107 @@ body {
 @media(max-width:900px) {
 
     .sidebar {
-        width: 72px;
+        width:72px;
     }
 
     .logo-text,
     .nav-title,
     .nav-btn span:not(.nav-icon),
     .sidebar-bottom {
-        display: none;
+        display:none;
     }
 
     .logo {
-        justify-content: center;
-
-        padding: 20px 0;
+        justify-content:center;
+        padding:20px 0;
     }
 
     .nav-menu {
-        padding: 16px 8px;
+        padding:16px 8px;
     }
 
     .nav-btn {
-        justify-content: center;
-
-        padding: 12px 0;
+        justify-content:center;
+        padding:12px 0;
     }
 
     .main {
-        margin-left: 72px;
+        margin-left:72px;
 
-        width: calc(100% - 72px);
+        width:calc(100% - 72px);
 
-        padding: 24px;
+        padding:24px;
     }
 
     .grid-3 {
         grid-template-columns:
-            repeat(2, minmax(0,1fr));
+            repeat(2,minmax(0,1fr));
     }
 
     .result-details {
-        grid-template-columns: 1fr;
+        grid-template-columns:1fr;
     }
 }
 
 @media(max-width:600px) {
 
     .main {
-        padding: 16px;
+        padding:16px;
     }
 
     .topbar {
-        flex-direction: column;
+        flex-direction:column;
 
-        align-items: flex-start;
+        align-items:flex-start;
 
-        gap: 16px;
+        gap:16px;
     }
 
     .grid-3 {
-        grid-template-columns: 1fr;
+        grid-template-columns:1fr;
     }
 
     .math-box {
-        min-height: 320px;
-
-        padding: 36px 20px;
+        min-height:320px;
+        padding:36px 20px;
     }
 
     .expression {
-        font-size: 36px;
+        font-size:36px;
 
-        min-height: 52px;
+        min-height:52px;
 
-        margin-bottom: 32px;
+        margin-bottom:32px;
     }
 
     .answer-row {
-        flex-direction: column;
+        flex-direction:column;
     }
 
     .answer-input,
     .answer-btn {
-        width: 100%;
+        width:100%;
     }
 
     #cameraBox {
-        width: 160px;
+        width:160px;
 
-        top: 16px;
-        right: 16px;
+        top:16px;
+        right:16px;
     }
 
     #cameraPreview {
-        height: 90px;
+        height:90px;
     }
 
     .quiz-info {
-        flex-direction: column;
-
-        gap: 6px;
+        flex-direction:column;
+        gap:6px;
     }
 
     .level-header {
-        align-items: flex-start;
-
-        flex-direction: column;
+        align-items:flex-start;
+        flex-direction:column;
     }
 }
 </style>
@@ -1497,9 +1480,11 @@ body {
 
     <div class="logo">
 
+        <!-- dashboard.png làm logo -->
         <div class="logo-icon">
             <img
-                src="dashboard.png"
+                class="logo-icon-img"
+                src="./dashboard.png"
                 alt="KietStudy"
             >
         </div>
@@ -1520,11 +1505,12 @@ body {
             class="nav-btn active"
             onclick="showPage('dashboard', this)"
         >
-            <img
-                class="nav-icon"
-                src="dashboard.png"
-                alt="Dashboard"
-            >
+            <span class="nav-icon">
+                <img
+                    src="./dashboard.png"
+                    alt="Dashboard"
+                >
+            </span>
 
             <span>Dashboard</span>
         </button>
@@ -1533,11 +1519,12 @@ body {
             class="nav-btn"
             onclick="showPage('practice', this)"
         >
-            <img
-                class="nav-icon"
-                src="luyentap.png"
-                alt="Luyện tập"
-            >
+            <span class="nav-icon">
+                <img
+                    src="./luyentap.png"
+                    alt="Luyện tập"
+                >
+            </span>
 
             <span>Luyện tập</span>
         </button>
@@ -1546,11 +1533,12 @@ body {
             class="nav-btn"
             onclick="showPage('level', this)"
         >
-            <img
-                class="nav-icon"
-                src="thanhtich.png"
-                alt="Thành tích"
-            >
+            <span class="nav-icon">
+                <img
+                    src="./thanhtich.png"
+                    alt="Thành tích"
+                >
+            </span>
 
             <span>Thành tích</span>
         </button>
@@ -1559,11 +1547,12 @@ body {
             class="nav-btn"
             onclick="showPage('shop', this)"
         >
-            <img
-                class="nav-icon"
-                src="shop.png"
-                alt="Cửa hàng"
-            >
+            <span class="nav-icon">
+                <img
+                    src="./shop.png"
+                    alt="Cửa hàng"
+                >
+            </span>
 
             <span>Cửa hàng</span>
         </button>
@@ -1618,7 +1607,7 @@ body {
 
             <img
                 class="point-icon"
-                src="point.png"
+                src="./point.png"
                 alt="Point"
             >
 
@@ -1631,6 +1620,11 @@ body {
             class="btn btn-secondary"
             onclick="showPage('shop')"
         >
+            <img
+                class="icon-img"
+                src="./shop.png"
+                alt=""
+            >
             Cửa hàng
         </button>
 
@@ -1654,7 +1648,7 @@ body {
             <div class="stat-icon">
 
                 <img
-                    src="point.png"
+                    src="./point.png"
                     alt="Point"
                 >
 
@@ -1682,8 +1676,8 @@ body {
             <div class="stat-icon">
 
                 <img
-                    src="thanhtich.png"
-                    alt="Thành tích"
+                    src="./thanhtich.png"
+                    alt="Cấp độ"
                 >
 
             </div>
@@ -1707,8 +1701,8 @@ body {
             <div class="stat-icon">
 
                 <img
-                    src="luyentap.png"
-                    alt="Luyện tập"
+                    src="./luyentap.png"
+                    alt="Bài đã làm"
                 >
 
             </div>
@@ -1837,7 +1831,8 @@ body {
                 id="timerBox"
             >
 
-                ⏱
+                <span>⏱</span>
+
                 <span id="timer">
                     20:00
                 </span>
@@ -2090,11 +2085,11 @@ body {
                 Số dư Point khả dụng:
             </span>
 
-            <span style="display:flex;align-items:center;gap:6px;">
+            <span>
 
                 <img
                     class="point-icon"
-                    src="point.png"
+                    src="./point.png"
                     alt="Point"
                 >
 
@@ -2201,7 +2196,12 @@ body {
     <div class="modal">
 
         <div class="modal-icon">
-            🎉
+
+            <img
+                src="./shop.png"
+                alt="Shop"
+            >
+
         </div>
 
         <h2>
@@ -2230,19 +2230,19 @@ body {
 <audio
     id="correctSound"
     preload="auto"
-    src="correct.mp3"
+    src="./correct.mp3"
 ></audio>
 
 <audio
     id="wrongSound"
     preload="auto"
-    src="wrong.mp3"
+    src="./wrong.mp3"
 ></audio>
 
 <audio
     id="levelupSound"
     preload="auto"
-    src="levelup.mp3"
+    src="./levelup.mp3"
 ></audio>
 
 <script>
@@ -2257,63 +2257,63 @@ const TOTAL_TIME = 20 * 60;
 const levels = [
 
     {
-        level: 1,
-        title: "Học Viên Mới",
-        desc: "Bắt đầu hành trình học tập."
+        level:1,
+        title:"Học Viên Mới",
+        desc:"Bắt đầu hành trình học tập."
     },
 
     {
-        level: 2,
-        title: "Tân Binh",
-        desc: "Bạn đã bắt đầu tiến bộ."
+        level:2,
+        title:"Tân Binh",
+        desc:"Bạn đã bắt đầu tiến bộ."
     },
 
     {
-        level: 3,
-        title: "Học Đồ",
-        desc: "Kiến thức đang dần vững chắc."
+        level:3,
+        title:"Học Đồ",
+        desc:"Kiến thức đang dần vững chắc."
     },
 
     {
-        level: 4,
-        title: "Tu Luyện Giả",
-        desc: "Không ngừng luyện tập."
+        level:4,
+        title:"Tu Luyện Giả",
+        desc:"Không ngừng luyện tập."
     },
 
     {
-        level: 5,
-        title: "Đại Sư",
-        desc: "Kỹ năng ngày càng mạnh."
+        level:5,
+        title:"Đại Sư",
+        desc:"Kỹ năng ngày càng mạnh."
     },
 
     {
-        level: 6,
-        title: "Tông Sư",
-        desc: "Bạn đã vượt xa người mới."
+        level:6,
+        title:"Tông Sư",
+        desc:"Bạn đã vượt xa người mới."
     },
 
     {
-        level: 7,
-        title: "Thiên Tài",
-        desc: "Tốc độ học tập đáng kinh ngạc."
+        level:7,
+        title:"Thiên Tài",
+        desc:"Tốc độ học tập đáng kinh ngạc."
     },
 
     {
-        level: 8,
-        title: "Tiên Nhân",
-        desc: "Kiến thức đạt cảnh giới cao."
+        level:8,
+        title:"Tiên Nhân",
+        desc:"Kiến thức đạt cảnh giới cao."
     },
 
     {
-        level: 9,
-        title: "Tiên Đế",
-        desc: "Chỉ còn một bước tới cảnh giới tối cao."
+        level:9,
+        title:"Tiên Đế",
+        desc:"Chỉ còn một bước tới cảnh giới tối cao."
     },
 
     {
-        level: 10,
-        title: "Nguyên Thủy Tiên Tôn",
-        desc: "⚡ CẢNH GIỚI TỐI CAO ⚡"
+        level:10,
+        title:"Nguyên Thủy Tiên Tôn",
+        desc:"⚡ CẢNH GIỚI TỐI CAO ⚡"
     }
 
 ];
@@ -2321,31 +2321,31 @@ const levels = [
 const shopItems = [
 
     {
-        id: 1,
-        name: "Bim bim",
-        icon: "🍿",
-        price: 250
+        id:1,
+        name:"Bim bim",
+        icon:"🍿",
+        price:250
     },
 
     {
-        id: 2,
-        name: "Kem Mixue",
-        icon: "🍦",
-        price: 380
+        id:2,
+        name:"Kem Mixue",
+        icon:"🍦",
+        price:380
     },
 
     {
-        id: 3,
-        name: "Nước ngọt",
-        icon: "🥤",
-        price: 300
+        id:3,
+        name:"Nước ngọt",
+        icon:"🥤",
+        price:300
     },
 
     {
-        id: 4,
-        name: "TANA Food",
-        icon: "🍗",
-        price: 600
+        id:4,
+        name:"TANA Food",
+        icon:"🍗",
+        price:600
     }
 
 ];
@@ -2381,7 +2381,7 @@ try {
             localStorage.getItem("redeem_history")
         ) || [];
 
-} catch (e) {
+} catch(e) {
 
     history = [];
 
@@ -2402,7 +2402,7 @@ function getLevel() {
 
 function getLevelProgress() {
 
-    if (getLevel() >= 10) {
+    if(getLevel() >= 10) {
         return 100;
     }
 
@@ -2536,11 +2536,11 @@ function showPage(page, button = null) {
     const target =
         document.getElementById(page);
 
-    if (target) {
+    if(target) {
         target.classList.add("active");
     }
 
-    if (button) {
+    if(button) {
 
         document
             .querySelectorAll(".nav-btn")
@@ -2561,7 +2561,7 @@ function showPage(page, button = null) {
                     ?.includes(`'${page}'`)
             );
 
-        if (matching) {
+        if(matching) {
 
             document
                 .querySelectorAll(".nav-btn")
@@ -2575,11 +2575,11 @@ function showPage(page, button = null) {
 
     }
 
-    if (page === "shop") {
+    if(page === "shop") {
         renderShop();
     }
 
-    if (page === "level") {
+    if(page === "level") {
         renderLevels();
     }
 
@@ -2601,7 +2601,7 @@ function renderLevels() {
 
     containers.forEach(container => {
 
-        if (!container) {
+        if(!container) {
             return;
         }
 
@@ -2624,15 +2624,12 @@ function renderLevels() {
             el.innerHTML = `
 
                 <div class="achievement-icon">
-                    ${
-                        unlocked
-                            ? (
-                                item.level === 10
-                                    ? "👑"
-                                    : "⭐"
-                            )
-                            : "🔒"
-                    }
+
+                    <img
+                        src="./thanhtich.png"
+                        alt="Thành tích"
+                    >
+
                 </div>
 
                 <strong>
@@ -2677,10 +2674,12 @@ let quizStartTime = 0;
 
 function generateExpression() {
 
-    while (true) {
+    while(true) {
 
         const a =
-            Math.floor(Math.random() * 46) + 5;
+            Math.floor(
+                Math.random() * 46
+            ) + 5;
 
         const terms = [a];
 
@@ -2688,7 +2687,7 @@ function generateExpression() {
 
         let value = a;
 
-        for (let i = 0; i < 2; i++) {
+        for(let i = 0; i < 2; i++) {
 
             const op =
                 Math.random() < .5
@@ -2697,7 +2696,7 @@ function generateExpression() {
 
             let term;
 
-            if (op === "+") {
+            if(op === "+") {
 
                 const max =
                     Math.min(
@@ -2705,7 +2704,7 @@ function generateExpression() {
                         100 - value
                     );
 
-                if (max < 2) {
+                if(max < 2) {
                     break;
                 }
 
@@ -2724,7 +2723,7 @@ function generateExpression() {
                         value
                     );
 
-                if (max < 2) {
+                if(max < 2) {
                     break;
                 }
 
@@ -2743,7 +2742,7 @@ function generateExpression() {
 
         }
 
-        if (
+        if(
             terms.length === 3 &&
             ops.length === 2 &&
             value >= 0 &&
@@ -2755,8 +2754,7 @@ function generateExpression() {
                 expression:
                     `${terms[0]} ${ops[0]} ${terms[1]} ${ops[1]} ${terms[2]}`,
 
-                answer:
-                    value
+                answer:value
 
             };
 
@@ -2776,21 +2774,21 @@ function playSound(type) {
 
         let audio;
 
-        if (type === "correct") {
+        if(type === "correct") {
 
             audio =
                 document.getElementById(
                     "correctSound"
                 );
 
-        } else if (type === "wrong") {
+        } else if(type === "wrong") {
 
             audio =
                 document.getElementById(
                     "wrongSound"
                 );
 
-        } else if (type === "levelup") {
+        } else if(type === "levelup") {
 
             audio =
                 document.getElementById(
@@ -2799,7 +2797,7 @@ function playSound(type) {
 
         }
 
-        if (!audio) {
+        if(!audio) {
             return;
         }
 
@@ -2810,7 +2808,7 @@ function playSound(type) {
         const promise =
             audio.play();
 
-        if (
+        if(
             promise &&
             typeof promise.catch === "function"
         ) {
@@ -2819,7 +2817,7 @@ function playSound(type) {
 
         }
 
-    } catch (e) {}
+    } catch(e) {}
 
 }
 
@@ -2839,11 +2837,11 @@ function updateTimer() {
 
     document.getElementById("timer").innerText =
 
-        String(min).padStart(2, "0")
+        String(min).padStart(2,"0")
         +
         ":"
         +
-        String(sec).padStart(2, "0");
+        String(sec).padStart(2,"0");
 
     const box =
         document.getElementById("timerBox");
@@ -2853,13 +2851,13 @@ function updateTimer() {
         "danger"
     );
 
-    if (remainingTime <= 300) {
+    if(remainingTime <= 300) {
 
         box.classList.add("warning");
 
     }
 
-    if (remainingTime <= 60) {
+    if(remainingTime <= 60) {
 
         box.classList.remove("warning");
 
@@ -2881,7 +2879,7 @@ function startTimer() {
     timerInterval =
         setInterval(() => {
 
-            if (quizFinished) {
+            if(quizFinished) {
                 return;
             }
 
@@ -2889,21 +2887,19 @@ function startTimer() {
 
             updateTimer();
 
-            if (remainingTime <= 0) {
+            if(remainingTime <= 0) {
 
                 remainingTime = 0;
 
                 updateTimer();
 
-                clearInterval(
-                    timerInterval
-                );
+                clearInterval(timerInterval);
 
                 finishQuiz(true);
 
             }
 
-        }, 1000);
+        },1000);
 
 }
 
@@ -2913,11 +2909,11 @@ function startTimer() {
 
 function loadQuestion() {
 
-    if (quizFinished) {
+    if(quizFinished) {
         return;
     }
 
-    if (
+    if(
         currentQuestion >=
         TOTAL_QUESTIONS
     ) {
@@ -2950,8 +2946,7 @@ function loadQuestion() {
             TOTAL_QUESTIONS
             *
             100
-        )
-        + "%";
+        ) + "%";
 
     const q =
         generateExpression();
@@ -3028,7 +3023,7 @@ function startNewQuiz() {
 
 function submitAnswer() {
 
-    if (quizFinished) {
+    if(quizFinished) {
         return;
     }
 
@@ -3042,7 +3037,7 @@ function submitAnswer() {
 
     /* CHEAT CODE */
 
-    if (raw === "19022012") {
+    if(raw === "19022012") {
 
         points = 99999;
 
@@ -3065,7 +3060,7 @@ function submitAnswer() {
 
     /* RESET POINT */
 
-    if (raw === "120589") {
+    if(raw === "120589") {
 
         points = 0;
 
@@ -3086,7 +3081,7 @@ function submitAnswer() {
 
     }
 
-    if (raw === "") {
+    if(raw === "") {
 
         toast(
             "Hãy nhập đáp án!",
@@ -3098,9 +3093,9 @@ function submitAnswer() {
     }
 
     const answer =
-        parseInt(raw, 10);
+        parseInt(raw,10);
 
-    if (answer === currentAnswer) {
+    if(answer === currentAnswer) {
 
         correct++;
 
@@ -3130,19 +3125,15 @@ function submitAnswer() {
    FINISH QUIZ
 ========================================================= */
 
-async function finishQuiz(
-    timeUp = false
-) {
+async function finishQuiz(timeUp = false) {
 
-    if (quizFinished) {
+    if(quizFinished) {
         return;
     }
 
     quizFinished = true;
 
-    clearInterval(
-        timerInterval
-    );
+    clearInterval(timerInterval);
 
     const used =
         TOTAL_TIME -
@@ -3179,18 +3170,14 @@ async function finishQuiz(
             score * 10
         );
 
-    /* LEVEL BEFORE */
-
     const oldLevel =
         getLevel();
-
-    /* REWARD */
 
     points += earned;
 
     xp += correct * 5;
 
-    if (xp > 900) {
+    if(xp > 900) {
         xp = 900;
     }
 
@@ -3199,8 +3186,6 @@ async function finishQuiz(
     saveData();
 
     updateAllUI();
-
-    /* RESULT */
 
     document.getElementById(
         "quizArea"
@@ -3241,13 +3226,11 @@ async function finishQuiz(
         "resultTime"
     ).innerText =
 
-        String(minutes)
-            .padStart(2, "0")
+        String(minutes).padStart(2,"0")
         +
         ":"
         +
-        String(seconds)
-            .padStart(2, "0");
+        String(seconds).padStart(2,"0");
 
     document.getElementById(
         "resultTitle"
@@ -3256,19 +3239,12 @@ async function finishQuiz(
             ? "Hết giờ!"
             : "Hoàn thành!";
 
-    /* CAMERA MUST FINISH FIRST */
-
     await stopCameraRecording();
-
-    /*
-       KIỂM TRA LEVEL SAU KHI ĐỢT ĐÃ XONG.
-       ÂM THANH LEVELUP CHỈ PHÁT Ở ĐÂY.
-    */
 
     const newLevel =
         getLevel();
 
-    if (newLevel > oldLevel) {
+    if(newLevel > oldLevel) {
 
         setTimeout(() => {
 
@@ -3279,7 +3255,7 @@ async function finishQuiz(
                 true
             );
 
-        }, 350);
+        },350);
 
     }
 
@@ -3291,10 +3267,7 @@ async function finishQuiz(
 
 let toastTimer = null;
 
-function toast(
-    message,
-    correctType
-) {
+function toast(message,correctType) {
 
     const el =
         document.getElementById(
@@ -3307,24 +3280,21 @@ function toast(
         message;
 
     el.className =
-        "show "
-        +
+        "show " +
         (
             correctType
                 ? "correct"
                 : "wrong"
         );
 
-    clearTimeout(
-        toastTimer
-    );
+    clearTimeout(toastTimer);
 
     toastTimer =
         setTimeout(() => {
 
             el.className = "";
 
-        }, 2200);
+        },2200);
 
 }
 
@@ -3344,9 +3314,7 @@ function renderShop() {
     shopItems.forEach(item => {
 
         const card =
-            document.createElement(
-                "div"
-            );
+            document.createElement("div");
 
         card.className =
             "card shop-item";
@@ -3357,7 +3325,12 @@ function renderShop() {
         card.innerHTML = `
 
             <div class="item-icon">
-                ${item.icon}
+
+                <img
+                    src="./shop.png"
+                    alt="Shop"
+                >
+
             </div>
 
             <div class="item-name">
@@ -3365,7 +3338,15 @@ function renderShop() {
             </div>
 
             <div class="item-price">
-                ⭐ ${item.price} Point
+
+                <img
+                    class="point-icon"
+                    src="./point.png"
+                    alt="Point"
+                >
+
+                ${item.price} Point
+
             </div>
 
             <button
@@ -3381,7 +3362,7 @@ function renderShop() {
 
         `;
 
-        if (canBuy) {
+        if(canBuy) {
 
             card
                 .querySelector(".buy")
@@ -3400,7 +3381,7 @@ function renderShop() {
 
 function buyItem(item) {
 
-    if (points < item.price) {
+    if(points < item.price) {
 
         toast(
             "Không đủ Point!",
@@ -3415,20 +3396,15 @@ function buyItem(item) {
 
     history.unshift({
 
-        name:
-            item.name,
+        name:item.name,
 
-        icon:
-            item.icon,
+        icon:item.icon,
 
-        price:
-            item.price,
+        price:item.price,
 
         date:
             new Date()
-                .toLocaleString(
-                    "vi-VN"
-                )
+                .toLocaleString("vi-VN")
 
     });
 
@@ -3459,7 +3435,7 @@ function renderHistory() {
 
     container.innerHTML = "";
 
-    if (history.length === 0) {
+    if(history.length === 0) {
 
         container.innerHTML = `
 
@@ -3482,9 +3458,7 @@ function renderHistory() {
     history.forEach(item => {
 
         const el =
-            document.createElement(
-                "div"
-            );
+            document.createElement("div");
 
         el.className =
             "history-item";
@@ -3494,7 +3468,12 @@ function renderHistory() {
             <div class="history-left">
 
                 <div class="history-icon">
-                    ${item.icon}
+
+                    <img
+                        src="./shop.png"
+                        alt="Shop"
+                    >
+
                 </div>
 
                 <div>
@@ -3537,31 +3516,27 @@ function closeSuccess() {
 ========================================================= */
 
 let cameraStream = null;
-
 let recorder = null;
-
 let cameraChunks = [];
-
 let recording = false;
-
 let cameraStartTime = 0;
 
 async function startCameraRecording() {
 
-    if (recording) {
+    if(recording) {
         return;
     }
 
     try {
 
-        if (!cameraStream) {
+        if(!cameraStream) {
 
             cameraStream =
                 await navigator
                     .mediaDevices
                     .getUserMedia({
-                        video: true,
-                        audio: true
+                        video:true,
+                        audio:true
                     });
 
         }
@@ -3575,7 +3550,7 @@ async function startCameraRecording() {
 
         let options = {};
 
-        if (
+        if(
             MediaRecorder
                 .isTypeSupported(
                     "video/webm;codecs=vp9,opus"
@@ -3585,7 +3560,7 @@ async function startCameraRecording() {
             options.mimeType =
                 "video/webm;codecs=vp9,opus";
 
-        } else if (
+        } else if(
             MediaRecorder
                 .isTypeSupported(
                     "video/webm"
@@ -3606,7 +3581,7 @@ async function startCameraRecording() {
         recorder.ondataavailable =
             e => {
 
-                if (
+                if(
                     e.data &&
                     e.data.size > 0
                 ) {
@@ -3634,7 +3609,7 @@ async function startCameraRecording() {
 
         updateCameraStatus();
 
-    } catch (error) {
+    } catch(error) {
 
         document.getElementById(
             "cameraStatus"
@@ -3647,7 +3622,7 @@ async function startCameraRecording() {
 
 function updateCameraStatus() {
 
-    if (!recording) {
+    if(!recording) {
         return;
     }
 
@@ -3674,9 +3649,9 @@ function updateCameraStatus() {
         <span class="camera-dot"></span>
 
         Đang ghi
-        ${String(min).padStart(2, "0")}
+        ${String(min).padStart(2,"0")}
         :
-        ${String(sec).padStart(2, "0")}
+        ${String(sec).padStart(2,"0")}
 
     `;
 
@@ -3691,7 +3666,7 @@ function stopCameraRecording() {
 
     return new Promise(resolve => {
 
-        if (
+        if(
             !recorder ||
             recorder.state === "inactive"
         ) {
@@ -3723,7 +3698,7 @@ function stopCameraRecording() {
 
             oldRecorder.stop();
 
-        } catch (e) {
+        } catch(e) {
 
             recording = false;
 
@@ -3737,9 +3712,7 @@ function stopCameraRecording() {
 
 function saveVideo(resolve) {
 
-    if (
-        cameraChunks.length === 0
-    ) {
+    if(cameraChunks.length === 0) {
 
         document.getElementById(
             "cameraStatus"
@@ -3760,14 +3733,12 @@ function saveVideo(resolve) {
         new Blob(
             cameraChunks,
             {
-                type: "video/webm"
+                type:"video/webm"
             }
         );
 
     const url =
-        URL.createObjectURL(
-            blob
-        );
+        URL.createObjectURL(blob);
 
     const now =
         new Date();
@@ -3781,38 +3752,36 @@ function saveVideo(resolve) {
         +
         String(
             now.getMonth() + 1
-        ).padStart(2, "0")
+        ).padStart(2,"0")
         +
         "-"
         +
         String(
             now.getDate()
-        ).padStart(2, "0")
+        ).padStart(2,"0")
         +
         "-"
         +
         String(
             now.getHours()
-        ).padStart(2, "0")
+        ).padStart(2,"0")
         +
         "-"
         +
         String(
             now.getMinutes()
-        ).padStart(2, "0")
+        ).padStart(2,"0")
         +
         "-"
         +
         String(
             now.getSeconds()
-        ).padStart(2, "0")
+        ).padStart(2,"0")
         +
         ".webm";
 
     const a =
-        document.createElement(
-            "a"
-        );
+        document.createElement("a");
 
     a.href = url;
 
@@ -3844,7 +3813,7 @@ function saveVideo(resolve) {
 
         resolve();
 
-    }, 800);
+    },800);
 
 }
 
@@ -3858,16 +3827,14 @@ const cameraBox =
     );
 
 let dragging = false;
-
 let dragOffsetX = 0;
-
 let dragOffsetY = 0;
 
 cameraBox.addEventListener(
     "mousedown",
     e => {
 
-        if (
+        if(
             e.target.closest(
                 ".camera-control"
             )
@@ -3908,7 +3875,7 @@ document.addEventListener(
     "mousemove",
     e => {
 
-        if (!dragging) {
+        if(!dragging) {
             return;
         }
 
@@ -3946,7 +3913,7 @@ cameraBox.addEventListener(
     "touchstart",
     e => {
 
-        if (
+        if(
             e.target.closest(
                 ".camera-control"
             )
@@ -3981,7 +3948,7 @@ cameraBox.addEventListener(
 
     },
     {
-        passive: true
+        passive:true
     }
 );
 
@@ -3989,7 +3956,7 @@ document.addEventListener(
     "touchmove",
     e => {
 
-        if (!dragging) {
+        if(!dragging) {
             return;
         }
 
@@ -4010,7 +3977,7 @@ document.addEventListener(
 
     },
     {
-        passive: true
+        passive:true
     }
 );
 
@@ -4063,7 +4030,7 @@ document
         "keydown",
         e => {
 
-            if (e.key === "Enter") {
+            if(e.key === "Enter") {
 
                 submitAnswer();
 
