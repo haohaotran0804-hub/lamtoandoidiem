@@ -728,6 +728,8 @@ body{
     display:flex;
     align-items:center;
     justify-content:center;
+    font-size:64px;
+    line-height:1;
 }
 
 .item-icon img{
@@ -785,6 +787,8 @@ body{
     display:flex;
     align-items:center;
     justify-content:center;
+    font-size:28px;
+    line-height:1;
 }
 
 .history-icon img{
@@ -1091,7 +1095,7 @@ body{
 
     <div class="logo">
         <div class="logo-icon">
-            <img src="dashboard.png" alt="KietStudy">
+            <img src="logo.jpg" alt="KietStudy">
         </div>
 
         <div class="logo-text">
@@ -1689,6 +1693,11 @@ const levels = [
     {level:10,title:"Nguyên Thủy Tiên Tôn",desc:"⚡ CẢNH GIỚI TỐI CAO ⚡"}
 ];
 
+/*
+    ICON ĐỒ ĂN
+    Không dùng shop.png cho đồ ăn nữa.
+*/
+
 const shopItems = [
     {id:1,name:"Bim bim",icon:"🍿",price:250},
     {id:2,name:"Kem Mixue",icon:"🍦",price:380},
@@ -1886,6 +1895,7 @@ function renderLevels(){
                     icon =
                         `<img src="thanhtich.png"
                               alt="Level">`;
+
                 }
 
             }else{
@@ -2358,15 +2368,16 @@ function renderShop(){
 
         const canBuy=points>=item.price;
 
+        /*
+            ĐÃ SỬA:
+            Không còn dùng shop.png cho đồ ăn.
+            Dùng trực tiếp emoji trong item.icon.
+        */
+
         card.innerHTML=`
 
             <div class="item-icon">
-
-                <img
-                    src="shop.png"
-                    alt="${item.name}"
-                >
-
+                ${item.icon}
             </div>
 
             <div class="item-name">
@@ -2472,12 +2483,7 @@ function renderHistory(){
             <div class="history-left">
 
                 <div class="history-icon">
-
-                    <img
-                        src="shop.png"
-                        alt=""
-                    >
-
+                    ${item.icon || "🎁"}
                 </div>
 
                 <div>
