@@ -3,1000 +3,1430 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>KietStudy - Nền tảng luyện tập</title>
 
 <style>
-:root{
-    --bg-body:#f8fafc;
-    --bg-surface:#fff;
-    --bg-hover:#f1f5f9;
-    --text:#0f172a;
-    --muted:#64748b;
-    --border:#e2e8f0;
-    --primary:#2563eb;
-    --primary-hover:#1d4ed8;
-    --success:#16a34a;
-    --success-bg:#dcfce7;
-    --danger:#dc2626;
-    --danger-bg:#fee2e2;
-    --warning:#d97706;
-    --warning-bg:#fef3c7;
+/* =========================================================
+   KIETSTUDY — NO-SLOP DESIGN SYSTEM
+========================================================= */
 
-    --radius-sm:6px;
-    --radius-md:8px;
-    --radius-lg:12px;
+:root {
+    --bg-body: #f8fafc;
+    --bg-surface: #ffffff;
+    --bg-surface-hover: #f1f5f9;
 
-    --shadow-sm:0 1px 2px rgb(0 0 0 / .05);
-    --shadow-md:0 4px 6px -1px rgb(0 0 0 / .1);
-    --shadow-lg:0 10px 15px -3px rgb(0 0 0 / .1);
+    --text-main: #0f172a;
+    --text-muted: #64748b;
 
-    --font:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    --border: #e2e8f0;
+
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+
+    --success: #16a34a;
+    --success-bg: #dcfce7;
+
+    --danger: #dc2626;
+    --danger-bg: #fee2e2;
+
+    --warning: #d97706;
+    --warning-bg: #fef3c7;
+
+    --accent: #8b5cf6;
+
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+
+    --shadow-sm:
+        0 1px 2px 0 rgb(0 0 0 / 0.05);
+
+    --shadow-md:
+        0 4px 6px -1px rgb(0 0 0 / 0.1),
+        0 2px 4px -2px rgb(0 0 0 / 0.1);
+
+    --shadow-lg:
+        0 10px 15px -3px rgb(0 0 0 / 0.1),
+        0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+    --font-sans:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        sans-serif;
 }
 
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-body{
-    font-family:var(--font);
-    background:var(--bg-body);
-    color:var(--text);
-    line-height:1.5;
-    min-height:100vh;
-    -webkit-font-smoothing:antialiased;
+body {
+    font-family: var(--font-sans);
+    background: var(--bg-body);
+    color: var(--text-main);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
 }
 
-button,
-input{
-    font-family:inherit;
+/* =========================================================
+   HIDDEN MOUSE GLOW
+========================================================= */
+
+#mouseGlow {
+    display: none !important;
 }
 
-button{
-    -webkit-tap-highlight-color:transparent;
-}
-
-#mouseGlow{
-    display:none!important;
-}
-
-/* =========================
+/* =========================================================
    SIDEBAR
-========================= */
+========================================================= */
 
-.sidebar{
-    width:260px;
-    height:100vh;
-    position:fixed;
-    left:0;
-    top:0;
-    background:var(--bg-surface);
-    border-right:1px solid var(--border);
-    display:flex;
-    flex-direction:column;
-    z-index:40;
+.sidebar {
+    width: 260px;
+    background: var(--bg-surface);
+    border-right: 1px solid var(--border);
+
+    display: flex;
+    flex-direction: column;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    height: 100vh;
+    z-index: 40;
 }
 
-.logo{
-    height:81px;
-    padding:24px;
-    border-bottom:1px solid var(--border);
-    display:flex;
-    align-items:center;
-    gap:12px;
+.logo {
+    padding: 24px;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    border-bottom: 1px solid var(--border);
 }
 
-.logo-icon{
-    width:32px;
-    height:32px;
-    border-radius:var(--radius-sm);
-    background:var(--primary);
-    color:white;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:800;
-    font-size:15px;
+.logo-icon {
+    width: 32px;
+    height: 32px;
+
+    border-radius: var(--radius-sm);
+
+    background: var(--primary);
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 15px;
+    font-weight: 800;
 }
 
-.logo-text{
-    font-size:20px;
-    font-weight:750;
+.nav-title {
+    font-size: 12px;
+    font-weight: 600;
+
+    color: var(--text-muted);
+
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+
+    padding: 24px 24px 8px;
 }
 
-.nav-title{
-    padding:24px 24px 8px;
-    font-size:12px;
-    font-weight:700;
-    color:var(--muted);
-    text-transform:uppercase;
-    letter-spacing:.05em;
+.nav-menu {
+    padding: 0 16px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
-.nav-menu{
-    padding:0 16px;
-    display:flex;
-    flex-direction:column;
-    gap:4px;
+.nav-btn {
+    width: 100%;
+
+    background: transparent;
+    border: none;
+
+    padding: 10px 12px;
+
+    border-radius: var(--radius-sm);
+
+    color: var(--text-muted);
+
+    font-size: 14px;
+    font-weight: 500;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    cursor: pointer;
+
+    text-align: left;
+
+    transition:
+        background-color .15s,
+        color .15s;
 }
 
-.nav-btn{
-    width:100%;
-    border:0;
-    background:transparent;
-    color:var(--muted);
-    padding:10px 12px;
-    border-radius:var(--radius-sm);
-    font-size:14px;
-    font-weight:500;
-    display:flex;
-    align-items:center;
-    gap:12px;
-    cursor:pointer;
-    text-align:left;
+.nav-btn:hover {
+    background: var(--bg-surface-hover);
+    color: var(--text-main);
 }
 
-.nav-btn:hover{
-    background:var(--bg-hover);
-    color:var(--text);
+.nav-btn.active {
+    background: #eff6ff;
+    color: var(--primary);
+    font-weight: 600;
 }
 
-.nav-btn.active{
-    background:#eff6ff;
-    color:var(--primary);
-    font-weight:650;
+.sidebar-bottom {
+    margin-top: auto;
+
+    padding: 24px 16px;
+
+    border-top: 1px solid var(--border);
 }
 
-.sidebar-bottom{
-    margin-top:auto;
-    padding:24px 16px;
-    border-top:1px solid var(--border);
+.mini-level {
+    background: var(--bg-surface-hover);
+
+    padding: 16px;
+
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
 }
 
-.mini-level{
-    background:var(--bg-hover);
-    border:1px solid var(--border);
-    border-radius:var(--radius-md);
-    padding:16px;
+.mini-level-top {
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    margin-bottom: 8px;
 }
 
-.mini-level-top{
-    display:flex;
-    justify-content:space-between;
-    font-size:13px;
-    font-weight:650;
-    margin-bottom:8px;
-}
-
-/* =========================
-   MAIN
-========================= */
-
-.main{
-    margin-left:260px;
-    padding:32px 48px;
-    max-width:1460px;
-}
-
-.topbar{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:40px;
-}
-
-.welcome h1{
-    font-size:24px;
-    font-weight:650;
-    line-height:1.25;
-}
-
-.welcome p{
-    color:var(--muted);
-    font-size:14px;
-    margin-top:5px;
-}
-
-.top-actions{
-    display:flex;
-    align-items:center;
-    gap:16px;
-}
-
-.point-pill{
-    display:flex;
-    align-items:center;
-    gap:6px;
-    background:var(--warning-bg);
-    border:1px solid #fcd34d;
-    color:var(--warning);
-    padding:6px 12px;
-    border-radius:var(--radius-md);
-    font-size:14px;
-    font-weight:650;
-}
-
-/* =========================
-   BUTTONS
-========================= */
-
-.btn{
-    border:1px solid transparent;
-    border-radius:var(--radius-sm);
-    padding:8px 16px;
-    font-size:14px;
-    font-weight:550;
-    cursor:pointer;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-    transition:.15s;
-}
-
-.btn:disabled{
-    opacity:.5;
-    cursor:not-allowed;
-}
-
-.btn-primary{
-    background:var(--primary);
-    color:#fff;
-}
-
-.btn-primary:hover:not(:disabled){
-    background:var(--primary-hover);
-}
-
-.btn-secondary{
-    background:#fff;
-    border-color:var(--border);
-    color:var(--text);
-}
-
-.btn-secondary:hover:not(:disabled){
-    background:var(--bg-hover);
-}
-
-/* =========================
-   PAGE
-========================= */
-
-.page{
-    display:none;
-}
-
-.page.active{
-    display:block;
-}
-
-.section-header{
-    margin-bottom:24px;
-}
-
-.section-title{
-    font-size:20px;
-    font-weight:650;
-    line-height:1.3;
-    margin-bottom:4px;
-}
-
-.section-desc{
-    font-size:14px;
-    color:var(--muted);
-}
-
-/* =========================
-   CARD
-========================= */
-
-.card{
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:var(--radius-lg);
-    padding:24px;
-    box-shadow:var(--shadow-sm);
-}
-
-/* =========================
+/* =========================================================
    PROGRESS
-========================= */
+========================================================= */
 
-.progress-bar-bg{
-    height:6px;
-    width:100%;
-    background:var(--border);
-    border-radius:999px;
-    overflow:hidden;
+.progress-bar-bg {
+    width: 100%;
+    height: 6px;
+
+    background: var(--border);
+
+    border-radius: 999px;
+
+    overflow: hidden;
 }
 
-.progress-bar-fill{
-    height:100%;
-    width:0%;
-    background:var(--primary);
-    border-radius:999px;
-    transition:width:.3s ease;
+.progress-bar-fill {
+    width: 0;
+    height: 100%;
+
+    background: var(--primary);
+
+    border-radius: 999px;
+
+    transition: width .3s ease;
 }
 
-/* =========================
-   DASHBOARD
-========================= */
+/* =========================================================
+   MAIN
+========================================================= */
 
-.grid-3{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-    margin-bottom:24px;
+.main {
+    flex: 1;
+
+    margin-left: 260px;
+
+    padding: 32px 48px;
+
+    width: calc(100% - 260px);
+
+    max-width: 1400px;
 }
 
-.stat-card{
-    display:flex;
-    align-items:center;
-    gap:16px;
+/* =========================================================
+   TOPBAR
+========================================================= */
+
+.topbar {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 40px;
 }
 
-.stat-icon{
-    width:48px;
-    height:48px;
-    flex:none;
-    border:1px solid var(--border);
-    border-radius:var(--radius-md);
-    background:var(--bg-hover);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:24px;
+.welcome h1 {
+    font-size: 24px;
+    font-weight: 600;
 }
 
-.stat-info{
-    min-width:0;
+.welcome p {
+    color: var(--text-muted);
+
+    font-size: 14px;
+
+    margin-top: 4px;
 }
 
-.stat-title{
-    display:block;
-    color:var(--muted);
-    font-size:13px;
-    font-weight:500;
+.top-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
 }
 
-.stat-value{
-    display:block;
-    margin-top:3px;
-    font-size:24px;
-    line-height:1.15;
-    font-weight:650;
-    font-variant-numeric:tabular-nums;
+.point-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    padding: 6px 12px;
+
+    border-radius: var(--radius-md);
+
+    background: var(--warning-bg);
+    border: 1px solid #fcd34d;
+
+    color: var(--warning);
+
+    font-size: 14px;
+    font-weight: 600;
+
+    font-variant-numeric: tabular-nums;
 }
 
-.level-card{
-    margin-bottom:32px;
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.btn {
+    border: 1px solid transparent;
+
+    border-radius: var(--radius-sm);
+
+    padding: 8px 16px;
+
+    min-height: 36px;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    transition: all .15s;
 }
 
-.level-header{
-    display:flex;
-    align-items:flex-end;
-    justify-content:space-between;
-    gap:20px;
-    margin-bottom:16px;
+.btn:disabled {
+    opacity: .5;
+    cursor: not-allowed;
 }
 
-.level-name{
-    font-size:18px;
-    font-weight:650;
-    line-height:1.3;
+.btn-primary {
+    background: var(--primary);
+    color: white;
 }
 
-.level-name span{
-    color:var(--primary);
+.btn-primary:hover:not(:disabled) {
+    background: var(--primary-hover);
 }
 
-.level-desc{
-    color:var(--muted);
-    font-size:14px;
-    margin-top:4px;
+.btn-secondary {
+    background: var(--bg-surface);
+
+    border-color: var(--border);
+
+    color: var(--text-main);
 }
 
-.level-xp{
-    font-size:14px;
-    font-weight:650;
-    white-space:nowrap;
-    font-variant-numeric:tabular-nums;
+.btn-secondary:hover:not(:disabled) {
+    background: var(--bg-surface-hover);
 }
 
-.achievement-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
-    gap:16px;
+/* =========================================================
+   PAGES
+========================================================= */
+
+.page {
+    display: none;
 }
 
-.achievement{
-    border:1px solid var(--border);
-    border-radius:var(--radius-md);
-    background:#fff;
-    padding:16px;
-    text-align:center;
+.page.active {
+    display: block;
 }
 
-.achievement-icon{
-    font-size:24px;
-    margin-bottom:8px;
+.section-header {
+    margin-bottom: 24px;
 }
 
-.achievement strong{
-    display:block;
-    font-size:14px;
-    font-weight:650;
-    line-height:1.25;
+.section-title {
+    font-size: 20px;
+    font-weight: 600;
+
+    margin-bottom: 4px;
 }
 
-.achievement small{
-    display:block;
-    color:var(--muted);
-    font-size:12px;
-    margin-top:3px;
+.section-desc {
+    color: var(--text-muted);
+
+    font-size: 14px;
 }
 
-/* =========================
+/* =========================================================
+   CARD
+========================================================= */
+
+.card {
+    background: var(--bg-surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-lg);
+
+    padding: 24px;
+
+    box-shadow: var(--shadow-sm);
+}
+
+/* =========================================================
+   DASHBOARD GRID
+========================================================= */
+
+.grid-3 {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 20px;
+
+    margin-bottom: 24px;
+}
+
+/* =========================================================
+   STAT CARDS
+========================================================= */
+
+.stat-card {
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+
+    min-height: 100px;
+}
+
+.stat-icon {
+    flex: 0 0 48px;
+
+    width: 48px;
+    height: 48px;
+
+    background: var(--bg-surface-hover);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-md);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 24px;
+
+    line-height: 1;
+}
+
+.stat-info {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    min-width: 0;
+}
+
+.stat-title {
+    font-size: 13px;
+
+    color: var(--text-muted);
+
+    font-weight: 500;
+
+    line-height: 1.35;
+}
+
+.stat-value {
+    font-size: 24px;
+
+    font-weight: 600;
+
+    line-height: 1.15;
+
+    margin-top: 5px;
+
+    font-variant-numeric: tabular-nums;
+
+    display: flex;
+    align-items: center;
+}
+
+/* =========================================================
+   LEVEL
+========================================================= */
+
+.level-card {
+    margin-bottom: 32px;
+}
+
+.level-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+
+    margin-bottom: 16px;
+}
+
+.level-name {
+    font-size: 18px;
+    font-weight: 600;
+
+    line-height: 1.35;
+}
+
+.level-name span {
+    color: var(--primary);
+}
+
+.level-desc {
+    color: var(--text-muted);
+
+    font-size: 14px;
+
+    margin-top: 4px;
+}
+
+.level-xp {
+    flex-shrink: 0;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    color: var(--text-main);
+
+    font-variant-numeric: tabular-nums;
+
+    white-space: nowrap;
+}
+
+/* =========================================================
+   ACHIEVEMENTS
+========================================================= */
+
+.achievement-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fill, minmax(140px, 1fr));
+
+    gap: 16px;
+}
+
+.achievement {
+    background: var(--bg-surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-md);
+
+    padding: 16px;
+
+    text-align: center;
+}
+
+.achievement-icon {
+    font-size: 24px;
+
+    line-height: 1;
+
+    margin-bottom: 10px;
+}
+
+.achievement strong {
+    display: block;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    line-height: 1.3;
+
+    margin-bottom: 3px;
+}
+
+.achievement small {
+    font-size: 12px;
+
+    color: var(--text-muted);
+
+    line-height: 1.35;
+}
+
+/* =========================================================
    QUIZ
-========================= */
+========================================================= */
 
-.quiz-container{
-    max-width:700px;
-    margin:0 auto;
+.quiz-container {
+    width: 100%;
+    max-width: 680px;
+
+    margin: 0 auto;
 }
 
-.quiz-top{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:20px;
+.quiz-top {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 20px;
 }
 
-.badge{
-    background:var(--bg-hover);
-    border:1px solid var(--border);
-    border-radius:var(--radius-sm);
-    padding:5px 10px;
-    font-size:13px;
-    font-weight:550;
+.badge {
+    background: var(--bg-surface-hover);
+
+    color: var(--text-main);
+
+    border: 1px solid var(--border);
+
+    padding: 5px 10px;
+
+    border-radius: var(--radius-sm);
+
+    font-size: 13px;
+    font-weight: 500;
+
+    line-height: 1.2;
+
+    font-variant-numeric: tabular-nums;
 }
 
-.timer{
-    min-width:82px;
-    text-align:center;
-    font-variant-numeric:tabular-nums;
-    font-weight:650;
-    background:var(--bg-hover);
-    border:1px solid var(--border);
-    border-radius:var(--radius-sm);
-    padding:5px 10px;
+.timer {
+    background: var(--bg-surface-hover);
+
+    border: 1px solid var(--border);
+
+    padding: 5px 10px;
+
+    border-radius: var(--radius-sm);
+
+    font-size: 14px;
+    font-weight: 600;
+
+    line-height: 1.2;
+
+    font-variant-numeric: tabular-nums;
 }
 
-.timer.warning{
-    background:var(--warning-bg);
-    color:var(--warning);
-    border-color:#fcd34d;
+.timer.warning {
+    background: var(--warning-bg);
+    color: var(--warning);
+    border-color: #fcd34d;
 }
 
-.timer.danger{
-    background:var(--danger-bg);
-    color:var(--danger);
-    border-color:#fca5a5;
+.timer.danger {
+    background: var(--danger-bg);
+    color: var(--danger);
+    border-color: #fca5a5;
 }
 
-/* =========================
+/* =========================================================
    MATH BOX
-========================= */
+========================================================= */
 
-.math-box{
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:var(--radius-lg);
-    box-shadow:var(--shadow-sm);
-    margin:24px 0;
-    padding:64px 40px 58px;
-    text-align:center;
+.math-box {
+    min-height: 360px;
+
+    padding: 48px 40px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    background: var(--bg-surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow-sm);
+
+    margin-bottom: 24px;
 }
 
-.expression{
-    min-height:58px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-family:Georgia,"Times New Roman",serif;
-    font-size:48px;
-    line-height:1;
-    font-weight:600;
-    letter-spacing:1px;
-    font-variant-numeric:tabular-nums;
-    margin-bottom:42px;
+/*
+   Quan trọng:
+   Biểu thức được căn giữa thật sự,
+   line-height cố định để số không bị lệch trên/dưới.
+*/
+
+.expression {
+    width: 100%;
+
+    min-height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 48px;
+
+    font-weight: 500;
+
+    font-family:
+        "Cambria Math",
+        "Times New Roman",
+        Georgia,
+        serif;
+
+    line-height: 1;
+
+    letter-spacing: 1px;
+
+    color: var(--text-main);
+
+    font-variant-numeric: tabular-nums;
+
+    margin-bottom: 40px;
 }
 
-.answer-row{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:12px;
+.answer-row {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 12px;
 }
 
-.answer-input{
-    width:140px;
-    height:48px;
-    border:1px solid var(--border);
-    border-radius:var(--radius-md);
-    background:var(--bg-body);
-    color:var(--text);
-    outline:none;
-    text-align:center;
-    font-size:24px;
-    line-height:48px;
-    padding:0 10px;
-    font-weight:550;
-    font-variant-numeric:tabular-nums;
+.answer-input {
+    width: 140px;
+    height: 48px;
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-md);
+
+    font-size: 24px;
+
+    font-weight: 500;
+
+    line-height: 48px;
+
+    padding: 0 12px;
+
+    text-align: center;
+
+    font-variant-numeric: tabular-nums;
+
+    color: var(--text-main);
+
+    background: var(--bg-body);
+
+    outline: none;
+
+    transition: all .2s;
+
+    appearance: textfield;
 }
 
-.answer-input:focus{
-    border-color:var(--primary);
-    background:#fff;
-    box-shadow:0 0 0 3px rgb(37 99 235 / .15);
+.answer-input::-webkit-outer-spin-button,
+.answer-input::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
 }
 
-.answer-btn{
-    height:48px;
+.answer-input:focus {
+    border-color: var(--primary);
+
+    background: white;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(37, 99, 235, .15);
 }
 
-.quiz-info{
-    display:flex;
-    justify-content:space-between;
-    gap:20px;
-    font-size:14px;
-    color:var(--muted);
+.answer-btn {
+    height: 48px;
+
+    padding: 0 24px;
 }
 
-.quiz-info strong{
-    color:var(--success);
-    font-weight:650;
+.quiz-info {
+    display: flex;
+
+    justify-content: space-between;
+
+    font-size: 14px;
+
+    color: var(--text-muted);
 }
 
-/* =========================
+.quiz-info strong {
+    color: var(--success);
+
+    font-weight: 600;
+
+    font-variant-numeric: tabular-nums;
+}
+
+/* =========================================================
    RESULT
-========================= */
+========================================================= */
 
-.result-container{
-    max-width:520px;
-    margin:0 auto;
-    text-align:center;
+.result-container {
+    width: 100%;
+    max-width: 500px;
+
+    margin: 0 auto;
+
+    text-align: center;
 }
 
-.score-circle{
-    width:120px;
-    height:120px;
-    border:4px solid var(--primary);
-    border-radius:50%;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    margin:32px auto;
+.score-circle {
+    width: 120px;
+    height: 120px;
+
+    margin: 32px auto;
+
+    border-radius: 50%;
+
+    border: 4px solid var(--primary);
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
 }
 
-.score-circle strong{
-    color:var(--primary);
-    font-size:32px;
-    line-height:1;
-    font-variant-numeric:tabular-nums;
+.score-circle strong {
+    font-size: 32px;
+
+    color: var(--primary);
+
+    line-height: 1;
+
+    font-variant-numeric: tabular-nums;
 }
 
-.score-circle span{
-    color:var(--muted);
-    font-size:12px;
-    margin-top:5px;
+.score-circle span {
+    font-size: 12px;
+
+    color: var(--text-muted);
+
+    margin-top: 5px;
+
+    line-height: 1;
 }
 
-.earned-badge{
-    display:inline-block;
-    padding:8px 16px;
-    border-radius:var(--radius-sm);
-    background:var(--success-bg);
-    color:var(--success);
-    font-size:14px;
-    font-weight:650;
-    margin-bottom:24px;
+.earned-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--success-bg);
+
+    color: var(--success);
+
+    padding: 8px 16px;
+
+    border-radius: var(--radius-sm);
+
+    font-weight: 600;
+    font-size: 14px;
+
+    line-height: 1.2;
+
+    margin-bottom: 24px;
 }
 
-.result-details{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:16px;
-    text-align:left;
-    background:var(--bg-hover);
-    border-radius:var(--radius-md);
-    padding:24px;
-    margin-bottom:32px;
+.result-details {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 16px;
+
+    text-align: left;
+
+    margin-bottom: 32px;
+
+    background: var(--bg-surface-hover);
+
+    padding: 24px;
+
+    border-radius: var(--radius-md);
 }
 
-.result-details p{
-    display:flex;
-    justify-content:space-between;
-    gap:10px;
-    border-bottom:1px solid var(--border);
-    padding-bottom:8px;
-    color:var(--muted);
-    font-size:14px;
+.result-details p {
+    font-size: 14px;
+
+    color: var(--text-muted);
+
+    display: flex;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    border-bottom: 1px solid var(--border);
+
+    padding-bottom: 8px;
+
+    line-height: 1.35;
 }
 
-.result-details strong{
-    color:var(--text);
-    font-variant-numeric:tabular-nums;
+.result-details strong {
+    color: var(--text-main);
+
+    font-variant-numeric: tabular-nums;
+
+    white-space: nowrap;
 }
 
-/* =========================
+/* =========================================================
    SHOP
-========================= */
+========================================================= */
 
-.shop-balance{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    background:var(--warning-bg);
-    border:1px solid #fcd34d;
-    border-radius:var(--radius-md);
-    color:var(--warning);
-    padding:16px 20px;
-    font-weight:650;
-    margin-bottom:24px;
+.shop-balance {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    background: var(--warning-bg);
+
+    border: 1px solid #fcd34d;
+
+    padding: 16px 20px;
+
+    border-radius: var(--radius-md);
+
+    font-weight: 600;
+
+    color: var(--warning);
+
+    margin-bottom: 24px;
+
+    font-variant-numeric: tabular-nums;
 }
 
-.shop-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
-    gap:20px;
+.shop-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fill, minmax(200px, 1fr));
+
+    gap: 20px;
 }
 
-.shop-item{
-    display:flex;
-    flex-direction:column;
-    text-align:center;
+.shop-item {
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
 }
 
-.item-icon{
-    font-size:32px;
-    line-height:1;
-    margin-bottom:12px;
+.item-icon {
+    font-size: 32px;
+
+    line-height: 1;
+
+    margin-bottom: 12px;
 }
 
-.item-name{
-    font-size:16px;
-    font-weight:650;
+.item-name {
+    font-weight: 600;
+
+    font-size: 16px;
+
+    line-height: 1.3;
 }
 
-.item-price{
-    color:var(--warning);
-    font-size:14px;
-    font-weight:650;
-    margin:8px 0 16px;
+.item-price {
+    color: var(--warning);
+
+    font-weight: 600;
+
+    font-size: 14px;
+
+    margin: 8px 0 16px;
+
+    font-variant-numeric: tabular-nums;
 }
 
-.shop-item .btn{
-    width:100%;
-    margin-top:auto;
+.shop-item .btn {
+    width: 100%;
+
+    margin-top: auto;
 }
 
-.history-list{
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-    margin-top:16px;
+/* =========================================================
+   HISTORY
+========================================================= */
+
+.history-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    margin-top: 16px;
 }
 
-.history-item{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:var(--radius-md);
-    padding:12px 16px;
+.history-item {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 12px 16px;
+
+    background: var(--bg-surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-md);
 }
 
-.history-left{
-    display:flex;
-    align-items:center;
-    gap:12px;
+.history-left {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
 }
 
-.history-icon{
-    font-size:20px;
+.history-icon {
+    font-size: 20px;
+
+    line-height: 1;
 }
 
-.history-name{
-    font-size:14px;
-    font-weight:550;
+.history-name {
+    font-weight: 500;
+
+    font-size: 14px;
 }
 
-.history-date{
-    color:var(--muted);
-    font-size:12px;
+.history-date {
+    font-size: 12px;
+
+    color: var(--text-muted);
+
+    margin-top: 2px;
 }
 
-.history-price{
-    color:var(--danger);
-    font-size:14px;
-    font-weight:650;
+.history-price {
+    font-weight: 600;
+
+    color: var(--danger);
+
+    font-variant-numeric: tabular-nums;
 }
 
-/* =========================
+/* =========================================================
    CAMERA
-========================= */
+========================================================= */
 
-#cameraBox{
-    position:fixed;
-    top:24px;
-    right:24px;
-    width:240px;
-    background:#0f172a;
-    border:1px solid #334155;
-    border-radius:var(--radius-md);
-    box-shadow:var(--shadow-lg);
-    overflow:hidden;
-    z-index:50;
-    cursor:grab;
-    user-select:none;
-    touch-action:none;
+#cameraBox {
+    position: fixed;
+
+    top: 24px;
+    right: 24px;
+
+    width: 240px;
+
+    background: #0f172a;
+
+    border-radius: var(--radius-md);
+
+    box-shadow: var(--shadow-lg);
+
+    z-index: 50;
+
+    overflow: hidden;
+
+    cursor: grab;
+
+    border: 1px solid #334155;
 }
 
-#cameraBox.dragging{
-    cursor:grabbing;
+#cameraBox.dragging {
+    cursor: grabbing;
 }
 
-.camera-head{
-    height:36px;
-    padding:0 12px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    background:#1e293b;
-    border-bottom:1px solid #334155;
-    color:#e2e8f0;
+.camera-head {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 8px 12px;
+
+    background: #1e293b;
+
+    border-bottom: 1px solid #334155;
+
+    color: #e2e8f0;
 }
 
-.camera-title{
-    font-size:11px;
-    font-weight:650;
-    letter-spacing:.05em;
-    text-transform:uppercase;
+.camera-title {
+    font-size: 11px;
+
+    font-weight: 600;
+
+    letter-spacing: .05em;
+
+    text-transform: uppercase;
 }
 
-.camera-control{
-    border:0;
-    background:transparent;
-    color:#94a3b8;
-    cursor:pointer;
-    font-size:16px;
-    line-height:1;
+.camera-control {
+    background: transparent;
+
+    border: none;
+
+    color: #94a3b8;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    line-height: 1;
 }
 
-.camera-control:hover{
-    color:#fff;
+.camera-control:hover {
+    color: white;
 }
 
-#cameraPreview{
-    display:block;
-    width:100%;
-    height:135px;
-    object-fit:cover;
-    background:#000;
-    transform:scaleX(-1);
+#cameraPreview {
+    width: 100%;
+    height: 135px;
+
+    background: #000;
+
+    object-fit: cover;
+
+    transform: scaleX(-1);
+
+    display: block;
 }
 
-.camera-status{
-    min-height:34px;
-    display:flex;
-    align-items:center;
-    gap:6px;
-    padding:8px 12px;
-    color:#94a3b8;
-    font-size:11px;
+.camera-status {
+    padding: 8px 12px;
+
+    font-size: 11px;
+
+    color: #94a3b8;
+
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    line-height: 1.2;
 }
 
-.camera-dot{
-    width:8px;
-    height:8px;
-    flex:none;
-    border-radius:50%;
-    background:#64748b;
+.camera-dot {
+    width: 8px;
+    height: 8px;
+
+    flex: 0 0 8px;
+
+    border-radius: 50%;
+
+    background: var(--text-muted);
 }
 
-.recording .camera-dot{
-    background:var(--danger);
+.recording .camera-dot {
+    background: var(--danger);
 }
 
-#showCamera{
-    display:none;
-    position:fixed;
-    bottom:24px;
-    right:24px;
-    z-index:45;
+#showCamera {
+    display: none;
+
+    position: fixed;
+
+    bottom: 24px;
+    right: 24px;
+
+    z-index: 40;
 }
 
-/* =========================
+/* =========================================================
    TOAST
-========================= */
+========================================================= */
 
-#toast{
-    position:fixed;
-    right:32px;
-    bottom:32px;
-    max-width:330px;
-    background:#fff;
-    border:1px solid var(--border);
-    border-left:4px solid var(--primary);
-    border-radius:var(--radius-md);
-    box-shadow:var(--shadow-lg);
-    padding:14px 20px;
-    font-size:14px;
-    font-weight:550;
-    transform:translateY(150%);
-    opacity:0;
-    transition:.25s;
-    z-index:100;
+#toast {
+    position: fixed;
+
+    bottom: 32px;
+    right: 32px;
+
+    background: var(--bg-surface);
+
+    border: 1px solid var(--border);
+
+    border-left: 4px solid var(--primary);
+
+    padding: 16px 24px;
+
+    border-radius: var(--radius-md);
+
+    box-shadow: var(--shadow-lg);
+
+    font-weight: 500;
+
+    font-size: 14px;
+
+    transform: translateY(150%);
+
+    opacity: 0;
+
+    transition:
+        transform .3s cubic-bezier(.16,1,.3,1),
+        opacity .3s;
+
+    z-index: 100;
 }
 
-#toast.show{
-    transform:translateY(0);
-    opacity:1;
+#toast.show {
+    transform: translateY(0);
+
+    opacity: 1;
 }
 
-#toast.correct{
-    border-left-color:var(--success);
+#toast.correct {
+    border-left-color: var(--success);
 }
 
-#toast.wrong{
-    border-left-color:var(--danger);
+#toast.wrong {
+    border-left-color: var(--danger);
 }
 
-/* =========================
+/* =========================================================
    MODAL
-========================= */
+========================================================= */
 
-.overlay{
-    position:fixed;
-    inset:0;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    background:rgb(15 23 42 / .6);
-    z-index:999;
-    padding:24px;
+.overlay {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(15,23,42,.6);
+
+    z-index: 999;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
 }
 
-.modal{
-    width:100%;
-    max-width:400px;
-    background:#fff;
-    border-radius:var(--radius-lg);
-    box-shadow:var(--shadow-lg);
-    padding:32px;
-    text-align:center;
+.modal {
+    background: var(--bg-surface);
+
+    width: 100%;
+    max-width: 400px;
+
+    border-radius: var(--radius-lg);
+
+    padding: 32px;
+
+    text-align: center;
+
+    box-shadow: var(--shadow-lg);
 }
 
-.modal-icon{
-    font-size:48px;
-    line-height:1;
-    margin-bottom:16px;
+.modal-icon {
+    font-size: 48px;
+
+    line-height: 1;
+
+    margin-bottom: 16px;
 }
 
-.modal h2{
-    font-size:20px;
-    margin-bottom:8px;
+.modal h2 {
+    font-size: 20px;
+
+    font-weight: 600;
+
+    margin-bottom: 8px;
 }
 
-.modal p{
-    color:var(--muted);
-    font-size:14px;
-    margin-bottom:24px;
+.modal p {
+    color: var(--text-muted);
+
+    font-size: 14px;
+
+    margin-bottom: 24px;
+
+    line-height: 1.5;
 }
 
-.modal .btn{
-    width:100%;
+.modal .btn {
+    width: 100%;
 }
 
-/* =========================
+/* =========================================================
    RESPONSIVE
-========================= */
+========================================================= */
 
-@media(max-width:900px){
+@media(max-width:900px) {
 
-    .sidebar{
-        width:72px;
-    }
-
-    .logo{
-        justify-content:center;
-        padding:20px 0;
+    .sidebar {
+        width: 72px;
     }
 
     .logo-text,
     .nav-title,
     .nav-btn span:not(.nav-icon),
-    .sidebar-bottom{
-        display:none;
+    .sidebar-bottom {
+        display: none;
     }
 
-    .nav-menu{
-        padding:16px 8px;
+    .logo {
+        justify-content: center;
+
+        padding: 20px 0;
     }
 
-    .nav-btn{
-        justify-content:center;
-        padding:12px 0;
+    .nav-menu {
+        padding: 16px 8px;
     }
 
-    .main{
-        margin-left:72px;
-        padding:24px;
+    .nav-btn {
+        justify-content: center;
+
+        padding: 12px 0;
     }
 
-    .grid-3{
-        grid-template-columns:repeat(2,1fr);
+    .main {
+        margin-left: 72px;
+
+        width: calc(100% - 72px);
+
+        padding: 24px;
+    }
+
+    .grid-3 {
+        grid-template-columns:
+            repeat(2, minmax(0,1fr));
+    }
+
+    .result-details {
+        grid-template-columns: 1fr;
     }
 }
 
-@media(max-width:600px){
+@media(max-width:600px) {
 
-    .main{
-        padding:16px;
+    .main {
+        padding: 16px;
     }
 
-    .topbar{
-        flex-direction:column;
-        align-items:flex-start;
-        gap:16px;
+    .topbar {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 16px;
     }
 
-    .grid-3{
-        grid-template-columns:1fr;
+    .grid-3 {
+        grid-template-columns: 1fr;
     }
 
-    .math-box{
-        padding:48px 20px;
+    .math-box {
+        min-height: 320px;
+
+        padding: 36px 20px;
     }
 
-    .expression{
-        font-size:36px;
-        min-height:44px;
-        margin-bottom:36px;
+    .expression {
+        font-size: 36px;
+
+        min-height: 52px;
+
+        margin-bottom: 32px;
     }
 
-    .answer-row{
-        flex-direction:column;
+    .answer-row {
+        flex-direction: column;
     }
 
     .answer-input,
-    .answer-btn{
-        width:100%;
+    .answer-btn {
+        width: 100%;
     }
 
-    .result-details{
-        grid-template-columns:1fr;
+    #cameraBox {
+        width: 160px;
+
+        top: 16px;
+        right: 16px;
     }
 
-    #cameraBox{
-        width:160px;
-        top:16px;
-        right:16px;
+    #cameraPreview {
+        height: 90px;
     }
 
-    #cameraPreview{
-        height:90px;
+    .quiz-info {
+        flex-direction: column;
+
+        gap: 6px;
     }
 
-    #toast{
-        left:16px;
-        right:16px;
-        bottom:20px;
-        max-width:none;
+    .level-header {
+        align-items: flex-start;
+
+        flex-direction: column;
     }
 }
 </style>
@@ -1006,37 +1436,58 @@ button{
 
 <div id="mouseGlow"></div>
 
-<!-- =========================
+<!-- =========================================================
      SIDEBAR
-========================= -->
+========================================================= -->
 
 <aside class="sidebar">
 
     <div class="logo">
-        <div class="logo-icon">K</div>
-        <div class="logo-text">KietStudy</div>
+
+        <div class="logo-icon">
+            K
+        </div>
+
+        <div class="logo-text">
+            KietStudy
+        </div>
+
     </div>
 
-    <div class="nav-title">Menu</div>
+    <div class="nav-title">
+        Menu
+    </div>
 
     <div class="nav-menu">
 
-        <button class="nav-btn active" onclick="showPage('dashboard',this)">
+        <button
+            class="nav-btn active"
+            onclick="showPage('dashboard', this)"
+        >
             <span class="nav-icon">🏠</span>
             <span>Dashboard</span>
         </button>
 
-        <button class="nav-btn" onclick="showPage('practice',this)">
+        <button
+            class="nav-btn"
+            onclick="showPage('practice', this)"
+        >
             <span class="nav-icon">📝</span>
             <span>Luyện tập</span>
         </button>
 
-        <button class="nav-btn" onclick="showPage('level',this)">
+        <button
+            class="nav-btn"
+            onclick="showPage('level', this)"
+        >
             <span class="nav-icon">⭐</span>
             <span>Thành tích</span>
         </button>
 
-        <button class="nav-btn" onclick="showPage('shop',this)">
+        <button
+            class="nav-btn"
+            onclick="showPage('shop', this)"
+        >
             <span class="nav-icon">🛒</span>
             <span>Cửa hàng</span>
         </button>
@@ -1053,7 +1504,10 @@ button{
             </div>
 
             <div class="progress-bar-bg">
-                <div class="progress-bar-fill" id="miniProgress"></div>
+                <div
+                    class="progress-bar-fill"
+                    id="miniProgress"
+                ></div>
             </div>
 
         </div>
@@ -1062,28 +1516,38 @@ button{
 
 </aside>
 
-
-<!-- =========================
+<!-- =========================================================
      MAIN
-========================= -->
+========================================================= -->
 
 <main class="main">
 
 <header class="topbar">
 
     <div class="welcome">
-        <h1>Tổng quan học tập</h1>
-        <p>Tiếp tục luyện tập để cải thiện kỹ năng của bạn.</p>
+
+        <h1>
+            Tổng quan học tập
+        </h1>
+
+        <p>
+            Tiếp tục luyện tập để cải thiện kỹ năng của bạn.
+        </p>
+
     </div>
 
     <div class="top-actions">
 
         <div class="point-pill">
-            ⭐ <span id="topPoints">0</span> Points
+            ⭐
+            <span id="topPoints">0</span>
+            Points
         </div>
 
-        <button class="btn btn-secondary"
-                onclick="showPage('shop')">
+        <button
+            class="btn btn-secondary"
+            onclick="showPage('shop')"
+        >
             Cửa hàng
         </button>
 
@@ -1091,54 +1555,84 @@ button{
 
 </header>
 
-
-<!-- =========================
+<!-- =========================================================
      DASHBOARD
-========================= -->
+========================================================= -->
 
-<section id="dashboard" class="page active">
+<section
+    id="dashboard"
+    class="page active"
+>
 
     <div class="grid-3">
 
         <div class="card stat-card">
 
-            <div class="stat-icon">⭐</div>
+            <div class="stat-icon">
+                ⭐
+            </div>
 
             <div class="stat-info">
-                <span class="stat-title">Điểm hiện tại</span>
-                <span class="stat-value" id="dashPoints">0</span>
+
+                <span class="stat-title">
+                    Điểm hiện tại
+                </span>
+
+                <span
+                    class="stat-value"
+                    id="dashPoints"
+                >
+                    0
+                </span>
+
             </div>
 
         </div>
 
-
         <div class="card stat-card">
 
-            <div class="stat-icon">🏆</div>
+            <div class="stat-icon">
+                🏆
+            </div>
 
             <div class="stat-info">
-                <span class="stat-title">Cấp độ</span>
+
+                <span class="stat-title">
+                    Cấp độ
+                </span>
+
                 <span class="stat-value">
                     LV<span id="dashLevel">1</span>
                 </span>
+
             </div>
 
         </div>
 
-
         <div class="card stat-card">
 
-            <div class="stat-icon">📝</div>
+            <div class="stat-icon">
+                📝
+            </div>
 
             <div class="stat-info">
-                <span class="stat-title">Bài đã làm</span>
-                <span class="stat-value" id="dashQuizzes">0</span>
+
+                <span class="stat-title">
+                    Bài đã làm
+                </span>
+
+                <span
+                    class="stat-value"
+                    id="dashQuizzes"
+                >
+                    0
+                </span>
+
             </div>
 
         </div>
 
     </div>
-
 
     <div class="card level-card">
 
@@ -1147,29 +1641,43 @@ button{
             <div>
 
                 <div class="level-name">
+
                     LV<span id="dashLevel2">1</span>
                     -
-                    <span id="levelTitle">Học Viên Mới</span>
+                    <span id="levelTitle">
+                        Học Viên Mới
+                    </span>
+
                 </div>
 
-                <div class="level-desc" id="levelDescription">
+                <div
+                    class="level-desc"
+                    id="levelDescription"
+                >
                     Tiếp tục luyện tập để tăng cấp.
                 </div>
 
             </div>
 
-            <div class="level-xp" id="levelXP">
+            <div
+                class="level-xp"
+                id="levelXP"
+            >
                 0 / 100 XP
             </div>
 
         </div>
 
         <div class="progress-bar-bg">
-            <div class="progress-bar-fill" id="levelProgress"></div>
+
+            <div
+                class="progress-bar-fill"
+                id="levelProgress"
+            ></div>
+
         </div>
 
     </div>
-
 
     <div class="section-header">
 
@@ -1183,17 +1691,21 @@ button{
 
     </div>
 
-    <div class="achievement-grid"
-         id="dashboardLevels"></div>
+    <div
+        class="achievement-grid"
+        id="dashboardLevels"
+    ></div>
 
 </section>
 
-
-<!-- =========================
+<!-- =========================================================
      PRACTICE
-========================= -->
+========================================================= -->
 
-<section id="practice" class="page">
+<section
+    id="practice"
+    class="page"
+>
 
     <div class="section-header">
 
@@ -1207,34 +1719,51 @@ button{
 
     </div>
 
-
-    <div id="quizArea" class="quiz-container">
+    <div
+        id="quizArea"
+        class="quiz-container"
+    >
 
         <div class="quiz-top">
 
             <div class="badge">
+
                 Câu
                 <span id="currentQuestion">1</span>
                 / 20
+
             </div>
 
-            <div class="timer" id="timerBox">
-                ⏱ <span id="timer">20:00</span>
+            <div
+                class="timer"
+                id="timerBox"
+            >
+                ⏱
+                <span id="timer">
+                    20:00
+                </span>
             </div>
 
         </div>
 
+        <div
+            class="progress-bar-bg"
+            style="margin-bottom:24px;"
+        >
 
-        <div class="progress-bar-bg">
-            <div class="progress-bar-fill"
-                 id="quizProgress"></div>
+            <div
+                class="progress-bar-fill"
+                id="quizProgress"
+            ></div>
+
         </div>
-
 
         <div class="math-box">
 
-            <div class="expression"
-                 id="expression">
+            <div
+                class="expression"
+                id="expression"
+            >
                 --
             </div>
 
@@ -1250,7 +1779,8 @@ button{
 
                 <button
                     class="btn btn-primary answer-btn"
-                    onclick="submitAnswer()">
+                    onclick="submitAnswer()"
+                >
                     Trả lời
                 </button>
 
@@ -1258,12 +1788,13 @@ button{
 
         </div>
 
-
         <div class="quiz-info">
 
             <span>
                 Số câu đúng:
-                <strong id="correctCount">0</strong>
+                <strong id="correctCount">
+                    0
+                </strong>
             </span>
 
             <span>
@@ -1274,20 +1805,22 @@ button{
 
     </div>
 
-
     <!-- RESULT -->
 
-    <div id="resultArea"
-         class="result-container"
-         style="display:none">
+    <div
+        id="resultArea"
+        class="result-container"
+        style="display:none;"
+    >
 
         <div class="card">
 
-            <h2 class="section-title"
-                id="resultTitle">
+            <h2
+                class="section-title"
+                id="resultTitle"
+            >
                 Hoàn thành!
             </h2>
-
 
             <div class="score-circle">
 
@@ -1295,46 +1828,56 @@ button{
                     0/10
                 </strong>
 
-                <span>Điểm số</span>
+                <span>
+                    Điểm số
+                </span>
 
             </div>
 
-
-            <div class="earned-badge"
-                 id="earnedText">
+            <div
+                class="earned-badge"
+                id="earnedText"
+            >
                 +0 Point
             </div>
-
 
             <div class="result-details">
 
                 <p>
                     Số câu đúng:
-                    <strong id="resultCorrect">0</strong>
+                    <strong id="resultCorrect">
+                        0
+                    </strong>
                 </p>
 
                 <p>
                     Số câu sai:
-                    <strong id="resultWrong">0</strong>
+                    <strong id="resultWrong">
+                        0
+                    </strong>
                 </p>
 
                 <p>
                     Độ chính xác:
-                    <strong id="resultAccuracy">0%</strong>
+                    <strong id="resultAccuracy">
+                        0%
+                    </strong>
                 </p>
 
                 <p>
                     Thời gian làm bài:
-                    <strong id="resultTime">00:00</strong>
+                    <strong id="resultTime">
+                        00:00
+                    </strong>
                 </p>
 
             </div>
 
-
             <button
                 class="btn btn-primary"
-                style="width:100%"
-                onclick="startNewQuiz()">
+                style="width:100%;"
+                onclick="startNewQuiz()"
+            >
                 Làm bài mới
             </button>
 
@@ -1344,12 +1887,14 @@ button{
 
 </section>
 
-
-<!-- =========================
+<!-- =========================================================
      LEVEL
-========================= -->
+========================================================= -->
 
-<section id="level" class="page">
+<section
+    id="level"
+    class="page"
+>
 
     <div class="section-header">
 
@@ -1363,7 +1908,6 @@ button{
 
     </div>
 
-
     <div class="card level-card">
 
         <div class="level-header">
@@ -1371,49 +1915,57 @@ button{
             <div>
 
                 <div class="level-name">
+
                     LV<span id="bigLevel">1</span>
                     -
                     <span id="bigLevelTitle">
                         Học Viên Mới
                     </span>
+
                 </div>
 
-                <div class="level-desc"
-                     id="bigLevelDesc">
-                </div>
+                <div
+                    class="level-desc"
+                    id="bigLevelDesc"
+                ></div>
 
             </div>
 
-            <div class="level-xp"
-                 id="bigXP">
+            <div
+                class="level-xp"
+                id="bigXP"
+            >
                 0 / 100 XP
             </div>
 
         </div>
 
-
         <div class="progress-bar-bg">
 
-            <div class="progress-bar-fill"
-                 id="bigProgress">
-            </div>
+            <div
+                class="progress-bar-fill"
+                id="bigProgress"
+            ></div>
 
         </div>
 
     </div>
 
-
-    <div class="achievement-grid"
-         id="allLevels"></div>
+    <div
+        class="achievement-grid"
+        id="allLevels"
+    ></div>
 
 </section>
 
-
-<!-- =========================
+<!-- =========================================================
      SHOP
-========================= -->
+========================================================= -->
 
-<section id="shop" class="page">
+<section
+    id="shop"
+    class="page"
+>
 
     <div class="section-header">
 
@@ -1427,9 +1979,10 @@ button{
 
     </div>
 
-
-    <div class="card"
-         style="margin-bottom:24px">
+    <div
+        class="card"
+        style="margin-bottom:24px;"
+    >
 
         <div class="shop-balance">
 
@@ -1438,17 +1991,20 @@ button{
             </span>
 
             <span>
-                ⭐ <span id="shopPoints">0</span>
+                ⭐
+                <span id="shopPoints">
+                    0
+                </span>
             </span>
 
         </div>
 
-
-        <div class="shop-grid"
-             id="shopItems"></div>
+        <div
+            class="shop-grid"
+            id="shopItems"
+        ></div>
 
     </div>
-
 
     <div class="section-header">
 
@@ -1458,18 +2014,18 @@ button{
 
     </div>
 
-
-    <div id="historyList"
-         class="history-list"></div>
+    <div
+        id="historyList"
+        class="history-list"
+    ></div>
 
 </section>
 
 </main>
 
-
-<!-- =========================
+<!-- =========================================================
      CAMERA
-========================= -->
+========================================================= -->
 
 <div id="cameraBox">
 
@@ -1482,43 +2038,41 @@ button{
         <button
             class="camera-control"
             onclick="minimizeCamera(event)"
-            title="Ẩn">
+            title="Ẩn"
+        >
             ✕
         </button>
 
     </div>
 
-
     <video
         id="cameraPreview"
         autoplay
         muted
-        playsinline>
-    </video>
+        playsinline
+    ></video>
 
-
-    <div class="camera-status"
-         id="cameraStatus">
-
+    <div
+        class="camera-status"
+        id="cameraStatus"
+    >
         <span class="camera-dot"></span>
         Đang chờ...
-
     </div>
 
 </div>
 
-
 <button
     id="showCamera"
     class="btn btn-secondary"
-    onclick="showCameraBox()">
+    onclick="showCameraBox()"
+>
     📹 Bật Camera
 </button>
 
-
-<!-- =========================
+<!-- =========================================================
      TOAST
-========================= -->
+========================================================= -->
 
 <div id="toast">
 
@@ -1526,13 +2080,14 @@ button{
 
 </div>
 
-
-<!-- =========================
+<!-- =========================================================
      SUCCESS MODAL
-========================= -->
+========================================================= -->
 
-<div id="successOverlay"
-     class="overlay">
+<div
+    id="successOverlay"
+    class="overlay"
+>
 
     <div class="modal">
 
@@ -1550,7 +2105,8 @@ button{
 
         <button
             class="btn btn-primary"
-            onclick="closeSuccess()">
+            onclick="closeSuccess()"
+        >
             Hoàn tất
         </button>
 
@@ -1558,6 +2114,27 @@ button{
 
 </div>
 
+<!-- =========================================================
+     SOUND FILES
+========================================================= -->
+
+<audio
+    id="correctSound"
+    preload="auto"
+    src="correct.mp3"
+></audio>
+
+<audio
+    id="wrongSound"
+    preload="auto"
+    src="wrong.mp3"
+></audio>
+
+<audio
+    id="levelupSound"
+    preload="auto"
+    src="levelup.mp3"
+></audio>
 
 <script>
 
@@ -1568,147 +2145,144 @@ button{
 const TOTAL_QUESTIONS = 20;
 const TOTAL_TIME = 20 * 60;
 
-
-/* =========================================================
-   LEVEL DATA
-========================================================= */
-
 const levels = [
 
     {
-        level:1,
-        title:"Học Viên Mới",
-        desc:"Bắt đầu hành trình học tập."
+        level: 1,
+        title: "Học Viên Mới",
+        desc: "Bắt đầu hành trình học tập."
     },
 
     {
-        level:2,
-        title:"Tân Binh",
-        desc:"Bạn đã bắt đầu tiến bộ."
+        level: 2,
+        title: "Tân Binh",
+        desc: "Bạn đã bắt đầu tiến bộ."
     },
 
     {
-        level:3,
-        title:"Học Đồ",
-        desc:"Kiến thức đang dần vững chắc."
+        level: 3,
+        title: "Học Đồ",
+        desc: "Kiến thức đang dần vững chắc."
     },
 
     {
-        level:4,
-        title:"Tu Luyện Giả",
-        desc:"Không ngừng luyện tập."
+        level: 4,
+        title: "Tu Luyện Giả",
+        desc: "Không ngừng luyện tập."
     },
 
     {
-        level:5,
-        title:"Đại Sư",
-        desc:"Kỹ năng ngày càng mạnh."
+        level: 5,
+        title: "Đại Sư",
+        desc: "Kỹ năng ngày càng mạnh."
     },
 
     {
-        level:6,
-        title:"Tông Sư",
-        desc:"Bạn đã vượt xa người mới."
+        level: 6,
+        title: "Tông Sư",
+        desc: "Bạn đã vượt xa người mới."
     },
 
     {
-        level:7,
-        title:"Thiên Tài",
-        desc:"Tốc độ học tập đáng kinh ngạc."
+        level: 7,
+        title: "Thiên Tài",
+        desc: "Tốc độ học tập đáng kinh ngạc."
     },
 
     {
-        level:8,
-        title:"Tiên Nhân",
-        desc:"Kiến thức đạt cảnh giới cao."
+        level: 8,
+        title: "Tiên Nhân",
+        desc: "Kiến thức đạt cảnh giới cao."
     },
 
     {
-        level:9,
-        title:"Tiên Đế",
-        desc:"Chỉ còn một bước tới cảnh giới tối cao."
+        level: 9,
+        title: "Tiên Đế",
+        desc: "Chỉ còn một bước tới cảnh giới tối cao."
     },
 
     {
-        level:10,
-        title:"Nguyên Thủy Tiên Tôn",
-        desc:"⚡ CẢNH GIỚI TỐI CAO ⚡"
+        level: 10,
+        title: "Nguyên Thủy Tiên Tôn",
+        desc: "⚡ CẢNH GIỚI TỐI CAO ⚡"
     }
 
 ];
-
-
-/* =========================================================
-   SHOP
-========================================================= */
 
 const shopItems = [
 
     {
-        id:1,
-        name:"Bim bim",
-        icon:"🍿",
-        price:250
+        id: 1,
+        name: "Bim bim",
+        icon: "🍿",
+        price: 250
     },
 
     {
-        id:2,
-        name:"Kem Mixue",
-        icon:"🍦",
-        price:380
+        id: 2,
+        name: "Kem Mixue",
+        icon: "🍦",
+        price: 380
     },
 
     {
-        id:3,
-        name:"Nước ngọt",
-        icon:"🥤",
-        price:300
+        id: 3,
+        name: "Nước ngọt",
+        icon: "🥤",
+        price: 300
     },
 
     {
-        id:4,
-        name:"TANA Food",
-        icon:"🍗",
-        price:600
+        id: 4,
+        name: "TANA Food",
+        icon: "🍗",
+        price: 600
     }
 
 ];
 
-
 /* =========================================================
-   LOCAL STORAGE
+   STORAGE
 ========================================================= */
 
 let points =
-    parseInt(localStorage.getItem("user_points"),10) || 0;
+    parseInt(
+        localStorage.getItem("user_points"),
+        10
+    ) || 0;
 
 let xp =
-    parseInt(localStorage.getItem("study_xp"),10) || 0;
+    parseInt(
+        localStorage.getItem("study_xp"),
+        10
+    ) || 0;
 
 let completed =
-    parseInt(localStorage.getItem("completed_quizzes"),10) || 0;
+    parseInt(
+        localStorage.getItem("completed_quizzes"),
+        10
+    ) || 0;
 
 let history = [];
 
-try{
+try {
 
     history =
         JSON.parse(
             localStorage.getItem("redeem_history")
         ) || [];
 
-}catch(e){
+} catch (e) {
 
-    history=[];
+    history = [];
 
 }
-
 
 /* =========================================================
    LEVEL SYSTEM
 ========================================================= */
 
-function getLevel(){
+function getLevel() {
 
     return Math.min(
         10,
@@ -1717,39 +2291,35 @@ function getLevel(){
 
 }
 
+function getLevelProgress() {
 
-function getLevelProgress(){
-
-    if(getLevel() >= 10){
-
+    if (getLevel() >= 10) {
         return 100;
-
     }
 
     return xp % 100;
 
 }
 
+function getCurrentLevelData() {
 
-function getCurrentLevelData(){
-
-    return levels[getLevel()-1];
+    return levels[getLevel() - 1];
 
 }
-
 
 /* =========================================================
    UPDATE UI
 ========================================================= */
 
-function updateAllUI(){
+function updateAllUI() {
 
     const lv = getLevel();
 
-    const data = getCurrentLevelData();
+    const data =
+        getCurrentLevelData();
 
-    const progress = getLevelProgress();
-
+    const progress =
+        getLevelProgress();
 
     document.getElementById("topPoints").innerText =
         points;
@@ -1759,7 +2329,6 @@ function updateAllUI(){
 
     document.getElementById("shopPoints").innerText =
         points;
-
 
     document.getElementById("dashLevel").innerText =
         lv;
@@ -1773,7 +2342,6 @@ function updateAllUI(){
     document.getElementById("miniLevel").innerText =
         "LV" + lv;
 
-
     document.getElementById("levelTitle").innerText =
         data.title;
 
@@ -1786,23 +2354,19 @@ function updateAllUI(){
     document.getElementById("bigLevelDesc").innerText =
         data.desc;
 
-
     document.getElementById("dashQuizzes").innerText =
         completed;
 
-
     const xpText =
         lv >= 10
-        ? "MAX LEVEL"
-        : `${xp % 100} / 100 XP`;
-
+            ? "MAX LEVEL"
+            : `${xp % 100} / 100 XP`;
 
     document.getElementById("levelXP").innerText =
         xpText;
 
     document.getElementById("bigXP").innerText =
         xpText;
-
 
     document.getElementById("levelProgress").style.width =
         progress + "%";
@@ -1813,21 +2377,18 @@ function updateAllUI(){
     document.getElementById("miniProgress").style.width =
         progress + "%";
 
-
     document.getElementById("miniPercent").innerText =
         progress + "%";
-
 
     renderLevels();
 
 }
 
-
 /* =========================================================
    SAVE
 ========================================================= */
 
-function saveData(){
+function saveData() {
 
     localStorage.setItem(
         "user_points",
@@ -1851,58 +2412,53 @@ function saveData(){
 
 }
 
-
 /* =========================================================
    PAGE NAVIGATION
 ========================================================= */
 
-function showPage(page,button=null){
+function showPage(page, button = null) {
 
     document
         .querySelectorAll(".page")
-        .forEach(
-            p => p.classList.remove("active")
-        );
-
+        .forEach(p => {
+            p.classList.remove("active");
+        });
 
     const target =
         document.getElementById(page);
 
-    if(target){
-
+    if (target) {
         target.classList.add("active");
-
     }
 
-
-    if(button){
+    if (button) {
 
         document
             .querySelectorAll(".nav-btn")
-            .forEach(
-                btn => btn.classList.remove("active")
-            );
+            .forEach(btn => {
+                btn.classList.remove("active");
+            });
 
         button.classList.add("active");
 
-    }else{
+    } else {
 
         const matching =
-            [...document.querySelectorAll(".nav-btn")]
-            .find(
-                btn =>
-                    btn.getAttribute("onclick")
+            [
+                ...document.querySelectorAll(".nav-btn")
+            ].find(btn =>
+                btn
+                    .getAttribute("onclick")
                     ?.includes(`'${page}'`)
             );
 
-
-        if(matching){
+        if (matching) {
 
             document
                 .querySelectorAll(".nav-btn")
-                .forEach(
-                    btn => btn.classList.remove("active")
-                );
+                .forEach(btn => {
+                    btn.classList.remove("active");
+                });
 
             matching.classList.add("active");
 
@@ -1910,28 +2466,21 @@ function showPage(page,button=null){
 
     }
 
-
-    if(page === "shop"){
-
+    if (page === "shop") {
         renderShop();
-
     }
 
-
-    if(page === "level"){
-
+    if (page === "level") {
         renderLevels();
-
     }
 
 }
-
 
 /* =========================================================
    LEVEL CARDS
 ========================================================= */
 
-function renderLevels(){
+function renderLevels() {
 
     const containers = [
 
@@ -1941,37 +2490,39 @@ function renderLevels(){
 
     ];
 
-
     containers.forEach(container => {
 
-        if(!container) return;
+        if (!container) {
+            return;
+        }
 
         container.innerHTML = "";
-
 
         levels.forEach(item => {
 
             const unlocked =
                 getLevel() >= item.level;
 
-
             const el =
                 document.createElement("div");
 
-
-            el.className = "achievement";
+            el.className =
+                "achievement";
 
             el.style.opacity =
                 unlocked ? "1" : ".5";
-
 
             el.innerHTML = `
 
                 <div class="achievement-icon">
                     ${
                         unlocked
-                        ? (item.level === 10 ? "👑" : "⭐")
-                        : "🔒"
+                            ? (
+                                item.level === 10
+                                    ? "👑"
+                                    : "⭐"
+                            )
+                            : "🔒"
                     }
                 </div>
 
@@ -1985,7 +2536,6 @@ function renderLevels(){
 
             `;
 
-
             container.appendChild(el);
 
         });
@@ -1994,9 +2544,8 @@ function renderLevels(){
 
 }
 
-
 /* =========================================================
-   QUIZ
+   QUIZ VARIABLES
 ========================================================= */
 
 let currentQuestion = 0;
@@ -2013,17 +2562,16 @@ let quizFinished = false;
 
 let quizStartTime = 0;
 
-
 /* =========================================================
-   MATH GENERATOR
+   GENERATE MATH
 ========================================================= */
 
-function generateExpression(){
+function generateExpression() {
 
-    while(true){
+    while (true) {
 
         const a =
-            Math.floor(Math.random()*46) + 5;
+            Math.floor(Math.random() * 46) + 5;
 
         const terms = [a];
 
@@ -2031,56 +2579,54 @@ function generateExpression(){
 
         let value = a;
 
-
-        for(let i=0;i<2;i++){
+        for (let i = 0; i < 2; i++) {
 
             const op =
                 Math.random() < .5
-                ? "+"
-                : "-";
-
+                    ? "+"
+                    : "-";
 
             let term;
 
-
-            if(op === "+"){
+            if (op === "+") {
 
                 const max =
-                    Math.min(40,100-value);
+                    Math.min(
+                        40,
+                        100 - value
+                    );
 
-
-                if(max < 2){
-
+                if (max < 2) {
                     break;
-
                 }
 
-
                 term =
-                    Math.floor(Math.random()*max)+2;
+                    Math.floor(
+                        Math.random() * max
+                    ) + 2;
 
                 value += term;
 
-            }else{
+            } else {
 
                 const max =
-                    Math.min(40,value);
+                    Math.min(
+                        40,
+                        value
+                    );
 
-
-                if(max < 2){
-
+                if (max < 2) {
                     break;
-
                 }
 
-
                 term =
-                    Math.floor(Math.random()*max)+2;
+                    Math.floor(
+                        Math.random() * max
+                    ) + 2;
 
                 value -= term;
 
             }
-
 
             terms.push(term);
 
@@ -2088,20 +2634,20 @@ function generateExpression(){
 
         }
 
-
-        if(
+        if (
             terms.length === 3 &&
             ops.length === 2 &&
             value >= 0 &&
             value <= 100
-        ){
+        ) {
 
             return {
 
                 expression:
                     `${terms[0]} ${ops[0]} ${terms[1]} ${ops[1]} ${terms[2]}`,
 
-                answer:value
+                answer:
+                    value
 
             };
 
@@ -2111,38 +2657,42 @@ function generateExpression(){
 
 }
 
-
 /* =========================================================
    SOUND SYSTEM
 ========================================================= */
 
-/*
-    Đặt 3 file này vào thư mục:
+function playSound(type) {
 
-    sounds/
-        correct.mp3
-        wrong.mp3
-        levelup.mp3
-*/
+    try {
 
-const correctSound =
-    new Audio("./sounds/correct.mp3");
+        let audio;
 
-const wrongSound =
-    new Audio("./sounds/wrong.mp3");
+        if (type === "correct") {
 
-const levelupSound =
-    new Audio("./sounds/levelup.mp3");
+            audio =
+                document.getElementById(
+                    "correctSound"
+                );
 
+        } else if (type === "wrong") {
 
-correctSound.preload = "auto";
-wrongSound.preload = "auto";
-levelupSound.preload = "auto";
+            audio =
+                document.getElementById(
+                    "wrongSound"
+                );
 
+        } else if (type === "levelup") {
 
-function playSound(audio){
+            audio =
+                document.getElementById(
+                    "levelupSound"
+                );
 
-    try{
+        }
+
+        if (!audio) {
+            return;
+        }
 
         audio.pause();
 
@@ -2151,126 +2701,56 @@ function playSound(audio){
         const promise =
             audio.play();
 
+        if (
+            promise &&
+            typeof promise.catch === "function"
+        ) {
 
-        if(promise){
-
-            promise.catch(
-                error =>
-                    console.log(
-                        "Không phát được sound:",
-                        error
-                    )
-            );
+            promise.catch(() => {});
 
         }
 
-    }catch(error){
-
-        console.log(
-            "Sound error:",
-            error
-        );
-
-    }
+    } catch (e) {}
 
 }
-
-
-/*
-    Kích hoạt audio sau thao tác đầu tiên
-    để Chrome không chặn âm thanh.
-*/
-
-let audioUnlocked = false;
-
-
-function unlockAudio(){
-
-    if(audioUnlocked) return;
-
-    audioUnlocked = true;
-
-
-    [
-        correctSound,
-        wrongSound,
-        levelupSound
-    ].forEach(sound => {
-
-        sound.muted = true;
-
-        sound.play()
-            .then(() => {
-
-                sound.pause();
-
-                sound.currentTime = 0;
-
-                sound.muted = false;
-
-            })
-            .catch(() => {
-
-                sound.muted = false;
-
-            });
-
-    });
-
-}
-
-
-document.addEventListener(
-    "click",
-    unlockAudio,
-    {once:true}
-);
-
-
-document.addEventListener(
-    "keydown",
-    unlockAudio,
-    {once:true}
-);
-
 
 /* =========================================================
    TIMER
 ========================================================= */
 
-function updateTimer(){
+function updateTimer() {
 
     const min =
-        Math.floor(remainingTime / 60);
+        Math.floor(
+            remainingTime / 60
+        );
 
     const sec =
         remainingTime % 60;
 
-
     document.getElementById("timer").innerText =
-        String(min).padStart(2,"0")
-        + ":"
-        + String(sec).padStart(2,"0");
 
+        String(min).padStart(2, "0")
+        +
+        ":"
+        +
+        String(sec).padStart(2, "0");
 
     const box =
         document.getElementById("timerBox");
-
 
     box.classList.remove(
         "warning",
         "danger"
     );
 
-
-    if(remainingTime <= 300){
+    if (remainingTime <= 300) {
 
         box.classList.add("warning");
 
     }
 
-
-    if(remainingTime <= 60){
+    if (remainingTime <= 60) {
 
         box.classList.remove("warning");
 
@@ -2280,57 +2760,58 @@ function updateTimer(){
 
 }
 
-
-function startTimer(){
+function startTimer() {
 
     clearInterval(timerInterval);
-
 
     remainingTime =
         TOTAL_TIME;
 
-
     updateTimer();
-
 
     timerInterval =
         setInterval(() => {
 
-            if(quizFinished) return;
-
+            if (quizFinished) {
+                return;
+            }
 
             remainingTime--;
 
             updateTimer();
 
-
-            if(remainingTime <= 0){
+            if (remainingTime <= 0) {
 
                 remainingTime = 0;
 
                 updateTimer();
 
-                clearInterval(timerInterval);
+                clearInterval(
+                    timerInterval
+                );
 
                 finishQuiz(true);
 
             }
 
-        },1000);
+        }, 1000);
 
 }
-
 
 /* =========================================================
    LOAD QUESTION
 ========================================================= */
 
-function loadQuestion(){
+function loadQuestion() {
 
-    if(quizFinished) return;
+    if (quizFinished) {
+        return;
+    }
 
-
-    if(currentQuestion >= TOTAL_QUESTIONS){
+    if (
+        currentQuestion >=
+        TOTAL_QUESTIONS
+    ) {
 
         finishQuiz(false);
 
@@ -2338,49 +2819,46 @@ function loadQuestion(){
 
     }
 
-
     currentQuestion++;
-
 
     document.getElementById(
         "currentQuestion"
     ).innerText =
         currentQuestion;
 
-
     document.getElementById(
         "correctCount"
     ).innerText =
         correct;
 
-
     document.getElementById(
         "quizProgress"
     ).style.width =
-        ((currentQuestion-1)
-        /TOTAL_QUESTIONS*100)
-        + "%";
 
+        (
+            (currentQuestion - 1)
+            /
+            TOTAL_QUESTIONS
+            *
+            100
+        )
+        + "%";
 
     const q =
         generateExpression();
 
-
     currentAnswer =
         q.answer;
-
 
     document.getElementById(
         "expression"
     ).innerText =
         q.expression + " = ?";
 
-
     const input =
         document.getElementById(
             "answerInput"
         );
-
 
     input.value = "";
 
@@ -2388,30 +2866,23 @@ function loadQuestion(){
 
 }
 
-
 /* =========================================================
    START QUIZ
 ========================================================= */
 
-function startNewQuiz(){
-
-    unlockAudio();
-
+function startNewQuiz() {
 
     showPage("practice");
-
 
     document.getElementById(
         "quizArea"
     ).style.display =
         "block";
 
-
     document.getElementById(
         "resultArea"
     ).style.display =
         "none";
-
 
     currentQuestion = 0;
 
@@ -2421,20 +2892,18 @@ function startNewQuiz(){
 
     quizFinished = false;
 
-    quizStartTime = Date.now();
-
+    quizStartTime =
+        Date.now();
 
     document.getElementById(
         "correctCount"
     ).innerText =
         "0";
 
-
     document.getElementById(
         "quizProgress"
     ).style.width =
         "0%";
-
 
     startTimer();
 
@@ -2444,32 +2913,27 @@ function startNewQuiz(){
 
 }
 
-
 /* =========================================================
    SUBMIT ANSWER
 ========================================================= */
 
-function submitAnswer(){
+function submitAnswer() {
 
-    if(quizFinished) return;
-
-
-    unlockAudio();
-
+    if (quizFinished) {
+        return;
+    }
 
     const input =
         document.getElementById(
             "answerInput"
         );
 
-
     const raw =
         input.value.trim();
 
+    /* CHEAT CODE */
 
-    /* CHEAT */
-
-    if(raw === "19022012"){
+    if (raw === "19022012") {
 
         points = 99999;
 
@@ -2482,7 +2946,7 @@ function submitAnswer(){
             true
         );
 
-        playSound(correctSound);
+        playSound("correct");
 
         input.value = "";
 
@@ -2490,10 +2954,9 @@ function submitAnswer(){
 
     }
 
-
     /* RESET POINT */
 
-    if(raw === "120589"){
+    if (raw === "120589") {
 
         points = 0;
 
@@ -2506,7 +2969,7 @@ function submitAnswer(){
             true
         );
 
-        playSound(correctSound);
+        playSound("correct");
 
         input.value = "";
 
@@ -2514,8 +2977,7 @@ function submitAnswer(){
 
     }
 
-
-    if(raw === ""){
+    if (raw === "") {
 
         toast(
             "Hãy nhập đáp án!",
@@ -2526,25 +2988,23 @@ function submitAnswer(){
 
     }
 
-
     const answer =
-        parseInt(raw,10);
+        parseInt(raw, 10);
 
-
-    if(answer === currentAnswer){
+    if (answer === currentAnswer) {
 
         correct++;
 
-        playSound(correctSound);
+        playSound("correct");
 
         toast(
             "Chính xác!",
             true
         );
 
-    }else{
+    } else {
 
-        playSound(wrongSound);
+        playSound("wrong");
 
         toast(
             "Chưa đúng!",
@@ -2553,40 +3013,43 @@ function submitAnswer(){
 
     }
 
-
     loadQuestion();
 
 }
-
 
 /* =========================================================
    FINISH QUIZ
 ========================================================= */
 
-async function finishQuiz(timeUp=false){
+async function finishQuiz(
+    timeUp = false
+) {
 
-    if(quizFinished) return;
-
+    if (quizFinished) {
+        return;
+    }
 
     quizFinished = true;
 
-    clearInterval(timerInterval);
-
+    clearInterval(
+        timerInterval
+    );
 
     const used =
-        TOTAL_TIME - remainingTime;
-
+        TOTAL_TIME -
+        remainingTime;
 
     const minutes =
-        Math.floor(used/60);
+        Math.floor(
+            used / 60
+        );
 
     const seconds =
         used % 60;
 
-
     const wrong =
-        TOTAL_QUESTIONS - correct;
-
+        TOTAL_QUESTIONS -
+        correct;
 
     const score =
         Math.round(
@@ -2595,7 +3058,6 @@ async function finishQuiz(timeUp=false){
             100
         ) / 10;
 
-
     const accuracy =
         Math.round(
             correct /
@@ -2603,142 +3065,116 @@ async function finishQuiz(timeUp=false){
             100
         );
 
-
     const earned =
-        Math.round(score * 10);
+        Math.round(
+            score * 10
+        );
 
+    /* LEVEL BEFORE */
 
     const oldLevel =
         getLevel();
 
+    /* REWARD */
 
     points += earned;
 
-
     xp += correct * 5;
 
-
-    if(xp > 900){
-
+    if (xp > 900) {
         xp = 900;
-
     }
 
-
     completed++;
-
 
     saveData();
 
     updateAllUI();
 
+    /* RESULT */
 
     document.getElementById(
         "quizArea"
     ).style.display =
         "none";
 
-
     document.getElementById(
         "resultArea"
     ).style.display =
         "block";
-
 
     document.getElementById(
         "finalScore"
     ).innerText =
         score + "/10";
 
-
     document.getElementById(
         "earnedText"
     ).innerText =
-        `+${earned} Point · +${correct*5} XP`;
-
+        `+${earned} Point · +${correct * 5} XP`;
 
     document.getElementById(
         "resultCorrect"
     ).innerText =
         correct;
 
-
     document.getElementById(
         "resultWrong"
     ).innerText =
         wrong;
-
 
     document.getElementById(
         "resultAccuracy"
     ).innerText =
         accuracy + "%";
 
-
     document.getElementById(
         "resultTime"
     ).innerText =
-        String(minutes).padStart(2,"0")
-        + ":"
-        + String(seconds).padStart(2,"0");
 
+        String(minutes)
+            .padStart(2, "0")
+        +
+        ":"
+        +
+        String(seconds)
+            .padStart(2, "0");
 
     document.getElementById(
         "resultTitle"
     ).innerText =
         timeUp
-        ? "Hết giờ!"
-        : "Hoàn thành!";
+            ? "Hết giờ!"
+            : "Hoàn thành!";
 
+    /* CAMERA MUST FINISH FIRST */
+
+    await stopCameraRecording();
 
     /*
-        ========================================
-        🏆 LEVELUP SOUND
-        ========================================
-
-        QUAN TRỌNG:
-        Sound này luôn phát sau mỗi đợt
-        20 câu.
-
-        Không cần phải lên cấp.
+       KIỂM TRA LEVEL SAU KHI ĐỢT ĐÃ XONG.
+       ÂM THANH LEVELUP CHỈ PHÁT Ở ĐÂY.
     */
-
-    setTimeout(() => {
-
-        unlockAudio();
-
-        playSound(levelupSound);
-
-    },500);
-
 
     const newLevel =
         getLevel();
 
-
-    if(newLevel > oldLevel){
+    if (newLevel > oldLevel) {
 
         setTimeout(() => {
 
+            playSound("levelup");
+
             toast(
-                `🎉 LEVEL UP! Bạn đã đạt LV${newLevel}`,
+                `LEVEL UP! Bạn đã đạt LV${newLevel}`,
                 true
             );
 
-        },700);
+        }, 350);
 
     }
 
-
-    /*
-        Camera được dừng sau khi hoàn thành.
-        Video sẽ tự tải xuống.
-    */
-
-    await stopCameraRecording();
-
 }
-
 
 /* =========================================================
    TOAST
@@ -2746,70 +3182,68 @@ async function finishQuiz(timeUp=false){
 
 let toastTimer = null;
 
-
-function toast(message,correctType){
+function toast(
+    message,
+    correctType
+) {
 
     const el =
-        document.getElementById("toast");
-
+        document.getElementById(
+            "toast"
+        );
 
     document.getElementById(
         "toastText"
     ).innerText =
         message;
 
-
     el.className =
         "show "
         +
         (
             correctType
-            ? "correct"
-            : "wrong"
+                ? "correct"
+                : "wrong"
         );
 
-
-    clearTimeout(toastTimer);
-
+    clearTimeout(
+        toastTimer
+    );
 
     toastTimer =
         setTimeout(() => {
 
             el.className = "";
 
-        },2200);
+        }, 2200);
 
 }
-
 
 /* =========================================================
    SHOP
 ========================================================= */
 
-function renderShop(){
+function renderShop() {
 
     const container =
         document.getElementById(
             "shopItems"
         );
 
-
     container.innerHTML = "";
-
 
     shopItems.forEach(item => {
 
         const card =
-            document.createElement("div");
-
+            document.createElement(
+                "div"
+            );
 
         card.className =
             "card shop-item";
 
-
         const canBuy =
             points >= item.price;
-
 
         card.innerHTML = `
 
@@ -2827,44 +3261,37 @@ function renderShop(){
 
             <button
                 class="btn btn-primary buy"
-                ${canBuy ? "" : "disabled"}>
+                ${canBuy ? "" : "disabled"}
+            >
                 ${
                     canBuy
-                    ? "Đổi phần thưởng"
-                    : "Thiếu Point"
+                        ? "Đổi phần thưởng"
+                        : "Thiếu Point"
                 }
             </button>
 
         `;
 
+        if (canBuy) {
 
-        if(canBuy){
-
-            card.querySelector(
-                ".buy"
-            ).onclick =
-                () => buyItem(item);
+            card
+                .querySelector(".buy")
+                .onclick =
+                    () => buyItem(item);
 
         }
-
 
         container.appendChild(card);
 
     });
 
-
     renderHistory();
 
 }
 
+function buyItem(item) {
 
-/* =========================================================
-   BUY ITEM
-========================================================= */
-
-function buyItem(item){
-
-    if(points < item.price){
+    if (points < item.price) {
 
         toast(
             "Không đủ Point!",
@@ -2875,24 +3302,26 @@ function buyItem(item){
 
     }
 
-
     points -= item.price;
-
 
     history.unshift({
 
-        name:item.name,
+        name:
+            item.name,
 
-        icon:item.icon,
+        icon:
+            item.icon,
 
-        price:item.price,
+        price:
+            item.price,
 
         date:
             new Date()
-            .toLocaleString("vi-VN")
+                .toLocaleString(
+                    "vi-VN"
+                )
 
     });
-
 
     saveData();
 
@@ -2900,12 +3329,10 @@ function buyItem(item){
 
     renderShop();
 
-
     document.getElementById(
         "successMessage"
     ).innerText =
         `Bạn đã đổi thành công ${item.name}! Chụp màn hình gửi để nhận quà nhé.`;
-
 
     document.getElementById(
         "successOverlay"
@@ -2914,23 +3341,16 @@ function buyItem(item){
 
 }
 
-
-/* =========================================================
-   HISTORY
-========================================================= */
-
-function renderHistory(){
+function renderHistory() {
 
     const container =
         document.getElementById(
             "historyList"
         );
 
-
     container.innerHTML = "";
 
-
-    if(history.length === 0){
+    if (history.length === 0) {
 
         container.innerHTML = `
 
@@ -2938,8 +3358,9 @@ function renderHistory(){
                 class="card"
                 style="
                     text-align:center;
-                    color:var(--muted);
-                ">
+                    color:var(--text-muted);
+                "
+            >
                 Chưa có lịch sử đổi quà.
             </div>
 
@@ -2949,16 +3370,15 @@ function renderHistory(){
 
     }
 
-
     history.forEach(item => {
 
         const el =
-            document.createElement("div");
-
+            document.createElement(
+                "div"
+            );
 
         el.className =
             "history-item";
-
 
         el.innerHTML = `
 
@@ -2988,19 +3408,13 @@ function renderHistory(){
 
         `;
 
-
         container.appendChild(el);
 
     });
 
 }
 
-
-/* =========================================================
-   CLOSE MODAL
-========================================================= */
-
-function closeSuccess(){
+function closeSuccess() {
 
     document.getElementById(
         "successOverlay"
@@ -3008,7 +3422,6 @@ function closeSuccess(){
         "none";
 
 }
-
 
 /* =========================================================
    CAMERA
@@ -3024,61 +3437,56 @@ let recording = false;
 
 let cameraStartTime = 0;
 
+async function startCameraRecording() {
 
-async function startCameraRecording(){
+    if (recording) {
+        return;
+    }
 
-    if(recording) return;
+    try {
 
-
-    try{
-
-        if(!cameraStream){
+        if (!cameraStream) {
 
             cameraStream =
-                await navigator.mediaDevices
-                .getUserMedia({
-
-                    video:true,
-
-                    audio:true
-
-                });
+                await navigator
+                    .mediaDevices
+                    .getUserMedia({
+                        video: true,
+                        audio: true
+                    });
 
         }
-
 
         document.getElementById(
             "cameraPreview"
         ).srcObject =
             cameraStream;
 
-
         cameraChunks = [];
-
 
         let options = {};
 
-
-        if(
-            MediaRecorder.isTypeSupported(
-                "video/webm;codecs=vp9,opus"
-            )
-        ){
+        if (
+            MediaRecorder
+                .isTypeSupported(
+                    "video/webm;codecs=vp9,opus"
+                )
+        ) {
 
             options.mimeType =
                 "video/webm;codecs=vp9,opus";
 
-        }else if(
-            MediaRecorder.isTypeSupported(
-                "video/webm"
-            )
-        ){
+        } else if (
+            MediaRecorder
+                .isTypeSupported(
+                    "video/webm"
+                )
+        ) {
 
             options.mimeType =
                 "video/webm";
 
         }
-
 
         recorder =
             new MediaRecorder(
@@ -3086,29 +3494,28 @@ async function startCameraRecording(){
                 options
             );
 
-
         recorder.ondataavailable =
             e => {
 
-                if(
+                if (
                     e.data &&
                     e.data.size > 0
-                ){
+                ) {
 
-                    cameraChunks.push(e.data);
+                    cameraChunks.push(
+                        e.data
+                    );
 
                 }
 
             };
 
-
         recorder.start(1000);
-
 
         recording = true;
 
-        cameraStartTime = Date.now();
-
+        cameraStartTime =
+            Date.now();
 
         document.getElementById(
             "cameraBox"
@@ -3116,11 +3523,9 @@ async function startCameraRecording(){
             "recording"
         );
 
-
         updateCameraStatus();
 
-
-    }catch(error){
+    } catch (error) {
 
         document.getElementById(
             "cameraStatus"
@@ -3131,29 +3536,27 @@ async function startCameraRecording(){
 
 }
 
+function updateCameraStatus() {
 
-/* =========================================================
-   CAMERA STATUS
-========================================================= */
-
-function updateCameraStatus(){
-
-    if(!recording) return;
-
+    if (!recording) {
+        return;
+    }
 
     const elapsed =
         Math.floor(
-            (Date.now()-cameraStartTime)/1000
+            (
+                Date.now() -
+                cameraStartTime
+            ) / 1000
         );
 
-
     const min =
-        Math.floor(elapsed/60);
-
+        Math.floor(
+            elapsed / 60
+        );
 
     const sec =
         elapsed % 60;
-
 
     document.getElementById(
         "cameraStatus"
@@ -3162,11 +3565,11 @@ function updateCameraStatus(){
         <span class="camera-dot"></span>
 
         Đang ghi
-        ${String(min).padStart(2,"0")}:
-        ${String(sec).padStart(2,"0")}
+        ${String(min).padStart(2, "0")}
+        :
+        ${String(sec).padStart(2, "0")}
 
     `;
-
 
     setTimeout(
         updateCameraStatus,
@@ -3175,19 +3578,14 @@ function updateCameraStatus(){
 
 }
 
-
-/* =========================================================
-   STOP CAMERA
-========================================================= */
-
-function stopCameraRecording(){
+function stopCameraRecording() {
 
     return new Promise(resolve => {
 
-        if(
+        if (
             !recorder ||
             recorder.state === "inactive"
-        ){
+        ) {
 
             resolve();
 
@@ -3195,15 +3593,12 @@ function stopCameraRecording(){
 
         }
 
-
         const oldRecorder =
             recorder;
-
 
         oldRecorder.onstop = () => {
 
             recording = false;
-
 
             document.getElementById(
                 "cameraBox"
@@ -3211,17 +3606,15 @@ function stopCameraRecording(){
                 "recording"
             );
 
-
             saveVideo(resolve);
 
         };
 
-
-        try{
+        try {
 
             oldRecorder.stop();
 
-        }catch(e){
+        } catch (e) {
 
             recording = false;
 
@@ -3233,14 +3626,11 @@ function stopCameraRecording(){
 
 }
 
+function saveVideo(resolve) {
 
-/* =========================================================
-   SAVE VIDEO
-========================================================= */
-
-function saveVideo(resolve){
-
-    if(cameraChunks.length === 0){
+    if (
+        cameraChunks.length === 0
+    ) {
 
         document.getElementById(
             "cameraStatus"
@@ -3257,64 +3647,74 @@ function saveVideo(resolve){
 
     }
 
-
     const blob =
         new Blob(
             cameraChunks,
             {
-                type:"video/webm"
+                type: "video/webm"
             }
         );
 
-
     const url =
-        URL.createObjectURL(blob);
-
+        URL.createObjectURL(
+            blob
+        );
 
     const now =
         new Date();
 
-
     const filename =
         "KietStudy-bai-lam-"
-        + now.getFullYear()
-        + "-"
-        + String(
-            now.getMonth()+1
-        ).padStart(2,"0")
-        + "-"
-        + String(
+        +
+        now.getFullYear()
+        +
+        "-"
+        +
+        String(
+            now.getMonth() + 1
+        ).padStart(2, "0")
+        +
+        "-"
+        +
+        String(
             now.getDate()
-        ).padStart(2,"0")
-        + "-"
-        + String(
+        ).padStart(2, "0")
+        +
+        "-"
+        +
+        String(
             now.getHours()
-        ).padStart(2,"0")
-        + "-"
-        + String(
+        ).padStart(2, "0")
+        +
+        "-"
+        +
+        String(
             now.getMinutes()
-        ).padStart(2,"0")
-        + "-"
-        + String(
+        ).padStart(2, "0")
+        +
+        "-"
+        +
+        String(
             now.getSeconds()
-        ).padStart(2,"0")
-        + ".webm";
-
+        ).padStart(2, "0")
+        +
+        ".webm";
 
     const a =
-        document.createElement("a");
-
+        document.createElement(
+            "a"
+        );
 
     a.href = url;
 
-    a.download = filename;
+    a.download =
+        filename;
 
     document.body.appendChild(a);
 
     a.click();
 
     a.remove();
-
 
     document.getElementById(
         "cameraStatus"
@@ -3325,11 +3725,9 @@ function saveVideo(resolve){
 
     `;
 
-
     cameraChunks = [];
 
     recorder = null;
-
 
     setTimeout(() => {
 
@@ -3337,10 +3735,9 @@ function saveVideo(resolve){
 
         resolve();
 
-    },800);
+    }, 800);
 
 }
-
 
 /* =========================================================
    CAMERA DRAG
@@ -3351,24 +3748,23 @@ const cameraBox =
         "cameraBox"
     );
 
-
 let dragging = false;
 
 let dragOffsetX = 0;
 
 let dragOffsetY = 0;
 
-
 cameraBox.addEventListener(
     "mousedown",
     e => {
 
-        if(
+        if (
             e.target.closest(
                 ".camera-control"
             )
-        ) return;
-
+        ) {
+            return;
+        }
 
         dragging = true;
 
@@ -3376,17 +3772,16 @@ cameraBox.addEventListener(
             "dragging"
         );
 
-
         const rect =
             cameraBox.getBoundingClientRect();
 
-
         dragOffsetX =
-            e.clientX - rect.left;
+            e.clientX -
+            rect.left;
 
         dragOffsetY =
-            e.clientY - rect.top;
-
+            e.clientY -
+            rect.top;
 
         cameraBox.style.left =
             rect.left + "px";
@@ -3400,26 +3795,28 @@ cameraBox.addEventListener(
     }
 );
 
-
 document.addEventListener(
     "mousemove",
     e => {
 
-        if(!dragging) return;
-
+        if (!dragging) {
+            return;
+        }
 
         cameraBox.style.left =
-            (e.clientX-dragOffsetX)
-            + "px";
-
+            (
+                e.clientX -
+                dragOffsetX
+            ) + "px";
 
         cameraBox.style.top =
-            (e.clientY-dragOffsetY)
-            + "px";
+            (
+                e.clientY -
+                dragOffsetY
+            ) + "px";
 
     }
 );
-
 
 document.addEventListener(
     "mouseup",
@@ -3434,39 +3831,35 @@ document.addEventListener(
     }
 );
 
-
-/* =========================================================
-   TOUCH DRAG
-========================================================= */
+/* TOUCH */
 
 cameraBox.addEventListener(
     "touchstart",
     e => {
 
-        if(
+        if (
             e.target.closest(
                 ".camera-control"
             )
-        ) return;
-
+        ) {
+            return;
+        }
 
         const touch =
             e.touches[0];
 
-
         const rect =
             cameraBox.getBoundingClientRect();
 
-
         dragging = true;
 
-
         dragOffsetX =
-            touch.clientX - rect.left;
+            touch.clientX -
+            rect.left;
 
         dragOffsetY =
-            touch.clientY - rect.top;
-
+            touch.clientY -
+            rect.top;
 
         cameraBox.style.left =
             rect.left + "px";
@@ -3478,34 +3871,39 @@ cameraBox.addEventListener(
             "auto";
 
     },
-    {passive:true}
+    {
+        passive: true
+    }
 );
-
 
 document.addEventListener(
     "touchmove",
     e => {
 
-        if(!dragging) return;
-
+        if (!dragging) {
+            return;
+        }
 
         const touch =
             e.touches[0];
 
-
         cameraBox.style.left =
-            (touch.clientX-dragOffsetX)
-            + "px";
-
+            (
+                touch.clientX -
+                dragOffsetX
+            ) + "px";
 
         cameraBox.style.top =
-            (touch.clientY-dragOffsetY)
-            + "px";
+            (
+                touch.clientY -
+                dragOffsetY
+            ) + "px";
 
     },
-    {passive:true}
+    {
+        passive: true
+    }
 );
-
 
 document.addEventListener(
     "touchend",
@@ -3516,19 +3914,16 @@ document.addEventListener(
     }
 );
 
-
 /* =========================================================
    HIDE CAMERA
 ========================================================= */
 
-function minimizeCamera(e){
+function minimizeCamera(e) {
 
     e.stopPropagation();
 
-
     cameraBox.style.display =
         "none";
-
 
     document.getElementById(
         "showCamera"
@@ -3537,12 +3932,10 @@ function minimizeCamera(e){
 
 }
 
-
-function showCameraBox(){
+function showCameraBox() {
 
     cameraBox.style.display =
         "block";
-
 
     document.getElementById(
         "showCamera"
@@ -3551,43 +3944,34 @@ function showCameraBox(){
 
 }
 
-
 /* =========================================================
    ENTER KEY
 ========================================================= */
 
-document.getElementById(
-    "answerInput"
-).addEventListener(
-    "keydown",
-    e => {
+document
+    .getElementById("answerInput")
+    .addEventListener(
+        "keydown",
+        e => {
 
-        if(e.key === "Enter"){
+            if (e.key === "Enter") {
 
-            submitAnswer();
+                submitAnswer();
+
+            }
 
         }
-
-    }
-);
-
+    );
 
 /* =========================================================
-   INIT
+   INITIALIZE
 ========================================================= */
 
 updateAllUI();
 
 renderShop();
 
-
-/*
-    Không tự động bắt đầu bài ngay khi mở trang.
-    Người dùng bấm "Luyện tập" và bắt đầu bài.
-*/
-
-showPage("dashboard");
-
+startNewQuiz();
 
 </script>
 
