@@ -6,7 +6,7 @@
 
 <title>KietStudy - Nền tảng luyện tập</title>
 
-<!-- Canvas-Confetti Library cho hiệu ứng đổi quà -->
+<!-- Thêm thư viện canvas-confetti tạo hiệu ứng pháo hoa khi đổi quà thành công -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <style>
@@ -52,20 +52,6 @@ body{
 
 #mouseGlow{
     display:none!important;
-}
-
-/* ================= ANIMATIONS ================= */
-@keyframes bounceHover {
-    0% { transform: translateY(0) scale(1); }
-    40% { transform: translateY(-6px) scale(1.02); }
-    70% { transform: translateY(2px) scale(0.99); }
-    100% { transform: translateY(-3px) scale(1.01); }
-}
-
-@keyframes popIn {
-    0% { transform: scale(0.5); opacity: 0; }
-    70% { transform: scale(1.08); opacity: 1; }
-    100% { transform: scale(1); opacity: 1; }
 }
 
 /* ================= SIDEBAR ================= */
@@ -143,14 +129,13 @@ body{
     gap:12px;
     cursor:pointer;
     text-align:left;
-    transition:background-color .15s, color .15s, transform .2s ease;
+    transition:transform .2s ease, background-color .15s, color .15s;
 }
 
-/* HIỆU ỨNG BOUNCE MỤC NAV */
 .nav-btn:hover{
     background:var(--bg-surface-hover);
     color:var(--text-main);
-    animation: bounceHover 0.4s ease forwards;
+    transform:scale(1.02);
 }
 
 .nav-btn.active{
@@ -186,6 +171,11 @@ body{
     padding:16px;
     border-radius:var(--radius-md);
     border:1px solid var(--border);
+    transition:transform .2s ease;
+}
+
+.mini-level:hover{
+    transform:scale(1.02);
 }
 
 .mini-level-top{
@@ -262,6 +252,11 @@ body{
     font-size:14px;
     font-weight:600;
     font-variant-numeric:tabular-nums;
+    transition:transform .2s ease;
+}
+
+.point-pill:hover{
+    transform:scale(1.05);
 }
 
 .point-icon{
@@ -285,11 +280,15 @@ body{
     align-items:center;
     justify-content:center;
     gap:8px;
-    transition:all .15s;
+    transition:transform .2s ease, background-color .15s, border-color .15s, box-shadow .15s;
 }
 
-.btn:hover:not(:disabled) {
-    animation: bounceHover 0.4s ease forwards;
+.btn:hover:not(:disabled){
+    transform:scale(1.04);
+}
+
+.btn:active:not(:disabled){
+    transform:scale(0.98);
 }
 
 .btn:disabled{
@@ -349,6 +348,12 @@ body{
     border-radius:var(--radius-lg);
     padding:24px;
     box-shadow:var(--shadow-sm);
+    transition:transform .25s ease, box-shadow .25s ease;
+}
+
+.card:hover{
+    transform:translateY(-3px) scale(1.01);
+    box-shadow:var(--shadow-md);
 }
 
 /* ================= DASHBOARD ================= */
@@ -365,11 +370,6 @@ body{
     align-items:center;
     gap:16px;
     min-height:100px;
-    transition: transform .2s ease;
-}
-
-.stat-card:hover {
-    animation: bounceHover 0.4s ease forwards;
 }
 
 .stat-icon{
@@ -469,11 +469,12 @@ body{
     border-radius:var(--radius-md);
     padding:16px;
     text-align:center;
-    transition: transform .2s ease;
+    transition:transform .2s ease, box-shadow .2s ease;
 }
 
-.achievement:hover {
-    animation: bounceHover 0.4s ease forwards;
+.achievement:hover{
+    transform:scale(1.05);
+    box-shadow:var(--shadow-md);
 }
 
 .achievement-icon{
@@ -571,6 +572,12 @@ body{
     border-radius:var(--radius-lg);
     box-shadow:var(--shadow-sm);
     margin-bottom:24px;
+    transition:transform .25s ease, box-shadow .25s ease;
+}
+
+.math-box:hover{
+    transform:scale(1.01);
+    box-shadow:var(--shadow-md);
 }
 
 .expression{
@@ -664,6 +671,11 @@ body{
     flex-direction:column;
     align-items:center;
     justify-content:center;
+    transition:transform .3s ease;
+}
+
+.score-circle:hover{
+    transform:scale(1.08);
 }
 
 .score-circle strong{
@@ -734,6 +746,11 @@ body{
     font-weight:600;
     color:var(--warning);
     margin-bottom:24px;
+    transition:transform .2s ease;
+}
+
+.shop-balance:hover{
+    transform:scale(1.01);
 }
 
 .shop-point-display{
@@ -752,11 +769,12 @@ body{
     text-align:center;
     display:flex;
     flex-direction:column;
-    transition: transform .2s ease;
+    transition:transform .25s ease, box-shadow .25s ease;
 }
 
-.shop-item:hover {
-    animation: bounceHover 0.4s ease forwards;
+.shop-item:hover{
+    transform:translateY(-5px) scale(1.03);
+    box-shadow:var(--shadow-lg);
 }
 
 .item-icon{
@@ -768,6 +786,11 @@ body{
     justify-content:center;
     font-size:64px;
     line-height:1;
+    transition:transform .2s ease;
+}
+
+.shop-item:hover .item-icon{
+    transform:scale(1.1);
 }
 
 .item-icon img{
@@ -811,6 +834,11 @@ body{
     background:var(--bg-surface);
     border:1px solid var(--border);
     border-radius:var(--radius-md);
+    transition:transform .2s ease;
+}
+
+.history-item:hover{
+    transform:translateX(4px) scale(1.01);
 }
 
 .history-left{
@@ -865,6 +893,11 @@ body{
     overflow:hidden;
     cursor:grab;
     border:1px solid #334155;
+    transition:transform .2s ease;
+}
+
+#cameraBox:hover{
+    transform:scale(1.02);
 }
 
 #cameraBox.dragging{
@@ -971,7 +1004,7 @@ body{
     border-left-color:var(--danger);
 }
 
-/* ================= MODAL ================= */
+/* ================= MODAL & ĐỔI THƯỞNG SUCCESS ================= */
 
 .overlay{
     display:none;
@@ -982,6 +1015,7 @@ body{
     align-items:center;
     justify-content:center;
     padding:24px;
+    backdrop-filter: blur(4px);
 }
 
 .modal{
@@ -992,20 +1026,29 @@ body{
     padding:32px;
     text-align:center;
     box-shadow:var(--shadow-lg);
+    transform:scale(0.8);
+    opacity:0;
+    transition:transform .3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity .3s ease;
 }
 
-/* HIỆU ỨNG POP-IN KHI HIỂN THỊ THÀNH CÔNG */
-#successOverlay.show .modal {
-    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+.overlay.show .modal{
+    transform:scale(1);
+    opacity:1;
 }
 
 .modal-icon{
-    width:70px;
-    height:70px;
+    width:80px;
+    height:80px;
     margin:0 auto 16px;
     display:flex;
     align-items:center;
     justify-content:center;
+    animation: bounce 1s infinite alternate ease-in-out;
+}
+
+@keyframes bounce {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(-8px) scale(1.05); }
 }
 
 .modal-icon img{
@@ -1015,8 +1058,9 @@ body{
 }
 
 .modal h2{
-    font-size:20px;
+    font-size:22px;
     margin-bottom:8px;
+    color: var(--primary);
 }
 
 .modal p{
@@ -1684,7 +1728,7 @@ body{
         </div>
 
         <h2>
-            🎉 Đổi quà thành công! 🎉
+            🎉 Đổi Quà Thành Công! 🎉
         </h2>
 
         <p id="successMessage">
@@ -1735,6 +1779,11 @@ const levels = [
     {level:9,title:"Tiên Đế",desc:"Chỉ còn một bước tới cảnh giới tối cao."},
     {level:10,title:"Nguyên Thủy Tiên Tôn",desc:"⚡ CẢNH GIỚI TỐI CAO ⚡"}
 ];
+
+/*
+    ICON ĐỒ ĂN
+    Không dùng shop.png cho đồ ăn nữa.
+*/
 
 const shopItems = [
     {id:1,name:"Bim bim",icon:"🍿",price:250},
@@ -2406,6 +2455,12 @@ function renderShop(){
 
         const canBuy=points>=item.price;
 
+        /*
+            ĐÃ SỬA:
+            Không còn dùng shop.png cho đồ ăn.
+            Dùng trực tiếp emoji trong item.icon.
+        */
+
         card.innerHTML=`
 
             <div class="item-icon">
@@ -2450,32 +2505,23 @@ function renderShop(){
 }
 
 /* =========================================================
-   BUY
+   BUY & ĐỔI THƯỞNG SUCCESS EFFECT
 ========================================================= */
 
 function triggerConfetti(){
-    if(typeof confetti === "function"){
-        // Bắn pháo hoa 2 bên màn hình
+
+    if(typeof confetti === 'function'){
+        // Bắn pháo hoa từ hai bên góc dưới màn hình
         confetti({
-            particleCount: 100,
+            particleCount: 80,
             spread: 70,
-            origin: { y: 0.6 }
+            origin: { y: 0.6, x: 0.3 }
         });
-        
-        setTimeout(() => {
-            confetti({
-                particleCount: 50,
-                angle: 60,
-                spread: 55,
-                origin: { x: 0 }
-            });
-            confetti({
-                particleCount: 50,
-                angle: 120,
-                spread: 55,
-                origin: { x: 1 }
-            });
-        }, 200);
+        confetti({
+            particleCount: 80,
+            spread: 70,
+            origin: { y: 0.6, x: 0.7 }
+        });
     }
 }
 
@@ -2502,15 +2548,20 @@ function buyItem(item){
     updateAllUI();
     renderShop();
 
-    playSound("levelup");
-    triggerConfetti();
-
     document.getElementById("successMessage").innerText =
         `Bạn đã đổi thành công ${item.name}! Chụp màn hình gửi để nhận quà nhé.`;
 
     const overlay = document.getElementById("successOverlay");
     overlay.style.display="flex";
-    overlay.classList.add("show");
+    
+    // Thêm class animation hiệu ứng Modal
+    setTimeout(() => {
+        overlay.classList.add("show");
+    }, 10);
+
+    // Kích hoạt âm thanh và hiệu ứng bắn pháo hoa
+    playSound("levelup");
+    triggerConfetti();
 }
 
 function renderHistory(){
@@ -2573,9 +2624,13 @@ function renderHistory(){
 }
 
 function closeSuccess(){
+
     const overlay = document.getElementById("successOverlay");
     overlay.classList.remove("show");
-    overlay.style.display="none";
+
+    setTimeout(() => {
+        overlay.style.display="none";
+    }, 300);
 }
 
 /* =========================================================
@@ -2850,8 +2905,8 @@ cameraBox.addEventListener("touchstart",e=>{
     dragOffsetX=touch.clientX-rect.left;
     dragOffsetY=touch.clientY-rect.top;
 
-    cameraBox.style.left=rect.left+"px";
-    cameraBox.style.top=rect.top+"px";
+    cameraBox.style.left=touch.clientX-dragOffsetX+"px";
+    cameraBox.style.top=touch.clientY-dragOffsetY+"px";
     cameraBox.style.right="auto";
 
 },{passive:true});
